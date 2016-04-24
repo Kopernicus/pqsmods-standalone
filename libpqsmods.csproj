@@ -35,6 +35,9 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Kopernicus\MapSO.cs" />
+    <Compile Include="Unity\Color.cs" />
+    <Compile Include="Unity\Mathf.cs" />
     <Compile Include="VertexBuildData.cs" />
     <Compile Include="PQSMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

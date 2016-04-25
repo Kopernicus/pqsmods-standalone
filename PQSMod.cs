@@ -23,6 +23,11 @@ namespace PQS
         /// </summary>
         public int order = 100;
 
+        /// <summary>
+        /// The name of the PQSMod
+        /// </summary>
+        public string name { get; set; }
+
         #region Virtuals
         public virtual void OnSetup() { }
         public virtual void OnPostSetup() { }

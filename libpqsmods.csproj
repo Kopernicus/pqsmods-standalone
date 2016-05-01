@@ -77,6 +77,7 @@
     <Compile Include="PQSMod_VertexColorNoiseRGB.cs" />
     <Compile Include="PQSMod_VertexColorSolid.cs" />
     <Compile Include="PQSMod_VertexColorSolidBlend.cs" />
+    <Compile Include="PQSMod_VertexDefineCoastLine.cs" />
     <Compile Include="PQSMod_VertexHeightMap.cs" />
     <Compile Include="Unity\Color.cs" />
     <Compile Include="Unity\Color32.cs" />

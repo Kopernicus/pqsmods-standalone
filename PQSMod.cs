@@ -24,6 +24,11 @@ namespace PQS
         public int order = 100;
 
         /// <summary>
+        /// The sphere the PQSMod is attached to
+        /// </summary>
+        public PQS sphere;
+
+        /// <summary>
         /// The name of the PQSMod
         /// </summary>
         public string name { get; set; }

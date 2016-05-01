@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="Kopernicus\MapSO.cs" />
     <Compile Include="PQS.cs" />
+    <Compile Include="PQSMod_VertexHeightMap.cs" />
     <Compile Include="Unity\Color.cs" />
     <Compile Include="Unity\Color32.cs" />
     <Compile Include="Unity\Mathf.cs" />

@@ -25,7 +25,7 @@ namespace PQS
         public float blend;
 
         /// <summary>
-        /// Called when the parent sphere builds it's height
+        /// Called when the parent sphere builds it's color
         /// </summary>
         public override void OnVertexBuild(VertexBuildData data)
         {

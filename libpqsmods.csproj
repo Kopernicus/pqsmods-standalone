@@ -73,6 +73,7 @@
     <Compile Include="PQS.cs" />
     <Compile Include="PQSMod_VertexColorMap.cs" />
     <Compile Include="PQSMod_VertexColorMapBlend.cs" />
+    <Compile Include="PQSMod_VertexColorNoise.cs" />
     <Compile Include="PQSMod_VertexHeightMap.cs" />
     <Compile Include="Unity\Color.cs" />
     <Compile Include="Unity\Color32.cs" />

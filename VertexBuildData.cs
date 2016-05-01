@@ -16,21 +16,21 @@ namespace PQS
     /// </summary>
     public class VertexBuildData
     {
-        public Vector3 globalV { get; set; }
-        public Vector3 directionFromCenter { get; set; }
-        public Vector3 directionD { get; set; }
-        public Vector3 directionXZ { get; set; }
-        public int vertIndex { get; set; }
-        public double vertHeight { get; set; }
-        public Color vertColor { get; set; }
-        public double u { get; set; }
-        public double v { get; set; }
-        public double u2 { get; set; }
-        public double v2 { get; set; }
-        public double gnomonicU { get; set; }
-        public double gnomonicV { get; set; }
-        public bool allowScatter { get; set; }
-        public double latitude { get; set; }
-        public double longitude { get; set; }
+        public Vector3 globalV;
+        public Vector3 directionFromCenter;
+        public Vector3 directionD;
+        public Vector3 directionXZ;
+        public int vertIndex;
+        public double vertHeight;
+        public Color vertColor;
+        public double u;
+        public double v;
+        public double u2;
+        public double v2;
+        public double gnomonicU;
+        public double gnomonicV;
+        public bool allowScatter;
+        public double latitude;
+        public double longitude;
     }
 }

@@ -13,7 +13,7 @@ namespace PQS
     /// A mod that colors the terrain based on it's altitude
     /// </summary>
     /// <seealso cref="PQSMod" />
-    public class PQSMod_HeightColorMap : PQSMod
+    public class PQSMod_HeightColorMap2 : PQSMod
     {
         /// <summary>
         /// A definition for a landclass, basically a link between altitude and color.
@@ -64,7 +64,7 @@ namespace PQS
                 this.color = baseColor;
             }
         }
-
+        
         /// <summary>
         /// The land classes the mod uses
         /// </summary>
@@ -84,11 +84,37 @@ namespace PQS
         }
 
         /// <summary>
+        /// The minimum height
+        /// </summary>
+        public double minHeight;
+
+        /// <summary>
+        /// The maximum height
+        /// </summary>
+        public double maxHeight;
+
+        /// <summary>
+        /// The difference between <see cref="minHeight"/> and <see cref="maxHeight"/>
+        /// </summary>
+        private double heightDelta
+        {
+            get { return maxHeight - minHeight; }
+        }
+
+        /// <summary>
+        /// The absolute minimum height
+        /// </summary>
+        private double heightMin
+        {
+            get { return sphere.radius + minHeight; }
+        }
+
+        /// <summary>
         /// Called when the parent sphere builds it's color
         /// </summary>
         public override void OnVertexBuild(VertexBuildData data)
         {
-            double vHeight = (data.vertHeight - sphere.radiusMin) / sphere.radiusDelta;
+            double vHeight = (data.vertHeight - heightMin) / heightDelta;
             int index;
             LandClass lcSelected = SelectLandClassByHeight(vHeight, out index);
             if (lcSelected.lerpToNext)

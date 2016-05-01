@@ -22,6 +22,24 @@ namespace PQS
         public double radius { get; set; }
 
         /// <summary>
+        /// The lowest point of the sphere. TODO: Assign values
+        /// </summary>
+        public double radiusMin { get; set; }
+        
+        /// <summary>
+        /// The highest point of the sphere. TODO: Assign values
+        /// </summary>
+        public double radiusMax { get; set; }
+
+        /// <summary>
+        /// The delta of <see cref="radiusMin"/> and <see cref="radiusMax"/>
+        /// </summary>
+        public double radiusDelta
+        {
+            get { return radiusMax - radiusMin; }
+        }
+
+        /// <summary>
         /// The mods attached to this sphere.
         /// </summary>
         public ReadOnlyCollection<PQSMod> mods { get; protected set; }

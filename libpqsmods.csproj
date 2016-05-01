@@ -73,6 +73,7 @@
     <Compile Include="PQS.cs" />
     <Compile Include="PQSMod_AltitudeAlpha.cs" />
     <Compile Include="PQSMod_FlattenOcean.cs" />
+    <Compile Include="PQSMod_HeightColorMap.cs" />
     <Compile Include="PQSMod_VertexColorMap.cs" />
     <Compile Include="PQSMod_VertexColorMapBlend.cs" />
     <Compile Include="PQSMod_VertexColorNoise.cs" />

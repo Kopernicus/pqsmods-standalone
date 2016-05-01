@@ -33,10 +33,46 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Kopernicus\MapSO.cs" />
+    <Compile Include="LibNoise\Generator\Billow.cs" />
+    <Compile Include="LibNoise\Generator\Checker.cs" />
+    <Compile Include="LibNoise\Generator\Const.cs" />
+    <Compile Include="LibNoise\Generator\Cylinders.cs" />
+    <Compile Include="LibNoise\Generator\Perlin.cs" />
+    <Compile Include="LibNoise\Generator\RidgedMultifractal.cs" />
+    <Compile Include="LibNoise\Generator\Spheres.cs" />
+    <Compile Include="LibNoise\Generator\Voronoi.cs" />
+    <Compile Include="LibNoise\GradientPresets.cs" />
+    <Compile Include="LibNoise\ModuleBase.cs" />
+    <Compile Include="LibNoise\Noise2D.cs" />
+    <Compile Include="LibNoise\Operator\Abs.cs" />
+    <Compile Include="LibNoise\Operator\Add.cs" />
+    <Compile Include="LibNoise\Operator\Blend.cs" />
+    <Compile Include="LibNoise\Operator\Cache.cs" />
+    <Compile Include="LibNoise\Operator\Clamp.cs" />
+    <Compile Include="LibNoise\Operator\Curve.cs" />
+    <Compile Include="LibNoise\Operator\Displace.cs" />
+    <Compile Include="LibNoise\Operator\Exponent.cs" />
+    <Compile Include="LibNoise\Operator\Invert.cs" />
+    <Compile Include="LibNoise\Operator\Max.cs" />
+    <Compile Include="LibNoise\Operator\Min.cs" />
+    <Compile Include="LibNoise\Operator\Multiply.cs" />
+    <Compile Include="LibNoise\Operator\Power.cs" />
+    <Compile Include="LibNoise\Operator\Rotate.cs" />
+    <Compile Include="LibNoise\Operator\Scale.cs" />
+    <Compile Include="LibNoise\Operator\ScaleBias.cs" />
+    <Compile Include="LibNoise\Operator\Select.cs" />
+    <Compile Include="LibNoise\Operator\Subtract.cs" />
+    <Compile Include="LibNoise\Operator\Terrace.cs" />
+    <Compile Include="LibNoise\Operator\Translate.cs" />
+    <Compile Include="LibNoise\Operator\Turbulence.cs" />
+    <Compile Include="LibNoise\Utils.cs" />
     <Compile Include="PQS.cs" />
+    <Compile Include="PQSMod_VertexColorMap.cs" />
+    <Compile Include="PQSMod_VertexColorMapBlend.cs" />
     <Compile Include="PQSMod_VertexHeightMap.cs" />
     <Compile Include="Unity\Color.cs" />
     <Compile Include="Unity\Color32.cs" />
@@ -60,7 +96,6 @@
     <Compile Include="XnaGeometry\Vector3.cs" />
     <Compile Include="XnaGeometry\Vector4.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

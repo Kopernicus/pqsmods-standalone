@@ -91,7 +91,7 @@ namespace ProceduralQuadSphere
 
             // Flatten
             Double delta = (angle - iAngle) / (oAngle - iAngle);
-            data.vertHeight = MathX.CubicHermite(sphere.radius + flattenTo, data.vertHeight, smoothStart, smoothEnd, delta);
+            data.vertHeight = MathHelper.Hermite(sphere.radius + flattenTo, data.vertHeight, smoothStart, smoothEnd, delta);
         }
     }
 }

@@ -55,6 +55,35 @@ namespace PQS
         }
 
         /// <summary>
+        /// Calls OnSetup in all Mods
+        /// </summary>
+        public void OnSetup()
+        {
+            foreach (PQSMod mod in mods)
+                mod.OnSetup();
+        }
+
+        /// <summary>
+        /// Call OnVertexBuildHeight in all Mods
+        /// </summary>
+        /// <param name="data">The data.</param>
+        public void OnVertexBuildHeight(VertexBuildData data)
+        {
+            foreach (PQSMod mod in mods)
+                mod.OnVertexBuildHeight(data);
+        }
+
+        /// <summary>
+        /// Call OnVertexBuild in all Mods
+        /// </summary>
+        /// <param name="data">The data.</param>
+        public void OnVertexBuild(VertexBuildData data)
+        {
+            foreach (PQSMod mod in mods)
+                mod.OnVertexBuild(data);
+        }
+
+        /// <summary>
         /// Adds a new PQSMod of type T to the sphere
         /// </summary>
         public T AddPQSMod<T>() where T : PQSMod, new()

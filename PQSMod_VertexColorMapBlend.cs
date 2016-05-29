@@ -37,9 +37,9 @@ namespace PQS
         }
 
         /// <summary>
-        /// Called when the parent sphere builds it's height
+        /// Called when the parent sphere builds it's color
         /// </summary>
-        public override void OnVertexBuildHeight(VertexBuildData data)
+        public override void OnVertexBuild(VertexBuildData data)
         {
             data.vertColor = Color.Lerp(data.vertColor, vertexColorMap.GetPixelColor(data.u, data.v), blend);
         }

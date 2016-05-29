@@ -83,9 +83,9 @@ namespace PQS
         }
 
         /// <summary>
-        /// Called when the parent sphere builds it's height
+        /// Called when the parent sphere builds it's color
         /// </summary>
-        public override void OnVertexBuildHeight(VertexBuildData data)
+        public override void OnVertexBuild(VertexBuildData data)
         {
             Single h = (Single)((noiseMap.GetValue(data.directionFromCenter) + 1.0) * 0.5);
             c.r = h * rBlend; c.g = h * gBlend; c.b = h * bBlend;

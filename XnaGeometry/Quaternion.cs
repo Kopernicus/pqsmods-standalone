@@ -531,7 +531,7 @@ namespace XnaGeometry
                 Double num5 = (Double)Math.Acos((Double)num4);
                 Double num6 = (Double)(1.0 / Math.Sin((Double)num5));
                 num3 = ((Double)Math.Sin((Double)((1f - num) * num5))) * num6;
-                num2 = flag ? (((Double)-Math.Sin((Double)(num * num5))) * num6) : (((Double)Math.Sin((Double)(num * num5))) * num6);
+                num2 = flag ? ((-Math.Sin((Double)(num * num5))) * num6) : (((Double)Math.Sin((Double)(num * num5))) * num6);
             }
             quaternion.X = (num3 * quaternion1.X) + (num2 * quaternion2.X);
             quaternion.Y = (num3 * quaternion1.Y) + (num2 * quaternion2.Y);
@@ -563,7 +563,7 @@ namespace XnaGeometry
                 Double num5 = (Double)Math.Acos((Double)num4);
                 Double num6 = (Double)(1.0 / Math.Sin((Double)num5));
                 num3 = ((Double)Math.Sin((Double)((1f - num) * num5))) * num6;
-                num2 = flag ? (((Double)-Math.Sin((Double)(num * num5))) * num6) : (((Double)Math.Sin((Double)(num * num5))) * num6);
+                num2 = flag ? ((-Math.Sin((Double)(num * num5))) * num6) : (((Double)Math.Sin((Double)(num * num5))) * num6);
             }
             result.X = (num3 * quaternion1.X) + (num2 * quaternion2.X);
             result.Y = (num3 * quaternion1.Y) + (num2 * quaternion2.Y);

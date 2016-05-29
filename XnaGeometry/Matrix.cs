@@ -1473,18 +1473,18 @@ namespace XnaGeometry
 			Double num21 = (Double) ((Double) num9 * (Double) num15 - (Double) num11 * (Double) num13);
 			Double num22 = (Double) ((Double) num9 * (Double) num14 - (Double) num10 * (Double) num13);
 			Double num23 = (Double) ((Double) num6 * (Double) num17 - (Double) num7 * (Double) num18 + (Double) num8 * (Double) num19);
-			Double num24 = (Double) -((Double) num5 * (Double) num17 - (Double) num7 * (Double) num20 + (Double) num8 * (Double) num21);
+			Double num24 = -((Double) num5 * (Double) num17 - (Double) num7 * (Double) num20 + (Double) num8 * (Double) num21);
 			Double num25 = (Double) ((Double) num5 * (Double) num18 - (Double) num6 * (Double) num20 + (Double) num8 * (Double) num22);
-			Double num26 = (Double) -((Double) num5 * (Double) num19 - (Double) num6 * (Double) num21 + (Double) num7 * (Double) num22);
+			Double num26 = -((Double) num5 * (Double) num19 - (Double) num6 * (Double) num21 + (Double) num7 * (Double) num22);
 			Double num27 = (Double) (1.0 / ((Double) num1 * (Double) num23 + (Double) num2 * (Double) num24 + (Double) num3 * (Double) num25 + (Double) num4 * (Double) num26));
 			
 			result.M11 = num23 * num27;
 			result.M21 = num24 * num27;
 			result.M31 = num25 * num27;
 			result.M41 = num26 * num27;
-			result.M12 = (Double) -((Double) num2 * (Double) num17 - (Double) num3 * (Double) num18 + (Double) num4 * (Double) num19) * num27;
+			result.M12 = -((Double) num2 * (Double) num17 - (Double) num3 * (Double) num18 + (Double) num4 * (Double) num19) * num27;
 			result.M22 = (Double) ((Double) num1 * (Double) num17 - (Double) num3 * (Double) num20 + (Double) num4 * (Double) num21) * num27;
-			result.M32 = (Double) -((Double) num1 * (Double) num18 - (Double) num2 * (Double) num20 + (Double) num4 * (Double) num22) * num27;
+			result.M32 = -((Double) num1 * (Double) num18 - (Double) num2 * (Double) num20 + (Double) num4 * (Double) num22) * num27;
 			result.M42 = (Double) ((Double) num1 * (Double) num19 - (Double) num2 * (Double) num21 + (Double) num3 * (Double) num22) * num27;
 			Double num28 = (Double) ((Double) num7 * (Double) num16 - (Double) num8 * (Double) num15);
 			Double num29 = (Double) ((Double) num6 * (Double) num16 - (Double) num8 * (Double) num14);
@@ -1493,18 +1493,18 @@ namespace XnaGeometry
 			Double num32 = (Double) ((Double) num5 * (Double) num15 - (Double) num7 * (Double) num13);
 			Double num33 = (Double) ((Double) num5 * (Double) num14 - (Double) num6 * (Double) num13);
 			result.M13 = (Double) ((Double) num2 * (Double) num28 - (Double) num3 * (Double) num29 + (Double) num4 * (Double) num30) * num27;
-			result.M23 = (Double) -((Double) num1 * (Double) num28 - (Double) num3 * (Double) num31 + (Double) num4 * (Double) num32) * num27;
+			result.M23 = -((Double) num1 * (Double) num28 - (Double) num3 * (Double) num31 + (Double) num4 * (Double) num32) * num27;
 			result.M33 = (Double) ((Double) num1 * (Double) num29 - (Double) num2 * (Double) num31 + (Double) num4 * (Double) num33) * num27;
-			result.M43 = (Double) -((Double) num1 * (Double) num30 - (Double) num2 * (Double) num32 + (Double) num3 * (Double) num33) * num27;
+			result.M43 =  -((Double) num1 * (Double) num30 - (Double) num2 * (Double) num32 + (Double) num3 * (Double) num33) * num27;
 			Double num34 = (Double) ((Double) num7 * (Double) num12 - (Double) num8 * (Double) num11);
 			Double num35 = (Double) ((Double) num6 * (Double) num12 - (Double) num8 * (Double) num10);
 			Double num36 = (Double) ((Double) num6 * (Double) num11 - (Double) num7 * (Double) num10);
 			Double num37 = (Double) ((Double) num5 * (Double) num12 - (Double) num8 * (Double) num9);
 			Double num38 = (Double) ((Double) num5 * (Double) num11 - (Double) num7 * (Double) num9);
 			Double num39 = (Double) ((Double) num5 * (Double) num10 - (Double) num6 * (Double) num9);
-			result.M14 = (Double) -((Double) num2 * (Double) num34 - (Double) num3 * (Double) num35 + (Double) num4 * (Double) num36) * num27;
+			result.M14 = -((Double) num2 * (Double) num34 - (Double) num3 * (Double) num35 + (Double) num4 * (Double) num36) * num27;
 			result.M24 = (Double) ((Double) num1 * (Double) num34 - (Double) num3 * (Double) num37 + (Double) num4 * (Double) num38) * num27;
-			result.M34 = (Double) -((Double) num1 * (Double) num35 - (Double) num2 * (Double) num37 + (Double) num4 * (Double) num39) * num27;
+			result.M34 = -((Double) num1 * (Double) num35 - (Double) num2 * (Double) num37 + (Double) num4 * (Double) num39) * num27;
 			result.M44 = (Double) ((Double) num1 * (Double) num36 - (Double) num2 * (Double) num38 + (Double) num3 * (Double) num39) * num27;
 			
 			

@@ -138,7 +138,7 @@ namespace PQS
             /// GetPixelByte
             public Byte GetPixelByte(Int32 x, Int32 y)
             {
-                return (Byte)(_data.GetPixel(x, y).R * Float2Byte);
+                return _data.GetPixel(x, y).R;
             }
 
             /// GetPixelColor - double

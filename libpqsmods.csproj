@@ -37,7 +37,8 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Kopernicus\MapSO.cs" />
+    <Compile Include="KSP\MapSO.cs" />
+    <Compile Include="KSP\Simplex.cs" />
     <Compile Include="LibNoise\Generator\Billow.cs" />
     <Compile Include="LibNoise\Generator\Checker.cs" />
     <Compile Include="LibNoise\Generator\Const.cs" />
@@ -71,7 +72,6 @@
     <Compile Include="LibNoise\Operator\Translate.cs" />
     <Compile Include="LibNoise\Operator\Turbulence.cs" />
     <Compile Include="LibNoise\Utils.cs" />
-    <Compile Include="MathX.cs" />
     <Compile Include="PQS.cs" />
     <Compile Include="PQSMod_AltitudeAlpha.cs" />
     <Compile Include="PQSMod_FlattenAreaTangential.cs" />
@@ -89,6 +89,8 @@
     <Compile Include="PQSMod_VertexDefineCoastLine.cs" />
     <Compile Include="PQSMod_VertexHeightMapStep.cs" />
     <Compile Include="PQSMod_VertexHeightMap.cs" />
+    <Compile Include="PQSMod_VertexHeightOblate.cs" />
+    <Compile Include="PQSMod_VertexSimplexHeight.cs" />
     <Compile Include="Unity\Color.cs" />
     <Compile Include="Unity\Color32.cs" />
     <Compile Include="Unity\Gradient.cs" />

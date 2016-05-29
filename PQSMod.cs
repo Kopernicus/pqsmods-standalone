@@ -35,20 +35,8 @@ namespace PQS
 
         #region Virtuals
         public virtual void OnSetup() { }
-        public virtual void OnPostSetup() { }
-        public virtual void OnSphereReset() { }
-        public virtual void OnSphereActive() { }
-        public virtual void OnSphereInactive() { }
-        public virtual Boolean OnSphereStart() { return false; }
-        public virtual void OnSphereStarted() { }
-        public virtual void OnSphereTransformUpdate() { }
-        public virtual void OnPreUpdate() { }
-        public virtual void OnUpdateFinished() { }
         public virtual void OnVertexBuild(VertexBuildData data) { }
         public virtual void OnVertexBuildHeight(VertexBuildData data) { }
-        public virtual Double GetVertexMaxHeight() { return 0d; }
-        public virtual Double GetVertexMinHeight() { return 0d; }
-        public virtual void OnMeshBuild() { }
         #endregion
     }
 }

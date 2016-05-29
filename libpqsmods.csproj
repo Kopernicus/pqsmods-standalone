@@ -11,6 +11,7 @@
     <AssemblyName>libpqsmods</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -70,8 +71,11 @@
     <Compile Include="LibNoise\Operator\Translate.cs" />
     <Compile Include="LibNoise\Operator\Turbulence.cs" />
     <Compile Include="LibNoise\Utils.cs" />
+    <Compile Include="MathX.cs" />
     <Compile Include="PQS.cs" />
     <Compile Include="PQSMod_AltitudeAlpha.cs" />
+    <Compile Include="PQSMod_FlattenAreaTangential.cs" />
+    <Compile Include="PQSMod_FlattenArea.cs" />
     <Compile Include="PQSMod_FlattenOcean.cs" />
     <Compile Include="PQSMod_HeightColorMap.cs" />
     <Compile Include="PQSMod_HeightColorMap2.cs" />

@@ -19,7 +19,7 @@ namespace PQS
         /// <summary>
         /// The color map for the mod
         /// </summary>
-        public MapSO vertexColorMap { get; set; }
+        public MapSO vertexColorMap;
 
         /// <summary>
         /// How much of the current value should get blended into the new one

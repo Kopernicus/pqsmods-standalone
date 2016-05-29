@@ -46,5 +46,13 @@ namespace PQS
             if (data.vertHeight < oceanRadius)
                 data.vertHeight += depthOffset;
         }
+
+        /// <summary>
+        /// Gets the minimum height of the mod
+        /// </summary>
+        public override Double GetVertexMinHeight()
+        {
+            return this.depthOffset;
+        }
     }
 }

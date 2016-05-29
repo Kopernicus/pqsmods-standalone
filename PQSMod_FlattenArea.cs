@@ -34,7 +34,7 @@ namespace PQS
         /// <summary>
         /// The height of the surface
         /// </summary>
-        public double flattenTo;
+        public Double flattenTo;
 
         /// <summary>
         /// The smooth start of the flattening

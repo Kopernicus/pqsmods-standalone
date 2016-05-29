@@ -8,6 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using PQS.KSP;
+using PQS.Unity;
+using XnaGeometry;
 
 namespace PQS
 {
@@ -22,12 +25,12 @@ namespace PQS
         public Double radius { get; set; }
 
         /// <summary>
-        /// The lowest point of the sphere. TODO: Assign values
+        /// The lowest point of the sphere.
         /// </summary>
         public Double radiusMin { get; set; }
         
         /// <summary>
-        /// The highest point of the sphere. TODO: Assign values
+        /// The highest point of the sphere.
         /// </summary>
         public Double radiusMax { get; set; }
 
@@ -55,6 +58,34 @@ namespace PQS
         }
 
         /// <summary>
+        /// Setups the sphere.
+        /// </summary>
+        public void SetupSphere()
+        {
+            List<PQSMod> mods_ = new List<PQSMod>(mods);
+            mods_.Sort((a, b) => a.order.CompareTo(b.order));
+            if (!mods_.Any())
+                return;
+            for (Int32 i = 0; i < mods_.Count; i++)
+            {
+                if (!mods_[i].modEnabled)
+                {
+                    mods_.RemoveAt(i);
+                }
+                mods_[i].sphere = this;
+            }
+            mods = mods_.AsReadOnly();
+            OnSetup();
+            radiusMin = 0;
+            radiusMax = 0;
+            foreach (PQSMod mod in mods)
+            {
+                radiusMin += mod.GetVertexMinHeight();
+                radiusMax += mod.GetVertexMaxHeight();
+            }
+        }
+
+        /// <summary>
         /// Calls OnSetup in all Mods
         /// </summary>
         public void OnSetup()
@@ -69,6 +100,18 @@ namespace PQS
         /// <param name="data">The data.</param>
         public void OnVertexBuildHeight(VertexBuildData data)
         {
+            // Build VertexBuildData
+            data.latitude = Math.Asin(data.directionFromCenter.Y);
+            if (Double.IsNaN(data.latitude))
+                data.latitude = Math.PI / 2;
+            data.directionXZ = Vector3.Normalize(new Vector3(data.directionFromCenter.X, 0, data.directionFromCenter.Z));
+            if (data.directionXZ.Length() <= 0)
+                data.longitude = 0;
+            else
+                data.longitude = data.directionXZ.Z >= 0 ? Math.Asin(data.directionXZ.X / data.directionXZ.Length()) : Math.PI - Math.Asin(data.directionXZ.X / data.directionXZ.Length());
+            data.v = data.latitude / Math.PI + 0.5;
+            data.u = data.longitude / Math.PI * 0.5;
+
             foreach (PQSMod mod in mods)
                 mod.OnVertexBuildHeight(data);
         }
@@ -79,6 +122,18 @@ namespace PQS
         /// <param name="data">The data.</param>
         public void OnVertexBuild(VertexBuildData data)
         {
+            // Build VertexBuildData
+            data.latitude = Math.Asin(data.directionFromCenter.Y);
+            if (Double.IsNaN(data.latitude))
+                data.latitude = Math.PI / 2;
+            data.directionXZ = Vector3.Normalize(new Vector3(data.directionFromCenter.X, 0, data.directionFromCenter.Z));
+            if (data.directionXZ.Length() <= 0)
+                data.longitude = 0;
+            else
+                data.longitude = data.directionXZ.Z >= 0 ? Math.Asin(data.directionXZ.X / data.directionXZ.Length()) : Math.PI - Math.Asin(data.directionXZ.X / data.directionXZ.Length());
+            data.v = data.latitude / Math.PI + 0.5;
+            data.u = data.longitude / Math.PI * 0.5;
+
             foreach (PQSMod mod in mods)
                 mod.OnVertexBuild(data);
         }

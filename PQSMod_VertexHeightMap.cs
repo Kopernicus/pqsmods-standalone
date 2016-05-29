@@ -18,27 +18,27 @@ namespace PQS
         /// <summary>
         /// The height map for the mod
         /// </summary>
-        public MapSO heightMap { get; set; }
+        public MapSO heightMap;
 
         /// <summary>
         /// How much should the calculated height get deformed
         /// </summary>
-        public Double heightMapDeformity { get; set; }
+        public Double heightMapDeformity;
 
         /// <summary>
         /// A static offset that gets applied to all values
         /// </summary>
-        public Double heightMapOffset { get; set; }
+        public Double heightMapOffset;
 
         /// <summary>
         /// Whether the radius should influence the deformity parameter
         /// </summary>
-        public Boolean scaleDeformityByRadius { get; set; }
+        public Boolean scaleDeformityByRadius;
 
         /// <summary>
         /// A storage value for the final deformity
         /// </summary>
-        private Double heightDeformity { get; set; }
+        private Double heightDeformity;
 
         /// <summary>
         /// Initializes the base mod
@@ -62,6 +62,22 @@ namespace PQS
         public override void OnVertexBuildHeight(VertexBuildData data)
         {
             data.vertHeight += heightMapOffset + heightDeformity * heightMap.GetPixelFloat(data.u, data.v);
+        }
+
+        /// <summary>
+        /// Gets the maximum height of the mod.
+        /// </summary>
+        public override Double GetVertexMaxHeight()
+        {
+            return heightMapOffset + heightDeformity;
+        }
+
+        /// <summary>
+        /// Gets the minimum height of the mod.
+        /// </summary>
+        public override Double GetVertexMinHeight()
+        {
+            return heightMapOffset;
         }
     }
 }

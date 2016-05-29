@@ -37,6 +37,8 @@ namespace PQS
         public virtual void OnSetup() { }
         public virtual void OnVertexBuild(VertexBuildData data) { }
         public virtual void OnVertexBuildHeight(VertexBuildData data) { }
+        public virtual Double GetVertexMaxHeight() { return 0; }
+        public virtual Double GetVertexMinHeight() { return 0; }
         #endregion
     }
 }

@@ -13,12 +13,12 @@ namespace PQS
     /// <summary>
     /// The colomap PQSMod. Gets the pixel data from a binary texture wrapper and returns it.
     /// </summary>
-    public class PQSMod_VertexColor : PQSMod
+    public class PQSMod_VertexColorMap : PQSMod
     {
         /// <summary>
         /// The color map for the mod
         /// </summary>
-        public MapSO vertexColorMap { get; set; }
+        public MapSO vertexColorMap;
 
         /// <summary>
         /// Initializes the base mod

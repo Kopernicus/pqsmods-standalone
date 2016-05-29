@@ -32,25 +32,25 @@ namespace PQS
         /// <summary>
         /// The red blend value
         /// </summary>
-        public float rBlend;
+        public Single rBlend;
 
         /// <summary>
         /// The green blend value
         /// </summary>
-        public float gBlend;
+        public Single gBlend;
 
         /// <summary>
         /// The blue blend value
         /// </summary>
-        public float bBlend;
+        public Single bBlend;
 
         #region Noise Values
-        public float blend;
-        public int seed;
-        public float frequency;
-        public float lacunarity;
-        public float persistance;
-        public int octaves;
+        public Single blend;
+        public Int32 seed;
+        public Single frequency;
+        public Single lacunarity;
+        public Single persistance;
+        public Int32 octaves;
         public QualityMode mode;
         private ModuleBase noiseMap;
         #endregion
@@ -87,7 +87,7 @@ namespace PQS
         /// </summary>
         public override void OnVertexBuildHeight(VertexBuildData data)
         {
-            float h = (float)((noiseMap.GetValue(data.directionFromCenter) + 1.0) * 0.5);
+            Single h = (Single)((noiseMap.GetValue(data.directionFromCenter) + 1.0) * 0.5);
             c.r = h * rBlend; c.g = h * gBlend; c.b = h * bBlend;
             data.vertColor = Color.Lerp(data.vertColor, c, blend);
         }

@@ -9,7 +9,7 @@ namespace LibNoise.Generator
     {
         #region Fields
 
-        private double _frequency = 1.0;
+        private Double _frequency = 1.0;
 
         #endregion
 
@@ -27,7 +27,7 @@ namespace LibNoise.Generator
         /// Initializes a new instance of Cylinders.
         /// </summary>
         /// <param name="frequency">The frequency of the concentric cylinders.</param>
-        public Cylinders(double frequency)
+        public Cylinders(Double frequency)
             : base(0)
         {
             Frequency = frequency;
@@ -40,7 +40,7 @@ namespace LibNoise.Generator
         /// <summary>
         /// Gets or sets the frequency of the concentric cylinders.
         /// </summary>
-        public double Frequency
+        public Double Frequency
         {
             get { return _frequency; }
             set { _frequency = value; }
@@ -57,7 +57,7 @@ namespace LibNoise.Generator
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public override double GetValue(double x, double y, double z)
+        public override Double GetValue(Double x, Double y, Double z)
         {
             x *= _frequency;
             z *= _frequency;

@@ -40,7 +40,7 @@ namespace LibNoise.Operator
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public override double GetValue(double x, double y, double z)
+        public override Double GetValue(Double x, Double y, Double z)
         {
             Debug.Assert(Modules[0] != null);
             return Math.Abs(Modules[0].GetValue(x, y, z));

@@ -4,6 +4,7 @@
  * Licensed under the terms of the MIT license
  */
 
+using System;
 using PQS.Unity;
 
 namespace PQS
@@ -17,17 +18,17 @@ namespace PQS
         /// <summary>
         /// The ocean radius offset
         /// </summary>
-        public double oceanRadiusOffset;
+        public Double oceanRadiusOffset;
 
         /// <summary>
         /// The depth offset
         /// </summary>
-        public double depthOffset;
+        public Double depthOffset;
 
         /// <summary>
         /// The ocean radius
         /// </summary>
-        private double oceanRadius;
+        private Double oceanRadius;
 
         /// <summary>
         /// Initializes the base mod

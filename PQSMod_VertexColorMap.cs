@@ -25,7 +25,7 @@ namespace PQS
         /// </summary>
         public override void OnSetup()
         {
-            /// Check whether the HeightMap exists
+            // Check whether the ColorMap exists
             if (vertexColorMap == null)
                 throw new ArgumentNullException(nameof(vertexColorMap));
         }

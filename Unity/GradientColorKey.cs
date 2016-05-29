@@ -4,6 +4,8 @@
  * Licensed under the terms of the MIT license
  */
 
+using System;
+
 namespace PQS
 {
     namespace Unity
@@ -21,14 +23,14 @@ namespace PQS
             /// <summary>
             /// Time of the key (0 - 1).
             /// </summary>
-            public float time;
+            public Single time;
 
             /// <summary>
             /// Gradient color key.
             /// </summary>
             /// <param name="col">Color of key.</param>
             /// <param name="time">Time of the key (0 - 1).</param>
-            public GradientColorKey(Color color, float time)
+            public GradientColorKey(Color color, Single time)
             {
                 this.color = color;
                 this.time = time;

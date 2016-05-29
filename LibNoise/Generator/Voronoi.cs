@@ -9,10 +9,10 @@ namespace LibNoise.Generator
     {
         #region Fields
 
-        private double _displacement = 1.0;
-        private double _frequency = 1.0;
-        private int _seed;
-        private bool _distance;
+        private Double _displacement = 1.0;
+        private Double _frequency = 1.0;
+        private Int32 _seed;
+        private Boolean _distance;
 
         #endregion
 
@@ -33,7 +33,7 @@ namespace LibNoise.Generator
         /// <param name="displacement">The displacement of the ridged-multifractal noise.</param>
         /// <param name="seed">The seed of the ridged-multifractal noise.</param>
         /// <param name="distance">Indicates whether the distance from the nearest seed point is applied to the output value.</param>
-        public Voronoi(double frequency, double displacement, int seed, bool distance)
+        public Voronoi(Double frequency, Double displacement, Int32 seed, Boolean distance)
             : base(0)
         {
             Frequency = frequency;
@@ -50,7 +50,7 @@ namespace LibNoise.Generator
         /// <summary>
         /// Gets or sets the displacement value of the Voronoi cells.
         /// </summary>
-        public double Displacement
+        public Double Displacement
         {
             get { return _displacement; }
             set { _displacement = value; }
@@ -59,7 +59,7 @@ namespace LibNoise.Generator
         /// <summary>
         /// Gets or sets the frequency of the seed points.
         /// </summary>
-        public double Frequency
+        public Double Frequency
         {
             get { return _frequency; }
             set { _frequency = value; }
@@ -68,7 +68,7 @@ namespace LibNoise.Generator
         /// <summary>
         /// Gets or sets the seed value used by the Voronoi cells.
         /// </summary>
-        public int Seed
+        public Int32 Seed
         {
             get { return _seed; }
             set { _seed = value; }
@@ -77,7 +77,7 @@ namespace LibNoise.Generator
         /// <summary>
         /// Gets or sets a value whether the distance from the nearest seed point is applied to the output value.
         /// </summary>
-        public bool UseDistance
+        public Boolean UseDistance
         {
             get { return _distance; }
             set { _distance = value; }
@@ -94,18 +94,18 @@ namespace LibNoise.Generator
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public override double GetValue(double x, double y, double z)
+        public override Double GetValue(Double x, Double y, Double z)
         {
             x *= _frequency;
             y *= _frequency;
             z *= _frequency;
-            var xi = (x > 0.0 ? (int) x : (int) x - 1);
-            var iy = (y > 0.0 ? (int) y : (int) y - 1);
-            var iz = (z > 0.0 ? (int) z : (int) z - 1);
+            var xi = (x > 0.0 ? (Int32) x : (Int32) x - 1);
+            var iy = (y > 0.0 ? (Int32) y : (Int32) y - 1);
+            var iz = (z > 0.0 ? (Int32) z : (Int32) z - 1);
             var md = 2147483647.0;
-            double xc = 0;
-            double yc = 0;
-            double zc = 0;
+            Double xc = 0;
+            Double yc = 0;
+            Double zc = 0;
             for (var zcu = iz - 2; zcu <= iz + 2; zcu++)
             {
                 for (var ycu = iy - 2; ycu <= iy + 2; ycu++)
@@ -129,7 +129,7 @@ namespace LibNoise.Generator
                     }
                 }
             }
-            double v;
+            Double v;
             if (_distance)
             {
                 var xd = xc - x;
@@ -141,8 +141,8 @@ namespace LibNoise.Generator
             {
                 v = 0.0;
             }
-            return v + (_displacement * Utils.ValueNoise3D((int) (Math.Floor(xc)), (int) (Math.Floor(yc)),
-                (int) (Math.Floor(zc)), 0));
+            return v + (_displacement * Utils.ValueNoise3D((Int32) (Math.Floor(xc)), (Int32) (Math.Floor(yc)),
+                (Int32) (Math.Floor(zc)), 0));
         }
 
         #endregion

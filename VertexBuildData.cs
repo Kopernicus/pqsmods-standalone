@@ -3,7 +3,8 @@
  * Copyright (c) Thomas P. 2016
  * Licensed under the terms of the MIT license
  */
- 
+
+using System;
 using PQS.Unity;
 using XnaGeometry;
 
@@ -20,17 +21,17 @@ namespace PQS
         public Vector3 directionFromCenter;
         public Vector3 directionD;
         public Vector3 directionXZ;
-        public int vertIndex;
-        public double vertHeight;
+        public Int32 vertIndex;
+        public Double vertHeight;
         public Color vertColor;
-        public double u;
-        public double v;
-        public double u2;
-        public double v2;
-        public double gnomonicU;
-        public double gnomonicV;
-        public bool allowScatter;
-        public double latitude;
-        public double longitude;
+        public Double u;
+        public Double v;
+        public Double u2;
+        public Double v2;
+        public Double gnomonicU;
+        public Double gnomonicV;
+        public Boolean allowScatter;
+        public Double latitude;
+        public Double longitude;
     }
 }

@@ -18,22 +18,22 @@ namespace PQS
             /// <summary>
             /// Red component of the color.
             /// </summary>
-            public byte r;
+            public Byte r;
 
             /// <summary>
             /// Green component of the color.
             /// </summary>
-            public byte g;
+            public Byte g;
 
             /// <summary>
             /// Blue component of the color.
             /// </summary>
-            public byte b;
+            public Byte b;
 
             /// <summary>
             /// Alpha component of the color.
             /// </summary>
-            public byte a;
+            public Byte a;
 
             /// <summary>
             /// Constructs a new Color with given r, g, b, a components.
@@ -42,7 +42,7 @@ namespace PQS
             /// <param name="g"></param>
             /// <param name="b"></param>
             /// <param name="a"></param>
-            public Color32(byte r, byte g, byte b, byte a)
+            public Color32(Byte r, Byte g, Byte b, Byte a)
             {
                 this.r = r;
                 this.g = g;
@@ -56,10 +56,10 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="t"></param>
-            public static Color32 Lerp(Color32 a, Color32 b, float t)
+            public static Color32 Lerp(Color32 a, Color32 b, Single t)
             {
                 t = Mathf.Clamp01(t);
-                return new Color32((byte)(a.r + (b.r - a.r) * t), (byte)(a.g + (b.g - a.g) * t), (byte)(a.b + (b.b - a.b) * t), (byte)(a.a + (b.a - a.a) * t));
+                return new Color32((Byte)(a.r + (b.r - a.r) * t), (Byte)(a.g + (b.g - a.g) * t), (Byte)(a.b + (b.b - a.b) * t), (Byte)(a.a + (b.a - a.a) * t));
             }
 
             /// <summary>
@@ -68,14 +68,14 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="t"></param>
-            public static Color32 LerpUnclamped(Color32 a, Color32 b, float t)
+            public static Color32 LerpUnclamped(Color32 a, Color32 b, Single t)
             {
-                return new Color32((byte)(a.r + (b.r - a.r) * t), (byte)(a.g + (b.g - a.g) * t), (byte)(a.b + (b.b - a.b) * t), (byte)(a.a + (b.a - a.a) * t));
+                return new Color32((Byte)(a.r + (b.r - a.r) * t), (Byte)(a.g + (b.g - a.g) * t), (Byte)(a.b + (b.b - a.b) * t), (Byte)(a.a + (b.a - a.a) * t));
             }
 
             public static implicit operator Color32(Color c)
             {
-                return new Color32((byte)(Mathf.Clamp01(c.r) * 255f), (byte)(Mathf.Clamp01(c.g) * 255f), (byte)(Mathf.Clamp01(c.b) * 255f), (byte)(Mathf.Clamp01(c.a) * 255f));
+                return new Color32((Byte)(Mathf.Clamp01(c.r) * 255f), (Byte)(Mathf.Clamp01(c.g) * 255f), (Byte)(Mathf.Clamp01(c.b) * 255f), (Byte)(Mathf.Clamp01(c.a) * 255f));
             }
 
             public static implicit operator Color(Color32 c)
@@ -97,7 +97,7 @@ namespace PQS
             /// Returns a nicely formatted string of this color.
             /// </summary>
             /// <param name="format"></param>
-            public override string ToString()
+            public override String ToString()
             {
                 return String.Format("RGBA({0}, {1}, {2}, {3})", r, g, b, a);
             }
@@ -106,7 +106,7 @@ namespace PQS
             /// Returns a nicely formatted string of this color.
             /// </summary>
             /// <param name="format"></param>
-            public string ToString(string format)
+            public String ToString(String format)
             {
                 return String.Format("RGBA({0}, {1}, {2}, {3})", r.ToString(format), g.ToString(format), b.ToString(format), a.ToString(format));
             }

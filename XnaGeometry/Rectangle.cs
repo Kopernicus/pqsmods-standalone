@@ -43,10 +43,10 @@ namespace XnaGeometry
 
         #region Public Fields
 
-        public int X;
-        public int Y;
-        public int Width;
-        public int Height;
+        public Int32 X;
+        public Int32 Y;
+        public Int32 Width;
+        public Int32 Height;
 
         #endregion Public Fields
 
@@ -58,22 +58,22 @@ namespace XnaGeometry
             get { return emptyRectangle; }
         }
 
-        public int Left
+        public Int32 Left
         {
             get { return this.X; }
         }
 
-        public int Right
+        public Int32 Right
         {
             get { return (this.X + this.Width); }
         }
 
-        public int Top
+        public Int32 Top
         {
             get { return this.Y; }
         }
 
-        public int Bottom
+        public Int32 Bottom
         {
             get { return (this.Y + this.Height); }
         }
@@ -83,7 +83,7 @@ namespace XnaGeometry
 
         #region Constructors
 
-        public Rectangle(int x, int y, int width, int height)
+        public Rectangle(Int32 x, Int32 y, Int32 width, Int32 height)
         {
             this.X = x;
             this.Y = y;
@@ -96,27 +96,27 @@ namespace XnaGeometry
 
         #region Public Methods
 
-        public static bool operator ==(Rectangle a, Rectangle b)
+        public static Boolean operator ==(Rectangle a, Rectangle b)
         {
             return ((a.X == b.X) && (a.Y == b.Y) && (a.Width == b.Width) && (a.Height == b.Height));
         }
 
-		public bool Contains(int x, int y)
+		public Boolean Contains(Int32 x, Int32 y)
         {
             return ((((this.X <= x) && (x < (this.X + this.Width))) && (this.Y <= y)) && (y < (this.Y + this.Height)));
         }
 		
-        public bool Contains(Point value)
+        public Boolean Contains(Point value)
         {
             return ((((this.X <= value.X) && (value.X < (this.X + this.Width))) && (this.Y <= value.Y)) && (value.Y < (this.Y + this.Height)));
         }
 
-        public bool Contains(Rectangle value)
+        public Boolean Contains(Rectangle value)
         {
             return ((((this.X <= value.X) && ((value.X + value.Width) <= (this.X + this.Width))) && (this.Y <= value.Y)) && ((value.Y + value.Height) <= (this.Y + this.Height)));
         }
 
-        public static bool operator !=(Rectangle a, Rectangle b)
+        public static Boolean operator !=(Rectangle a, Rectangle b)
         {
             return !(a == b);
         }
@@ -127,7 +127,7 @@ namespace XnaGeometry
             Y += offset.Y;
         }
 
-        public void Offset(int offsetX, int offsetY)
+        public void Offset(Int32 offsetX, Int32 offsetY)
         {
             X += offsetX;
             Y += offsetY;
@@ -160,7 +160,7 @@ namespace XnaGeometry
 
 
 
-        public void Inflate(int horizontalValue, int verticalValue)
+        public void Inflate(Int32 horizontalValue, Int32 verticalValue)
         {
             X -= horizontalValue;
             Y -= verticalValue;
@@ -168,7 +168,7 @@ namespace XnaGeometry
             Height += verticalValue * 2;
         }
 		
-		public bool IsEmpty
+		public Boolean IsEmpty
         {
             get
             {
@@ -176,27 +176,27 @@ namespace XnaGeometry
             }
         }
 
-        public bool Equals(Rectangle other)
+        public Boolean Equals(Rectangle other)
         {
             return this == other;
         }
 
-        public override bool Equals(object obj)
+        public override Boolean Equals(Object obj)
         {
             return (obj is Rectangle) ? this == ((Rectangle)obj) : false;
         }
 
-        public override string ToString()
+        public override String ToString()
         {
-            return string.Format("{{X:{0} Y:{1} Width:{2} Height:{3}}}", X, Y, Width, Height);
+            return String.Format("{{X:{0} Y:{1} Width:{2} Height:{3}}}", X, Y, Width, Height);
         }
 
-        public override int GetHashCode()
+        public override Int32 GetHashCode()
         {
             return (this.X ^ this.Y ^ this.Width ^ this.Height);
         }
 
-        public bool Intersects(Rectangle value)
+        public Boolean Intersects(Rectangle value)
         {
             return value.Left < Right       && 
                    Left       < value.Right && 
@@ -205,7 +205,7 @@ namespace XnaGeometry
         }
 
 
-        public void Intersects(ref Rectangle value, out bool result)
+        public void Intersects(ref Rectangle value, out Boolean result)
         {
             result = value.Left < Right       && 
                      Left       < value.Right && 
@@ -225,10 +225,10 @@ namespace XnaGeometry
         {
             if (value1.Intersects(value2))
             {
-                int right_side = Math.Min(value1.X + value1.Width, value2.X + value2.Width);
-                int left_side = Math.Max(value1.X, value2.X);
-                int top_side = Math.Max(value1.Y, value2.Y);
-                int bottom_side = Math.Min(value1.Y + value1.Height, value2.Y + value2.Height);
+                Int32 right_side = Math.Min(value1.X + value1.Width, value2.X + value2.Width);
+                Int32 left_side = Math.Max(value1.X, value2.X);
+                Int32 top_side = Math.Max(value1.Y, value2.Y);
+                Int32 bottom_side = Math.Min(value1.Y + value1.Height, value2.Y + value2.Height);
                 result = new Rectangle(left_side, top_side, right_side - left_side, bottom_side - top_side);
             }
             else
@@ -239,8 +239,8 @@ namespace XnaGeometry
 		
 		public static Rectangle Union(Rectangle value1, Rectangle value2)
 		{
-			int x = Math.Min (value1.X, value2.X);
-			int y = Math.Min (value1.Y, value2.Y);
+			Int32 x = Math.Min (value1.X, value2.X);
+			Int32 y = Math.Min (value1.Y, value2.Y);
 			return new Rectangle(x, y,
 			                     Math.Max (value1.Right, value2.Right) - x,
 				                     Math.Max (value1.Bottom, value2.Bottom) - y);

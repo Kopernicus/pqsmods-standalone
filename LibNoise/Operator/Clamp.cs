@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace LibNoise.Operator
 {
@@ -10,8 +11,8 @@ namespace LibNoise.Operator
     {
         #region Fields
 
-        private double _min = -1.0;
-        private double _max = 1.0;
+        private Double _min = -1.0;
+        private Double _max = 1.0;
 
         #endregion
 
@@ -41,7 +42,7 @@ namespace LibNoise.Operator
         /// <param name="input">The input module.</param>
         /// <param name="min">The minimum value.</param>
         /// <param name="max">The maximum value.</param>
-        public Clamp(double min, double max, ModuleBase input)
+        public Clamp(Double min, Double max, ModuleBase input)
             : base(1)
         {
             Minimum = min;
@@ -56,7 +57,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets or sets the maximum to clamp to.
         /// </summary>
-        public double Maximum
+        public Double Maximum
         {
             get { return _max; }
             set { _max = value; }
@@ -65,7 +66,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets or sets the minimum to clamp to.
         /// </summary>
-        public double Minimum
+        public Double Minimum
         {
             get { return _min; }
             set { _min = value; }
@@ -80,7 +81,7 @@ namespace LibNoise.Operator
         /// </summary>
         /// <param name="min">The minimum value.</param>
         /// <param name="max">The maximum value.</param>
-        public void SetBounds(double min, double max)
+        public void SetBounds(Double min, Double max)
         {
             Debug.Assert(min < max);
             _min = min;
@@ -98,7 +99,7 @@ namespace LibNoise.Operator
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public override double GetValue(double x, double y, double z)
+        public override Double GetValue(Double x, Double y, Double z)
         {
             Debug.Assert(Modules[0] != null);
             if (_min > _max)

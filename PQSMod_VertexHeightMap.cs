@@ -23,35 +23,35 @@ namespace PQS
         /// <summary>
         /// How much should the calculated height get deformed
         /// </summary>
-        public double heightMapDeformity { get; set; }
+        public Double heightMapDeformity { get; set; }
 
         /// <summary>
         /// A static offset that gets applied to all values
         /// </summary>
-        public double heightMapOffset { get; set; }
+        public Double heightMapOffset { get; set; }
 
         /// <summary>
         /// Whether the radius should influence the deformity parameter
         /// </summary>
-        public bool scaleDeformityByRadius { get; set; }
+        public Boolean scaleDeformityByRadius { get; set; }
 
         /// <summary>
         /// A storage value for the final deformity
         /// </summary>
-        private double heightDeformity { get; set; }
+        private Double heightDeformity { get; set; }
 
         /// <summary>
         /// Initializes the base mod
         /// </summary>
         public override void OnSetup()
         {
-            /// Calculate the deformity
+            // Calculate the deformity
             if (scaleDeformityByRadius)
                 heightDeformity = sphere.radius * heightMapDeformity;
             else
                 heightDeformity = heightMapDeformity;
 
-            /// Check whether the HeightMap exists
+            // Check whether the HeightMap exists
             if (heightMap == null)
                 throw new ArgumentNullException(nameof(heightMap));
         }

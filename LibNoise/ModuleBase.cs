@@ -37,7 +37,7 @@ namespace LibNoise
         /// Initializes a new instance of Helpers.
         /// </summary>
         /// <param name="count">The number of source modules.</param>
-        protected ModuleBase(int count)
+        protected ModuleBase(Int32 count)
         {
             if (count > 0)
             {
@@ -54,7 +54,7 @@ namespace LibNoise
         /// </summary>
         /// <param name="index">The index of the source module to aquire.</param>
         /// <returns>The requested source module.</returns>
-        public virtual ModuleBase this[int index]
+        public virtual ModuleBase this[Int32 index]
         {
             get
             {
@@ -96,7 +96,7 @@ namespace LibNoise
         /// <summary>
         /// Gets the number of source modules required by this noise module.
         /// </summary>
-        public int SourceModuleCount
+        public Int32 SourceModuleCount
         {
             get { return (_modules == null) ? 0 : _modules.Length; }
         }
@@ -112,14 +112,14 @@ namespace LibNoise
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public abstract double GetValue(double x, double y, double z);
+        public abstract Double GetValue(Double x, Double y, Double z);
 
         /// <summary>
         /// Returns the output value for the given input coordinates.
         /// </summary>
         /// <param name="coordinate">The input coordinate.</param>
         /// <returns>The resulting output value.</returns>
-        public double GetValue(Vector3 coordinate)
+        public Double GetValue(Vector3 coordinate)
         {
             return GetValue(coordinate.X, coordinate.Y, coordinate.Z);
         }
@@ -129,7 +129,7 @@ namespace LibNoise
         /// </summary>
         /// <param name="coordinate">The input coordinate.</param>
         /// <returns>The resulting output value.</returns>
-        public double GetValue(ref Vector3 coordinate)
+        public Double GetValue(ref Vector3 coordinate)
         {
             return GetValue(coordinate.X, coordinate.Y, coordinate.Z);
         }
@@ -142,12 +142,12 @@ namespace LibNoise
 #if !XBOX360 && !ZUNE
         [NonSerialized]
 #endif
-        private bool _disposed;
+        private Boolean _disposed;
 
         /// <summary>
         /// Gets a value whether the object is disposed.
         /// </summary>
-        public bool IsDisposed
+        public Boolean IsDisposed
         {
             get { return _disposed; }
         }
@@ -168,7 +168,7 @@ namespace LibNoise
         /// Immediately releases the unmanaged resources used by this object.
         /// </summary>
         /// <returns>True if the object is completely disposed.</returns>
-        protected virtual bool Disposing()
+        protected virtual Boolean Disposing()
         {
             if (_modules != null)
             {

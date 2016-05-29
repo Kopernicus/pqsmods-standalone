@@ -56,7 +56,7 @@ namespace XnaGeometry
 #endif
         public Vector3 Max;
 
-        public const int CornerCount = 8;
+        public const Int32 CornerCount = 8;
 
         #endregion Public Fields
 
@@ -106,7 +106,7 @@ namespace XnaGeometry
         {
             //TODO: bad done here need a fix. 
             //Because question is not frustum contain box but reverse and this is not the same
-            int i;
+            Int32 i;
             ContainmentType contained;
             Vector3[] corners = frustum.GetCorners();
 
@@ -151,7 +151,7 @@ namespace XnaGeometry
                 && Max.Z - sphere.Center.Z > sphere.Radius)
                 return ContainmentType.Contains;
 
-            double dmin = 0;
+            Double dmin = 0;
 
             if (sphere.Center.X - Min.X <= sphere.Radius)
                 dmin += (sphere.Center.X - Min.X) * (sphere.Center.X - Min.X);
@@ -215,9 +215,9 @@ namespace XnaGeometry
                 throw new ArgumentNullException();
 
             // TODO: Just check that Count > 0
-            bool empty = true;
-            Vector3 vector2 = new Vector3(double.MaxValue);
-            Vector3 vector1 = new Vector3(double.MinValue);
+            Boolean empty = true;
+            Vector3 vector2 = new Vector3(Double.MaxValue);
+            Vector3 vector1 = new Vector3(Double.MinValue);
             foreach (Vector3 vector3 in points)
             {
                 vector2 = Vector3.Min(vector2, vector3);
@@ -252,12 +252,12 @@ namespace XnaGeometry
             result = BoundingBox.CreateMerged(original, additional);
         }
 
-        public bool Equals(BoundingBox other)
+        public Boolean Equals(BoundingBox other)
         {
             return (this.Min == other.Min) && (this.Max == other.Max);
         }
 
-        public override bool Equals(object obj)
+        public override Boolean Equals(Object obj)
         {
             return (obj is BoundingBox) ? this.Equals((BoundingBox)obj) : false;
         }
@@ -312,19 +312,19 @@ namespace XnaGeometry
             corners[7].Z = this.Min.Z;
         }
 
-        public override int GetHashCode()
+        public override Int32 GetHashCode()
         {
             return this.Min.GetHashCode() + this.Max.GetHashCode();
         }
 
-        public bool Intersects(BoundingBox box)
+        public Boolean Intersects(BoundingBox box)
         {
-            bool result;
+            Boolean result;
             Intersects(ref box, out result);
             return result;
         }
 
-        public void Intersects(ref BoundingBox box, out bool result)
+        public void Intersects(ref BoundingBox box, out Boolean result)
         {
             if ((this.Max.X >= box.Min.X) && (this.Min.X <= box.Max.X))
             {
@@ -342,12 +342,12 @@ namespace XnaGeometry
             return;
         }
 
-        public bool Intersects(BoundingFrustum frustum)
+        public Boolean Intersects(BoundingFrustum frustum)
         {
             return frustum.Intersects(this);
         }
 
-        public bool Intersects(BoundingSphere sphere)
+        public Boolean Intersects(BoundingSphere sphere)
         {
             if (sphere.Center.X - Min.X > sphere.Radius
                 && sphere.Center.Y - Min.Y > sphere.Radius
@@ -357,7 +357,7 @@ namespace XnaGeometry
                 && Max.Z - sphere.Center.Z > sphere.Radius)
                 return true;
 
-            double dmin = 0;
+            Double dmin = 0;
 
             if (sphere.Center.X - Min.X <= sphere.Radius)
                 dmin += (sphere.Center.X - Min.X) * (sphere.Center.X - Min.X);
@@ -380,7 +380,7 @@ namespace XnaGeometry
             return false;
         }
 
-        public void Intersects(ref BoundingSphere sphere, out bool result)
+        public void Intersects(ref BoundingSphere sphere, out Boolean result)
         {
             result = Intersects(sphere);
         }
@@ -449,29 +449,29 @@ namespace XnaGeometry
             result = PlaneIntersectionType.Intersecting;
         }
 
-        public Nullable<double> Intersects(Ray ray)
+        public Nullable<Double> Intersects(Ray ray)
         {
             return ray.Intersects(this);
         }
 
-        public void Intersects(ref Ray ray, out Nullable<double> result)
+        public void Intersects(ref Ray ray, out Nullable<Double> result)
         {
             result = Intersects(ray);
         }
 
-        public static bool operator ==(BoundingBox a, BoundingBox b)
+        public static Boolean operator ==(BoundingBox a, BoundingBox b)
         {
             return a.Equals(b);
         }
 
-        public static bool operator !=(BoundingBox a, BoundingBox b)
+        public static Boolean operator !=(BoundingBox a, BoundingBox b)
         {
             return !a.Equals(b);
         }
 
-        public override string ToString()
+        public override String ToString()
         {
-            return string.Format("{{Min:{0} Max:{1}}}", this.Min.ToString(), this.Max.ToString());
+            return String.Format("{{Min:{0} Max:{1}}}", this.Min.ToString(), this.Max.ToString());
         }
 
         #endregion Public Methods

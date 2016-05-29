@@ -10,12 +10,12 @@ namespace LibNoise.Generator
     {
         #region Fields
 
-        private double _frequency = 1.0;
-        private double _lacunarity = 2.0;
+        private Double _frequency = 1.0;
+        private Double _lacunarity = 2.0;
         private QualityMode _quality = QualityMode.Medium;
-        private int _octaveCount = 6;
-        private int _seed;
-        private readonly double[] _weights = new double[Utils.OctavesMaximum];
+        private Int32 _octaveCount = 6;
+        private Int32 _seed;
+        private readonly Double[] _weights = new Double[Utils.OctavesMaximum];
 
         #endregion
 
@@ -38,7 +38,7 @@ namespace LibNoise.Generator
         /// <param name="octaves">The number of octaves of the ridged-multifractal noise.</param>
         /// <param name="seed">The seed of the ridged-multifractal noise.</param>
         /// <param name="quality">The quality of the ridged-multifractal noise.</param>
-        public RidgedMultifractal(double frequency, double lacunarity, int octaves, int seed, QualityMode quality)
+        public RidgedMultifractal(Double frequency, Double lacunarity, Int32 octaves, Int32 seed, QualityMode quality)
             : base(0)
         {
             Frequency = frequency;
@@ -55,7 +55,7 @@ namespace LibNoise.Generator
         /// <summary>
         /// Gets or sets the frequency of the first octave.
         /// </summary>
-        public double Frequency
+        public Double Frequency
         {
             get { return _frequency; }
             set { _frequency = value; }
@@ -64,7 +64,7 @@ namespace LibNoise.Generator
         /// <summary>
         /// Gets or sets the lacunarity of the ridged-multifractal noise.
         /// </summary>
-        public double Lacunarity
+        public Double Lacunarity
         {
             get { return _lacunarity; }
             set
@@ -86,7 +86,7 @@ namespace LibNoise.Generator
         /// <summary>
         /// Gets or sets the number of octaves of the ridged-multifractal noise.
         /// </summary>
-        public int OctaveCount
+        public Int32 OctaveCount
         {
             get { return _octaveCount; }
             set { _octaveCount = Mathf.Clamp(value, 1, Utils.OctavesMaximum); }
@@ -95,7 +95,7 @@ namespace LibNoise.Generator
         /// <summary>
         /// Gets or sets the seed of the ridged-multifractal noise.
         /// </summary>
-        public int Seed
+        public Int32 Seed
         {
             get { return _seed; }
             set { _seed = value; }
@@ -129,7 +129,7 @@ namespace LibNoise.Generator
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public override double GetValue(double x, double y, double z)
+        public override Double GetValue(Double x, Double y, Double z)
         {
             x *= _frequency;
             y *= _frequency;
@@ -143,14 +143,14 @@ namespace LibNoise.Generator
                 var nx = Utils.MakeInt32Range(x);
                 var ny = Utils.MakeInt32Range(y);
                 var nz = Utils.MakeInt32Range(z);
-                long seed = (_seed + i) & 0x7fffffff;
+                Int64 seed = (_seed + i) & 0x7fffffff;
                 var signal = Utils.GradientCoherentNoise3D(nx, ny, nz, seed, _quality);
                 signal = Math.Abs(signal);
                 signal = offset - signal;
                 signal *= signal;
                 signal *= weight;
                 weight = signal * gain;
-                weight = Mathf.Clamp01((float) weight);
+                weight = Mathf.Clamp01((Single) weight);
                 value += (signal * _weights[i]);
                 x *= _lacunarity;
                 y *= _lacunarity;

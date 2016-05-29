@@ -39,8 +39,8 @@ namespace XnaGeometry
 
         #region Public Fields
 
-        public int X;
-        public int Y;
+        public Int32 X;
+        public Int32 Y;
 
         #endregion Public Fields
 
@@ -57,7 +57,7 @@ namespace XnaGeometry
 
         #region Constructors
 
-        public Point(int x, int y)
+        public Point(Int32 x, Int32 y)
         {
             this.X = x;
             this.Y = y;
@@ -68,34 +68,34 @@ namespace XnaGeometry
 
         #region Public methods
 
-        public static bool operator ==(Point a, Point b)
+        public static Boolean operator ==(Point a, Point b)
         {
             return a.Equals(b);
         }
 
-        public static bool operator !=(Point a, Point b)
+        public static Boolean operator !=(Point a, Point b)
         {
             return !a.Equals(b);
         }
 
-        public bool Equals(Point other)
+        public Boolean Equals(Point other)
         {
             return ((X == other.X) && (Y == other.Y));
         }
         
-        public override bool Equals(object obj)
+        public override Boolean Equals(Object obj)
         {
             return (obj is Point) ? Equals((Point)obj) : false;
         }
 
-        public override int GetHashCode()
+        public override Int32 GetHashCode()
         {
             return X ^ Y;
         }
 
-        public override string ToString()
+        public override String ToString()
         {
-            return string.Format("{{X:{0} Y:{1}}}", X, Y);
+            return String.Format("{{X:{0} Y:{1}}}", X, Y);
         }
 
         #endregion

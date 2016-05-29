@@ -1,4 +1,6 @@
-﻿namespace LibNoise.Generator
+﻿using System;
+
+namespace LibNoise.Generator
 {
     /// <summary>
     /// Provides a noise module that outputs a constant value. [GENERATOR]
@@ -7,7 +9,7 @@
     {
         #region Fields
 
-        private double _value;
+        private Double _value;
 
         #endregion
 
@@ -25,7 +27,7 @@
         /// Initializes a new instance of Const.
         /// </summary>
         /// <param name="value">The constant value.</param>
-        public Const(double value)
+        public Const(Double value)
             : base(0)
         {
             Value = value;
@@ -38,7 +40,7 @@
         /// <summary>
         /// Gets or sets the constant value.
         /// </summary>
-        public double Value
+        public Double Value
         {
             get { return _value; }
             set { _value = value; }
@@ -55,7 +57,7 @@
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public override double GetValue(double x, double y, double z)
+        public override Double GetValue(Double x, Double y, Double z)
         {
             return _value;
         }

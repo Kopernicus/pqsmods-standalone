@@ -47,10 +47,10 @@ namespace XnaGeometry
 
         #region Public Fields
 
-        public double X;
-        public double Y;
-        public double Z;
-        public double W;
+        public Double X;
+        public Double Y;
+        public Double Z;
+        public Double W;
 
         #endregion Public Fields
 
@@ -92,7 +92,7 @@ namespace XnaGeometry
 
         #region Constructors
 
-        public Vector4(double x, double y, double z, double w)
+        public Vector4(Double x, Double y, Double z, Double w)
         {
             this.X = x;
             this.Y = y;
@@ -100,7 +100,7 @@ namespace XnaGeometry
             this.W = w;
         }
 
-        public Vector4(Vector2 value, double z, double w)
+        public Vector4(Vector2 value, Double z, Double w)
         {
             this.X = value.X;
             this.Y = value.Y;
@@ -108,7 +108,7 @@ namespace XnaGeometry
             this.W = w;
         }
 
-        public Vector4(Vector3 value, double w)
+        public Vector4(Vector3 value, Double w)
         {
             this.X = value.X;
             this.Y = value.Y;
@@ -116,7 +116,7 @@ namespace XnaGeometry
             this.W = w;
         }
 
-        public Vector4(double value)
+        public Vector4(Double value)
         {
             this.X = value;
             this.Y = value;
@@ -146,7 +146,7 @@ namespace XnaGeometry
             result.Z = value1.Z + value2.Z;
         }
 
-        public static Vector4 Barycentric(Vector4 value1, Vector4 value2, Vector4 value3, double amount1, double amount2)
+        public static Vector4 Barycentric(Vector4 value1, Vector4 value2, Vector4 value3, Double amount1, Double amount2)
         {
 #if(USE_FARSEER)
             return new Vector4(
@@ -163,7 +163,7 @@ namespace XnaGeometry
 #endif
         }
 
-        public static void Barycentric(ref Vector4 value1, ref Vector4 value2, ref Vector4 value3, double amount1, double amount2, out Vector4 result)
+        public static void Barycentric(ref Vector4 value1, ref Vector4 value2, ref Vector4 value3, Double amount1, Double amount2, out Vector4 result)
         {
 #if(USE_FARSEER)
             result = new Vector4(
@@ -180,7 +180,7 @@ namespace XnaGeometry
 #endif
         }
 
-        public static Vector4 CatmullRom(Vector4 value1, Vector4 value2, Vector4 value3, Vector4 value4, double amount)
+        public static Vector4 CatmullRom(Vector4 value1, Vector4 value2, Vector4 value3, Vector4 value4, Double amount)
         {
 #if(USE_FARSEER)
             return new Vector4(
@@ -197,7 +197,7 @@ namespace XnaGeometry
 #endif
         }
 
-        public static void CatmullRom(ref Vector4 value1, ref Vector4 value2, ref Vector4 value3, ref Vector4 value4, double amount, out Vector4 result)
+        public static void CatmullRom(ref Vector4 value1, ref Vector4 value2, ref Vector4 value3, ref Vector4 value4, Double amount, out Vector4 result)
         {
 #if(USE_FARSEER)
             result = new Vector4(
@@ -232,24 +232,24 @@ namespace XnaGeometry
                 MathHelper.Clamp(value1.W, min.W, max.W));
         }
 
-        public static double Distance(Vector4 value1, Vector4 value2)
+        public static Double Distance(Vector4 value1, Vector4 value2)
         {
-            return (double)Math.Sqrt(DistanceSquared(value1, value2));
+            return (Double)Math.Sqrt(DistanceSquared(value1, value2));
         }
 
-        public static void Distance(ref Vector4 value1, ref Vector4 value2, out double result)
+        public static void Distance(ref Vector4 value1, ref Vector4 value2, out Double result)
         {
-            result = (double)Math.Sqrt(DistanceSquared(value1, value2));
+            result = (Double)Math.Sqrt(DistanceSquared(value1, value2));
         }
 
-        public static double DistanceSquared(Vector4 value1, Vector4 value2)
+        public static Double DistanceSquared(Vector4 value1, Vector4 value2)
         {
-            double result;
+            Double result;
             DistanceSquared(ref value1, ref value2, out result);
             return result;
         }
 
-        public static void DistanceSquared(ref Vector4 value1, ref Vector4 value2, out double result)
+        public static void DistanceSquared(ref Vector4 value1, ref Vector4 value2, out Double result)
         {
             result = (value1.W - value2.W) * (value1.W - value2.W) +
                      (value1.X - value2.X) * (value1.X - value2.X) +
@@ -266,9 +266,9 @@ namespace XnaGeometry
             return value1;
         }
 
-        public static Vector4 Divide(Vector4 value1, double divider)
+        public static Vector4 Divide(Vector4 value1, Double divider)
         {
-            double factor = 1f / divider;
+            Double factor = 1f / divider;
             value1.W *= factor;
             value1.X *= factor;
             value1.Y *= factor;
@@ -276,9 +276,9 @@ namespace XnaGeometry
             return value1;
         }
 
-        public static void Divide(ref Vector4 value1, double divider, out Vector4 result)
+        public static void Divide(ref Vector4 value1, Double divider, out Vector4 result)
         {
-            double factor = 1f / divider;
+            Double factor = 1f / divider;
             result.W = value1.W * factor;
             result.X = value1.X * factor;
             result.Y = value1.Y * factor;
@@ -293,22 +293,22 @@ namespace XnaGeometry
             result.Z = value1.Z / value2.Z;
         }
 
-        public static double Dot(Vector4 vector1, Vector4 vector2)
+        public static Double Dot(Vector4 vector1, Vector4 vector2)
         {
             return vector1.X * vector2.X + vector1.Y * vector2.Y + vector1.Z * vector2.Z + vector1.W * vector2.W;
         }
 
-        public static void Dot(ref Vector4 vector1, ref Vector4 vector2, out double result)
+        public static void Dot(ref Vector4 vector1, ref Vector4 vector2, out Double result)
         {
             result = vector1.X * vector2.X + vector1.Y * vector2.Y + vector1.Z * vector2.Z + vector1.W * vector2.W;
         }
 
-        public override bool Equals(object obj)
+        public override Boolean Equals(Object obj)
         {
             return (obj is Vector4) ? this == (Vector4)obj : false;
         }
 
-        public bool Equals(Vector4 other)
+        public Boolean Equals(Vector4 other)
         {
             return this.W == other.W
                 && this.X == other.X
@@ -316,19 +316,19 @@ namespace XnaGeometry
                 && this.Z == other.Z;
         }
 
-        public override int GetHashCode()
+        public override Int32 GetHashCode()
         {
-            return (int)(this.W + this.X + this.Y + this.Y);
+            return (Int32)(this.W + this.X + this.Y + this.Y);
         }
 
-        public static Vector4 Hermite(Vector4 value1, Vector4 tangent1, Vector4 value2, Vector4 tangent2, double amount)
+        public static Vector4 Hermite(Vector4 value1, Vector4 tangent1, Vector4 value2, Vector4 tangent2, Double amount)
         {
             Vector4 result = new Vector4();
             Hermite(ref value1, ref tangent1, ref value2, ref tangent2, amount, out result);
             return result;
         }
 
-        public static void Hermite(ref Vector4 value1, ref Vector4 tangent1, ref Vector4 value2, ref Vector4 tangent2, double amount, out Vector4 result)
+        public static void Hermite(ref Vector4 value1, ref Vector4 tangent1, ref Vector4 value2, ref Vector4 tangent2, Double amount, out Vector4 result)
         {
 #if(USE_FARSEER)
             result.W = SilverSpriteMathHelper.Hermite(value1.W, tangent1.W, value2.W, tangent2.W, amount);
@@ -343,21 +343,21 @@ namespace XnaGeometry
 #endif
         }
 
-        public double Length()
+        public Double Length()
         {
-            double result;
+            Double result;
             DistanceSquared(ref this, ref zeroVector, out result);
-            return (double)Math.Sqrt(result);
+            return (Double)Math.Sqrt(result);
         }
 
-        public double LengthSquared()
+        public Double LengthSquared()
         {
-            double result;
+            Double result;
             DistanceSquared(ref this, ref zeroVector, out result);
             return result;
         }
 
-        public static Vector4 Lerp(Vector4 value1, Vector4 value2, double amount)
+        public static Vector4 Lerp(Vector4 value1, Vector4 value2, Double amount)
         {
             return new Vector4(
                 MathHelper.Lerp(value1.X, value2.X, amount),
@@ -366,7 +366,7 @@ namespace XnaGeometry
                 MathHelper.Lerp(value1.W, value2.W, amount));
         }
 
-        public static void Lerp(ref Vector4 value1, ref Vector4 value2, double amount, out Vector4 result)
+        public static void Lerp(ref Vector4 value1, ref Vector4 value2, Double amount, out Vector4 result)
         {
             result = new Vector4(
                 MathHelper.Lerp(value1.X, value2.X, amount),
@@ -420,7 +420,7 @@ namespace XnaGeometry
             return value1;
         }
 
-        public static Vector4 Multiply(Vector4 value1, double scaleFactor)
+        public static Vector4 Multiply(Vector4 value1, Double scaleFactor)
         {
             value1.W *= scaleFactor;
             value1.X *= scaleFactor;
@@ -429,7 +429,7 @@ namespace XnaGeometry
             return value1;
         }
 
-        public static void Multiply(ref Vector4 value1, double scaleFactor, out Vector4 result)
+        public static void Multiply(ref Vector4 value1, Double scaleFactor, out Vector4 result)
         {
             result.W = value1.W * scaleFactor;
             result.X = value1.X * scaleFactor;
@@ -469,9 +469,9 @@ namespace XnaGeometry
 
         public static void Normalize(ref Vector4 vector, out Vector4 result)
         {
-            double factor;
+            Double factor;
             DistanceSquared(ref vector, ref zeroVector, out factor);
-            factor = 1f / (double)Math.Sqrt(factor);
+            factor = 1f / (Double)Math.Sqrt(factor);
 
             result.W = vector.W * factor;
             result.X = vector.X * factor;
@@ -479,7 +479,7 @@ namespace XnaGeometry
             result.Z = vector.Z * factor;
         }
 
-        public static Vector4 SmoothStep(Vector4 value1, Vector4 value2, double amount)
+        public static Vector4 SmoothStep(Vector4 value1, Vector4 value2, Double amount)
         {
 #if(USE_FARSEER)
             return new Vector4(
@@ -496,7 +496,7 @@ namespace XnaGeometry
 #endif
         }
 
-        public static void SmoothStep(ref Vector4 value1, ref Vector4 value2, double amount, out Vector4 result)
+        public static void SmoothStep(ref Vector4 value1, ref Vector4 value2, Double amount, out Vector4 result)
         {
 #if(USE_FARSEER)
             result = new Vector4(
@@ -574,7 +574,7 @@ namespace XnaGeometry
                                  (vector.X * matrix.M14) + (vector.Y * matrix.M24) + (vector.Z * matrix.M34) + (vector.W * matrix.M44));
         }
 
-        public override string ToString()
+        public override String ToString()
         {
             StringBuilder sb = new StringBuilder(32);
             sb.Append("{X:");
@@ -599,7 +599,7 @@ namespace XnaGeometry
             return new Vector4(-value.X, -value.Y, -value.Z, -value.W);
         }
 
-        public static bool operator ==(Vector4 value1, Vector4 value2)
+        public static Boolean operator ==(Vector4 value1, Vector4 value2)
         {
             return value1.W == value2.W
                 && value1.X == value2.X
@@ -607,7 +607,7 @@ namespace XnaGeometry
                 && value1.Z == value2.Z;
         }
 
-        public static bool operator !=(Vector4 value1, Vector4 value2)
+        public static Boolean operator !=(Vector4 value1, Vector4 value2)
         {
             return !(value1 == value2);
         }
@@ -639,7 +639,7 @@ namespace XnaGeometry
             return value1;
         }
 
-        public static Vector4 operator *(Vector4 value1, double scaleFactor)
+        public static Vector4 operator *(Vector4 value1, Double scaleFactor)
         {
             value1.W *= scaleFactor;
             value1.X *= scaleFactor;
@@ -648,7 +648,7 @@ namespace XnaGeometry
             return value1;
         }
 
-        public static Vector4 operator *(double scaleFactor, Vector4 value1)
+        public static Vector4 operator *(Double scaleFactor, Vector4 value1)
         {
             value1.W *= scaleFactor;
             value1.X *= scaleFactor;
@@ -666,9 +666,9 @@ namespace XnaGeometry
             return value1;
         }
 
-        public static Vector4 operator /(Vector4 value1, double divider)
+        public static Vector4 operator /(Vector4 value1, Double divider)
         {
-            double factor = 1f / divider;
+            Double factor = 1f / divider;
             value1.W *= factor;
             value1.X *= factor;
             value1.Y *= factor;

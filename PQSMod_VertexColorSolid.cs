@@ -4,6 +4,7 @@
  * Licensed under the terms of the MIT license
  */
 
+using System;
 using PQS.Unity;
 
 namespace PQS
@@ -22,7 +23,7 @@ namespace PQS
         /// <summary>
         /// How much of the color should end up on the surface
         /// </summary>
-        public float blend;
+        public Single blend;
 
         /// <summary>
         /// Called when the parent sphere builds it's color

@@ -40,14 +40,14 @@ namespace XnaGeometry
         #region Public Fields
 
         public Vector3 Center;
-        public double Radius;
+        public Double Radius;
 
         #endregion Public Fields
 
 
         #region Constructors
 
-        public BoundingSphere(Vector3 center, double radius)
+        public BoundingSphere(Vector3 center, Double radius)
         {
             this.Center = center;
             this.Radius = radius;
@@ -62,20 +62,20 @@ namespace XnaGeometry
         {
             BoundingSphere sphere = new BoundingSphere();
             sphere.Center = Vector3.Transform(this.Center, matrix);
-            sphere.Radius = this.Radius * ((double)Math.Sqrt((double)Math.Max(((matrix.M11 * matrix.M11) + (matrix.M12 * matrix.M12)) + (matrix.M13 * matrix.M13), Math.Max(((matrix.M21 * matrix.M21) + (matrix.M22 * matrix.M22)) + (matrix.M23 * matrix.M23), ((matrix.M31 * matrix.M31) + (matrix.M32 * matrix.M32)) + (matrix.M33 * matrix.M33)))));
+            sphere.Radius = this.Radius * ((Double)Math.Sqrt((Double)Math.Max(((matrix.M11 * matrix.M11) + (matrix.M12 * matrix.M12)) + (matrix.M13 * matrix.M13), Math.Max(((matrix.M21 * matrix.M21) + (matrix.M22 * matrix.M22)) + (matrix.M23 * matrix.M23), ((matrix.M31 * matrix.M31) + (matrix.M32 * matrix.M32)) + (matrix.M33 * matrix.M33)))));
             return sphere;
         }
 
         public void Transform(ref Matrix matrix, out BoundingSphere result)
         {
             result.Center = Vector3.Transform(this.Center, matrix);
-            result.Radius = this.Radius * ((double)Math.Sqrt((double)Math.Max(((matrix.M11 * matrix.M11) + (matrix.M12 * matrix.M12)) + (matrix.M13 * matrix.M13), Math.Max(((matrix.M21 * matrix.M21) + (matrix.M22 * matrix.M22)) + (matrix.M23 * matrix.M23), ((matrix.M31 * matrix.M31) + (matrix.M32 * matrix.M32)) + (matrix.M33 * matrix.M33)))));
+            result.Radius = this.Radius * ((Double)Math.Sqrt((Double)Math.Max(((matrix.M11 * matrix.M11) + (matrix.M12 * matrix.M12)) + (matrix.M13 * matrix.M13), Math.Max(((matrix.M21 * matrix.M21) + (matrix.M22 * matrix.M22)) + (matrix.M23 * matrix.M23), ((matrix.M31 * matrix.M31) + (matrix.M32 * matrix.M32)) + (matrix.M33 * matrix.M33)))));
         }
 
         public ContainmentType Contains(BoundingBox box)
         {
             //check if all corner is in sphere
-            bool inside = true;
+            Boolean inside = true;
             foreach (Vector3 corner in box.GetCorners())
             {
                 if (this.Contains(corner) == ContainmentType.Disjoint)
@@ -89,7 +89,7 @@ namespace XnaGeometry
                 return ContainmentType.Contains;
 
             //check if the distance from sphere center to cube face < radius
-            double dmin = 0;
+            Double dmin = 0;
 
             if (Center.X < box.Min.X)
 				dmin += (Center.X - box.Min.X) * (Center.X - box.Min.X);
@@ -125,7 +125,7 @@ namespace XnaGeometry
         public ContainmentType Contains(BoundingFrustum frustum)
         {
             //check if all corner is in sphere
-            bool inside = true;
+            Boolean inside = true;
 
             Vector3[] corners = frustum.GetCorners();
             foreach (Vector3 corner in corners)
@@ -140,7 +140,7 @@ namespace XnaGeometry
                 return ContainmentType.Contains;
 
             //check if the distance from sphere center to frustrum face < radius
-            double dmin = 0;
+            Double dmin = 0;
             //TODO : calcul dmin
 
             if (dmin <= Radius * Radius)
@@ -152,7 +152,7 @@ namespace XnaGeometry
 
         public ContainmentType Contains(BoundingSphere sphere)
         {
-            double val = Vector3.Distance(sphere.Center, Center);
+            Double val = Vector3.Distance(sphere.Center, Center);
 
             if (val > sphere.Radius + Radius)
                 return ContainmentType.Disjoint;
@@ -171,7 +171,7 @@ namespace XnaGeometry
 
         public ContainmentType Contains(Vector3 point)
         {
-            double distance = Vector3.Distance(point, Center);
+            Double distance = Vector3.Distance(point, Center);
 
             if (distance > this.Radius)
                 return ContainmentType.Disjoint;
@@ -195,7 +195,7 @@ namespace XnaGeometry
                                          (box.Min.Z + box.Max.Z) / 2.0f);
 
             // Find the distance between the center and one of the corners of the box.
-            double radius = Vector3.Distance(center, box.Max);
+            Double radius = Vector3.Distance(center, box.Max);
 
             return new BoundingSphere(center, radius);
         }
@@ -215,10 +215,10 @@ namespace XnaGeometry
             if (points == null)
                 throw new ArgumentNullException("points");
 
-            double radius = 0;
+            Double radius = 0;
             Vector3 center = new Vector3();
             // First, we'll find the center of gravity for the point 'cloud'.
-            int num_points = 0; // The number of points (there MUST be a better way to get this instead of counting the number of points one by one?)
+            Int32 num_points = 0; // The number of points (there MUST be a better way to get this instead of counting the number of points one by one?)
             
             foreach (Vector3 v in points)
             {
@@ -226,12 +226,12 @@ namespace XnaGeometry
                 ++num_points;
             }
             
-            center /= (double)num_points;
+            center /= (Double)num_points;
 
             // Calculate the radius of the needed sphere (it equals the distance between the center and the point further away).
             foreach (Vector3 v in points)
             {
-                double distance = ((Vector3)(v - center)).Length();
+                Double distance = ((Vector3)(v - center)).Length();
                 
                 if (distance > radius)
                     radius = distance;
@@ -243,7 +243,7 @@ namespace XnaGeometry
         public static BoundingSphere CreateMerged(BoundingSphere original, BoundingSphere additional)
         {
             Vector3 ocenterToaCenter = Vector3.Subtract(additional.Center, original.Center);
-            double distance = ocenterToaCenter.Length();
+            Double distance = ocenterToaCenter.Length();
             if (distance <= original.Radius + additional.Radius)//intersect
             {
                 if (distance <= original.Radius - additional.Radius)//original contain additional
@@ -253,8 +253,8 @@ namespace XnaGeometry
             }
 
             //else find center of new sphere and radius
-            double leftRadius = Math.Max(original.Radius - distance, additional.Radius);
-            double Rightradius = Math.Max(original.Radius + distance, additional.Radius);
+            Double leftRadius = Math.Max(original.Radius - distance, additional.Radius);
+            Double Rightradius = Math.Max(original.Radius + distance, additional.Radius);
             ocenterToaCenter = ocenterToaCenter + (((leftRadius - Rightradius) / (2 * ocenterToaCenter.Length())) * ocenterToaCenter);//oCenterToResultCenter
             
             BoundingSphere result = new BoundingSphere();
@@ -268,12 +268,12 @@ namespace XnaGeometry
             result = BoundingSphere.CreateMerged(original, additional);
         }
 
-        public bool Equals(BoundingSphere other)
+        public Boolean Equals(BoundingSphere other)
         {
             return this.Center == other.Center && this.Radius == other.Radius;
         }
 
-        public override bool Equals(object obj)
+        public override Boolean Equals(Object obj)
         {
             if (obj is BoundingSphere)
                 return this.Equals((BoundingSphere)obj);
@@ -281,22 +281,22 @@ namespace XnaGeometry
             return false;
         }
 
-        public override int GetHashCode()
+        public override Int32 GetHashCode()
         {
             return this.Center.GetHashCode() + this.Radius.GetHashCode();
         }
 
-        public bool Intersects(BoundingBox box)
+        public Boolean Intersects(BoundingBox box)
         {
 			return box.Intersects(this);
         }
 
-        public void Intersects(ref BoundingBox box, out bool result)
+        public void Intersects(ref BoundingBox box, out Boolean result)
         {
 			result = Intersects(box);
         }
 
-        public bool Intersects(BoundingFrustum frustum)
+        public Boolean Intersects(BoundingFrustum frustum)
         {
             if (frustum == null)
                 throw new NullReferenceException();
@@ -304,22 +304,22 @@ namespace XnaGeometry
             throw new NotImplementedException();
         }
 
-        public bool Intersects(BoundingSphere sphere)
+        public Boolean Intersects(BoundingSphere sphere)
         {
-            double val = Vector3.Distance(sphere.Center, Center);
+            Double val = Vector3.Distance(sphere.Center, Center);
 			if (val > sphere.Radius + Radius)
 				return false;
 			return true;
         }
 
-        public void Intersects(ref BoundingSphere sphere, out bool result)
+        public void Intersects(ref BoundingSphere sphere, out Boolean result)
         {
 			result = Intersects(sphere);
         }
 
         public PlaneIntersectionType Intersects(Plane plane)
         {
-			double distance = Vector3.Dot(plane.Normal, this.Center) + plane.D;
+			Double distance = Vector3.Dot(plane.Normal, this.Center) + plane.D;
 			if (distance > this.Radius)
 				return PlaneIntersectionType.Front;
 			if (distance < -this.Radius)
@@ -333,29 +333,29 @@ namespace XnaGeometry
 			result = Intersects(plane);
         }
 
-        public Nullable<double> Intersects(Ray ray)
+        public Nullable<Double> Intersects(Ray ray)
         {
             return ray.Intersects(this);
         }
 
-        public void Intersects(ref Ray ray, out Nullable<double> result)
+        public void Intersects(ref Ray ray, out Nullable<Double> result)
         {
 			result = Intersects(ray);
         }
 
-        public static bool operator == (BoundingSphere a, BoundingSphere b)
+        public static Boolean operator == (BoundingSphere a, BoundingSphere b)
         {
             return a.Equals(b);
         }
 
-        public static bool operator != (BoundingSphere a, BoundingSphere b)
+        public static Boolean operator != (BoundingSphere a, BoundingSphere b)
         {
             return !a.Equals(b);
         }
 
-        public override string ToString()
+        public override String ToString()
         {
-            return string.Format(CultureInfo.CurrentCulture, "{{Center:{0} Radius:{1}}}", this.Center.ToString(), this.Radius.ToString());
+            return String.Format(CultureInfo.CurrentCulture, "{{Center:{0} Radius:{1}}}", this.Center.ToString(), this.Radius.ToString());
         }
 
         #endregion Public Methods

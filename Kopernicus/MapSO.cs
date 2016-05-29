@@ -24,8 +24,8 @@ namespace PQS
             /// </summary>
             public class HeightAlpha
             {
-                public float height;
-                public float alpha;
+                public Single height;
+                public Single alpha;
 
                 /// <summary>
                 /// Initializes a new instance of the <see cref="HeightAlpha"/> class.
@@ -41,7 +41,7 @@ namespace PQS
                 /// </summary>
                 /// <param name="height">The height.</param>
                 /// <param name="alpha">The alpha.</param>
-                public HeightAlpha(float height, float alpha)
+                public HeightAlpha(Single height, Single alpha)
                 {
                     this.height = height;
                     this.alpha = alpha;
@@ -51,7 +51,7 @@ namespace PQS
                 /// Lerps two HeightAlphas
                 /// </summary>
                 /// <returns></returns>
-                public static HeightAlpha Lerp(HeightAlpha a, HeightAlpha b, float dt)
+                public static HeightAlpha Lerp(HeightAlpha a, HeightAlpha b, Single dt)
                 {
                     return new HeightAlpha(a.height + (b.height - a.height) * dt, a.alpha + (b.alpha - a.alpha) * dt);
                 }
@@ -71,7 +71,7 @@ namespace PQS
             /// <summary>
             /// BitPerPixels is always 4
             /// </summary>
-            protected const int _bpp = 4;
+            protected const Int32 _bpp = 4;
 
             /// <summary>
             /// Representation of the map
@@ -86,63 +86,63 @@ namespace PQS
             /// <summary>
             /// The width of the texture
             /// </summary>
-            protected int _width { get; set; }
+            protected Int32 _width { get; set; }
 
             /// <summary>
             /// The height of the texture
             /// </summary>
-            protected int _height { get; set; }
+            protected Int32 _height { get; set; }
 
             /// <summary>
             /// The size of a row in the image
             /// </summary>
-            protected int _rowWidth { get; set; }
+            protected Int32 _rowWidth { get; set; }
 
             /// <summary>
             /// Whether the map is compiled
             /// </summary>
-            protected bool _isCompiled { get; set; }
+            protected Boolean _isCompiled { get; set; }
 
             /// <summary>
             /// Converts a byte into a floating point number
             /// </summary>
-            public const float Byte2Float = 0.003921569f;
+            public const Single Byte2Float = 0.003921569f;
 
             /// <summary>
             /// Converts a floating point number into a byte
             /// </summary>
-            public const float Float2Byte = 255f;
+            public const Single Float2Byte = 255f;
 
             /// <summary>
             /// Create a map from a Texture
             /// </summary>
             public void CreateMap(MapDepth depth, Bitmap tex)
             {
-                /// If the Texture is null, abort
+                // If the Texture is null, abort
                 if (tex == null)
                     throw new ArgumentNullException(nameof(tex));
 
-                /// Set _data
+                // Set _data
                 _data = tex;
 
-                /// Variables
+                // Variables
                 _width = tex.Width;
                 _height = tex.Height;
                 Depth = depth;
                 _rowWidth = _width * _bpp;
 
-                /// We're compiled
+                // We're compiled
                 _isCompiled = true;
             }
 
             /// GetPixelByte
-            public byte GetPixelByte(int x, int y)
+            public Byte GetPixelByte(Int32 x, Int32 y)
             {
                 return (Byte)(_data.GetPixel(x, y).R * Float2Byte);
             }
 
             /// GetPixelColor - double
-            public Color GetPixelColor(double x, double y)
+            public Color GetPixelColor(Double x, Double y)
             {
                 BilinearCoords coords = ConstructBilinearCoords(x, y);
                 return Color.Lerp(
@@ -158,7 +158,7 @@ namespace PQS
             }
 
             /// GetPixelColor - Float
-            public Color GetPixelColor(float x, float y)
+            public Color GetPixelColor(Single x, Single y)
             {
                 BilinearCoords coords = ConstructBilinearCoords(x, y);
                 return Color.Lerp(
@@ -174,13 +174,13 @@ namespace PQS
             }
 
             /// GetPixelColor - Int
-            public Color GetPixelColor(int x, int y)
+            public Color GetPixelColor(Int32 x, Int32 y)
             {
                 return _data.GetPixel(x, y);
             }
 
             /// GetPixelColor32 - double
-            public Color GetPixelColor32(double x, double y)
+            public Color GetPixelColor32(Double x, Double y)
             {
                 BilinearCoords coords = ConstructBilinearCoords(x, y);
                 return Color32.Lerp(
@@ -196,7 +196,7 @@ namespace PQS
             }
 
             /// GetPixelColor32 - Float - Honestly Squad, why are they named GetPixelColor32, but return normal Colors instead of Color32?
-            public Color GetPixelColor32(float x, float y)
+            public Color GetPixelColor32(Single x, Single y)
             {
                 BilinearCoords coords = ConstructBilinearCoords(x, y);
                 return Color32.Lerp(
@@ -212,13 +212,13 @@ namespace PQS
             }
 
             /// GetPixelColor32 - Int
-            public Color32 GetPixelColor32(int x, int y)
+            public Color32 GetPixelColor32(Int32 x, Int32 y)
             {
                 return _data.GetPixel(x, y);
             }
 
             /// GetPixelFloat - double
-            public float GetPixelFloat(double x, double y)
+            public Single GetPixelFloat(Double x, Double y)
             {
                 BilinearCoords coords = ConstructBilinearCoords(x, y);
                 return Mathf.Lerp(
@@ -234,7 +234,7 @@ namespace PQS
             }
 
             /// GetPixelFloat - Float
-            public float GetPixelFloat(float x, float y)
+            public Single GetPixelFloat(Single x, Single y)
             {
                 BilinearCoords coords = ConstructBilinearCoords(x, y);
                 return Mathf.Lerp(
@@ -250,10 +250,10 @@ namespace PQS
             }
 
             /// GetPixelFloat - Integer
-            public float GetPixelFloat(int x, int y)
+            public Single GetPixelFloat(Int32 x, Int32 y)
             {
                 Color pixel = _data.GetPixel(x, y);
-                float value = 0f;
+                Single value = 0f;
                 if (Depth == MapDepth.Greyscale)
                     value = pixel.r;
                 else if (Depth == MapDepth.HeightAlpha)
@@ -263,11 +263,11 @@ namespace PQS
                 else if (Depth == MapDepth.RGBA)
                     value = pixel.r + pixel.g + pixel.b + pixel.a;
 
-                return value / (int)Depth;
+                return value / (Int32)Depth;
             }
 
             /// GetPixelHeightAlpha - double
-            public HeightAlpha GetPixelHeightAlpha(double x, double y)
+            public HeightAlpha GetPixelHeightAlpha(Double x, Double y)
             {
                 BilinearCoords coords = ConstructBilinearCoords(x, y);
                 return HeightAlpha.Lerp(
@@ -283,7 +283,7 @@ namespace PQS
             }
 
             /// GetPixelHeightAlpha - Float
-            public HeightAlpha GetPixelHeightAlpha(float x, float y)
+            public HeightAlpha GetPixelHeightAlpha(Single x, Single y)
             {
                 BilinearCoords coords = ConstructBilinearCoords(x, y);
                 return HeightAlpha.Lerp(
@@ -299,7 +299,7 @@ namespace PQS
             }
 
             /// GetPixelHeightAlpha - Int
-            public HeightAlpha GetPixelHeightAlpha(int x, int y)
+            public HeightAlpha GetPixelHeightAlpha(Int32 x, Int32 y)
             {
                 Color pixel = _data.GetPixel(x, y);
                 if (Depth == (MapDepth.HeightAlpha | MapDepth.RGBA))
@@ -309,76 +309,75 @@ namespace PQS
             }
 
             /// GreyByte
-            public byte GreyByte(int x, int y)
+            public Byte GreyByte(Int32 x, Int32 y)
             {
-                return (byte)(Float2Byte * ((Color)_data.GetPixel(x, y)).r);
+                return (Byte)(Float2Byte * ((Color)_data.GetPixel(x, y)).r);
             }
 
             /// GreyFloat
-            public float GreyFloat(int x, int y)
+            public Single GreyFloat(Int32 x, Int32 y)
             {
                 return ((Color)_data.GetPixel(x, y)).grayscale;
             }
 
             /// PixelByte
-            public byte[] PixelByte(int x, int y)
+            public Byte[] PixelByte(Int32 x, Int32 y)
             {
 
                 Color c = _data.GetPixel(x, y);
                 if (Depth == MapDepth.Greyscale)
-                    return new byte[] { (byte)c.r };
-                else if (Depth == MapDepth.HeightAlpha)
-                    return new byte[] { (byte)c.r, (byte)c.a };
-                else if (Depth == MapDepth.RGB)
-                    return new byte[] { (byte)c.r, (byte)c.g, (byte)c.b };
-                else
-                    return new byte[] { (byte)c.r, (byte)c.g, (byte)c.b, (byte)c.a };
+                    return new [] { (Byte)c.r };
+                if (Depth == MapDepth.HeightAlpha)
+                    return new [] { (Byte)c.r, (Byte)c.a };
+                if (Depth == MapDepth.RGB)
+                    return new [] { (Byte)c.r, (Byte)c.g, (Byte)c.b };
+                return new [] { (Byte)c.r, (Byte)c.g, (Byte)c.b, (Byte)c.a };
             }
 
             /// <summary>
             /// ConstructBilinearCoords from double
             /// </summary>
-            protected BilinearCoords ConstructBilinearCoords(double x, double y)
+            protected BilinearCoords ConstructBilinearCoords(Double x, Double y)
             {
-                /// Create the struct
+                // Create the struct
                 BilinearCoords coords = new BilinearCoords();
 
-                /// Floor
+                // Floor
                 x = Math.Abs(x - Math.Floor(x));
                 y = Math.Abs(y - Math.Floor(y));
 
-                /// X to U
+                // X to U
                 coords.x = x * _width;
-                coords.xFloor = (int)Math.Floor(coords.x);
-                coords.xCeiling = (int)Math.Ceiling(coords.x);
-                coords.u = (float)(coords.x - coords.xFloor);
+                coords.xFloor = (Int32)Math.Floor(coords.x);
+                coords.xCeiling = (Int32)Math.Ceiling(coords.x);
+                coords.u = (Single)(coords.x - coords.xFloor);
                 if (coords.xCeiling == _width) coords.xCeiling = 0;
 
-                /// Y to V
+                // Y to V
                 coords.y = y * _height;
-                coords.yFloor = (int)Math.Floor(coords.y);
-                coords.yCeiling = (int)Math.Ceiling(coords.y);
-                coords.v = (float)(coords.y - coords.yFloor);
+                coords.yFloor = (Int32)Math.Floor(coords.y);
+                coords.yCeiling = (Int32)Math.Ceiling(coords.y);
+                coords.v = (Single)(coords.y - coords.yFloor);
                 if (coords.yCeiling == _height) coords.yCeiling = 0;
 
-                /// We're done
+                // We're done
                 return coords;
             }
 
             /// <summary>
             /// ConstructBilinearCoords from float
             /// </summary>
-            protected BilinearCoords ConstructBilinearCoords(float x, float y)
+            protected BilinearCoords ConstructBilinearCoords(Single x, Single y)
             {
-                return ConstructBilinearCoords((double)x, (double)y);
+                return ConstructBilinearCoords((Double)x, (Double)y);
             }
 
             /// BilinearCoords
             public struct BilinearCoords
             {
-                public double x, y;
-                public int xCeiling, xFloor, yCeiling, yFloor;
-                public float u, v;
+                public Double x, y;
+                public Int32 xCeiling, xFloor, yCeiling, yFloor;
+                public Single u, v;
             }
         }
     }

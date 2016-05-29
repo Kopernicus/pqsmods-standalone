@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace LibNoise.Operator
 {
@@ -10,11 +11,11 @@ namespace LibNoise.Operator
     {
         #region Fields
 
-        private double _value;
-        private bool _cached;
-        private double _x;
-        private double _y;
-        private double _z;
+        private Double _value;
+        private Boolean _cached;
+        private Double _x;
+        private Double _y;
+        private Double _z;
 
         #endregion
 
@@ -47,7 +48,7 @@ namespace LibNoise.Operator
         /// </summary>
         /// <param name="index">The index of the source module to aquire.</param>
         /// <returns>The requested source module.</returns>
-        public override ModuleBase this[int index]
+        public override ModuleBase this[Int32 index]
         {
             get { return base[index]; }
             set
@@ -64,7 +65,7 @@ namespace LibNoise.Operator
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public override double GetValue(double x, double y, double z)
+        public override Double GetValue(Double x, Double y, Double z)
         {
             Debug.Assert(Modules[0] != null);
             if (!(_cached && _x == x && _y == y && _z == z))

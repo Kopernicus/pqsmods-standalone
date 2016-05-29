@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PQS.Unity;
 using Debug = System.Diagnostics.Debug;
 
@@ -12,7 +13,7 @@ namespace LibNoise.Operator
     {
         #region Fields
 
-        private readonly List<KeyValuePair<double, double>> _data = new List<KeyValuePair<double, double>>();
+        private readonly List<KeyValuePair<Double, Double>> _data = new List<KeyValuePair<Double, Double>>();
 
         #endregion
 
@@ -43,7 +44,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets the number of control points.
         /// </summary>
-        public int ControlPointCount
+        public Int32 ControlPointCount
         {
             get { return _data.Count; }
         }
@@ -51,7 +52,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets the list of control points.
         /// </summary>
-        public List<KeyValuePair<double, double>> ControlPoints
+        public List<KeyValuePair<Double, Double>> ControlPoints
         {
             get { return _data; }
         }
@@ -65,15 +66,15 @@ namespace LibNoise.Operator
         /// </summary>
         /// <param name="input">The curves input value.</param>
         /// <param name="output">The curves output value.</param>
-        public void Add(double input, double output)
+        public void Add(Double input, Double output)
         {
-            var kvp = new KeyValuePair<double, double>(input, output);
+            var kvp = new KeyValuePair<Double, Double>(input, output);
             if (!_data.Contains(kvp))
             {
                 _data.Add(kvp);
             }
             _data.Sort(
-                delegate(KeyValuePair<double, double> lhs, KeyValuePair<double, double> rhs)
+                delegate(KeyValuePair<Double, Double> lhs, KeyValuePair<Double, Double> rhs)
                 {
                     return lhs.Key.CompareTo(rhs.Key);
                 });
@@ -98,12 +99,12 @@ namespace LibNoise.Operator
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public override double GetValue(double x, double y, double z)
+        public override Double GetValue(Double x, Double y, Double z)
         {
             Debug.Assert(Modules[0] != null);
             Debug.Assert(ControlPointCount >= 4);
             var smv = Modules[0].GetValue(x, y, z);
-            int ip;
+            Int32 ip;
             for (ip = 0; ip < _data.Count; ip++)
             {
                 if (smv < _data[ip].Key)

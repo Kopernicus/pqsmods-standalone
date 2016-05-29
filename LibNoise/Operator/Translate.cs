@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace LibNoise.Operator
 {
@@ -10,9 +11,9 @@ namespace LibNoise.Operator
     {
         #region Fields
 
-        private double _x = 1.0;
-        private double _y = 1.0;
-        private double _z = 1.0;
+        private Double _x = 1.0;
+        private Double _y = 1.0;
+        private Double _z = 1.0;
 
         #endregion
 
@@ -43,7 +44,7 @@ namespace LibNoise.Operator
         /// <param name="y">The translation on the y-axis.</param>
         /// <param name="z">The translation on the z-axis.</param>
         /// <param name="input">The input module.</param>
-        public Translate(double x, double y, double z, ModuleBase input)
+        public Translate(Double x, Double y, Double z, ModuleBase input)
             : base(1)
         {
             Modules[0] = input;
@@ -59,7 +60,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets or sets the translation on the x-axis.
         /// </summary>
-        public double X
+        public Double X
         {
             get { return _x; }
             set { _x = value; }
@@ -68,7 +69,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets or sets the translation on the y-axis.
         /// </summary>
-        public double Y
+        public Double Y
         {
             get { return _y; }
             set { _y = value; }
@@ -77,7 +78,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets or sets the translation on the z-axis.
         /// </summary>
-        public double Z
+        public Double Z
         {
             get { return _z; }
             set { _z = value; }
@@ -94,7 +95,7 @@ namespace LibNoise.Operator
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public override double GetValue(double x, double y, double z)
+        public override Double GetValue(Double x, Double y, Double z)
         {
             Debug.Assert(Modules[0] != null);
             return Modules[0].GetValue(x + _x, y + _y, z + _z);

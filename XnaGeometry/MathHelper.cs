@@ -33,32 +33,32 @@ namespace XnaGeometry
 {
     public static class MathHelper
     {
-        public const double E = (double)Math.E;
-        public const double Log10E = 0.4342945f;
-        public const double Log2E = 1.442695f;
-        public const double Pi = (double)Math.PI;
-        public const double PiOver2 = (double)(Math.PI / 2.0);
-        public const double PiOver4 = (double)(Math.PI / 4.0);
-        public const double TwoPi = (double)(Math.PI * 2.0);
+        public const Double E = (Double)Math.E;
+        public const Double Log10E = 0.4342945f;
+        public const Double Log2E = 1.442695f;
+        public const Double Pi = (Double)Math.PI;
+        public const Double PiOver2 = (Double)(Math.PI / 2.0);
+        public const Double PiOver4 = (Double)(Math.PI / 4.0);
+        public const Double TwoPi = (Double)(Math.PI * 2.0);
         
-        public static double Barycentric(double value1, double value2, double value3, double amount1, double amount2)
+        public static Double Barycentric(Double value1, Double value2, Double value3, Double amount1, Double amount2)
         {
             return value1 + (value2 - value1) * amount1 + (value3 - value1) * amount2;
         }
 
-        public static double CatmullRom(double value1, double value2, double value3, double value4, double amount)
+        public static Double CatmullRom(Double value1, Double value2, Double value3, Double value4, Double amount)
         {
             // Using formula from http://www.mvps.org/directx/articles/catmull/
             // Internally using doubles not to lose precission
-            double amountSquared = amount * amount;
-            double amountCubed = amountSquared * amount;
-            return (double)(0.5 * (2.0 * value2 +
+            Double amountSquared = amount * amount;
+            Double amountCubed = amountSquared * amount;
+            return (Double)(0.5 * (2.0 * value2 +
                 (value3 - value1) * amount +
                 (2.0 * value1 - 5.0 * value2 + 4.0 * value3 - value4) * amountSquared +
                 (3.0 * value2 - value1 - 3.0 * value3 + value4) * amountCubed));
         }
 
-        public static double Clamp(double value, double min, double max)
+        public static Double Clamp(Double value, Double min, Double max)
         {
             // First we check to see if we're greater than the max
             value = (value > max) ? max : value;
@@ -70,18 +70,18 @@ namespace XnaGeometry
             return value;
         }
         
-        public static double Distance(double value1, double value2)
+        public static Double Distance(Double value1, Double value2)
         {
             return Math.Abs(value1 - value2);
         }
         
-        public static double Hermite(double value1, double tangent1, double value2, double tangent2, double amount)
+        public static Double Hermite(Double value1, Double tangent1, Double value2, Double tangent2, Double amount)
         {
             // All transformed to double not to lose precission
             // Otherwise, for high numbers of param:amount the result is NaN instead of Infinity
-            double v1 = value1, v2 = value2, t1 = tangent1, t2 = tangent2, s = amount, result;
-            double sCubed = s * s * s;
-            double sSquared = s * s;
+            Double v1 = value1, v2 = value2, t1 = tangent1, t2 = tangent2, s = amount, result;
+            Double sCubed = s * s * s;
+            Double sSquared = s * s;
 
             if (amount == 0f)
                 result = value1;
@@ -92,26 +92,26 @@ namespace XnaGeometry
                     (3 * v2 - 3 * v1 - 2 * t1 - t2) * sSquared +
                     t1 * s +
                     v1;
-            return (double)result;
+            return (Double)result;
         }
         
         
-        public static double Lerp(double value1, double value2, double amount)
+        public static Double Lerp(Double value1, Double value2, Double amount)
         {
             return value1 + (value2 - value1) * amount;
         }
 
-        public static double Max(double value1, double value2)
+        public static Double Max(Double value1, Double value2)
         {
             return Math.Max(value1, value2);
         }
         
-        public static double Min(double value1, double value2)
+        public static Double Min(Double value1, Double value2)
         {
             return Math.Min(value1, value2);
         }
         
-        public static double SmoothStep(double value1, double value2, double amount)
+        public static Double SmoothStep(Double value1, Double value2, Double amount)
         {
             // It is expected that 0 < amount < 1
             // If amount < 0, return value1
@@ -120,31 +120,31 @@ namespace XnaGeometry
             double result = SilverSpriteMathHelper.Clamp(amount, 0f, 1f);
             result = SilverSpriteMathHelper.Hermite(value1, 0f, value2, 0f, result);
 #else
-            double result = MathHelper.Clamp(amount, 0f, 1f);
+            Double result = MathHelper.Clamp(amount, 0f, 1f);
             result = MathHelper.Hermite(value1, 0f, value2, 0f, result);
 #endif
             return result;
         }
         
-        public static double ToDegrees(double radians)
+        public static Double ToDegrees(Double radians)
         {
             // This method uses double precission internally,
             // though it returns single double
             // Factor = 180 / pi
-            return (double)(radians * 57.295779513082320876798154814105);
+            return (Double)(radians * 57.295779513082320876798154814105);
         }
         
-        public static double ToRadians(double degrees)
+        public static Double ToRadians(Double degrees)
         {
             // This method uses double precission internally,
             // though it returns single double
             // Factor = pi / 180
-            return (double)(degrees * 0.017453292519943295769236907684886);
+            return (Double)(degrees * 0.017453292519943295769236907684886);
         }
 
-	public static double WrapAngle(double angle)
+	public static Double WrapAngle(Double angle)
 	{
-		angle = (double)Math.IEEERemainder((double)angle, 6.2831854820251465);
+		angle = (Double)Math.IEEERemainder((Double)angle, 6.2831854820251465);
 		if (angle <= -3.14159274f)
 		{
 			angle += 6.28318548f;
@@ -159,7 +159,7 @@ namespace XnaGeometry
 		return angle;
 	}
 
-		public static bool IsPowerOfTwo(int value)
+		public static Boolean IsPowerOfTwo(Int32 value)
 		{
 			return (value > 0) && ((value & (value - 1)) == 0);
 		}

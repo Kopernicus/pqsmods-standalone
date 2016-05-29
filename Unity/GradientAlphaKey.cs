@@ -4,6 +4,8 @@
  * Licensed under the terms of the MIT license
  */
 
+using System;
+
 namespace PQS
 {
     namespace Unity
@@ -16,19 +18,19 @@ namespace PQS
             /// <summary>
             /// Alpha channel of key.
             /// </summary>
-            public float alpha;
+            public Single alpha;
 
             /// <summary>
             /// Time of the key (0 - 1).
             /// </summary>
-            public float time;
+            public Single time;
 
             /// <summary>
             /// Gradient alpha key.
             /// </summary>
             /// <param name="alpha">Alpha of key (0 - 1).</param>
             /// <param name="time">Time of the key (0 - 1).</param>
-            public GradientAlphaKey(float alpha, float time)
+            public GradientAlphaKey(Single alpha, Single time)
             {
                 this.alpha = alpha;
                 this.time = time;

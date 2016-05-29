@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using LibNoise.Generator;
 
 namespace LibNoise.Operator
@@ -11,21 +12,21 @@ namespace LibNoise.Operator
     {
         #region Constants
 
-        private const double X0 = (12414.0 / 65536.0);
-        private const double Y0 = (65124.0 / 65536.0);
-        private const double Z0 = (31337.0 / 65536.0);
-        private const double X1 = (26519.0 / 65536.0);
-        private const double Y1 = (18128.0 / 65536.0);
-        private const double Z1 = (60493.0 / 65536.0);
-        private const double X2 = (53820.0 / 65536.0);
-        private const double Y2 = (11213.0 / 65536.0);
-        private const double Z2 = (44845.0 / 65536.0);
+        private const Double X0 = (12414.0 / 65536.0);
+        private const Double Y0 = (65124.0 / 65536.0);
+        private const Double Z0 = (31337.0 / 65536.0);
+        private const Double X1 = (26519.0 / 65536.0);
+        private const Double Y1 = (18128.0 / 65536.0);
+        private const Double Z1 = (60493.0 / 65536.0);
+        private const Double X2 = (53820.0 / 65536.0);
+        private const Double Y2 = (11213.0 / 65536.0);
+        private const Double Z2 = (44845.0 / 65536.0);
 
         #endregion
 
         #region Fields
 
-        private double _power = 1.0;
+        private Double _power = 1.0;
         private readonly Perlin _xDistort;
         private readonly Perlin _yDistort;
         private readonly Perlin _zDistort;
@@ -61,7 +62,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Initializes a new instance of Turbulence.
         /// </summary>
-        public Turbulence(double power, ModuleBase input)
+        public Turbulence(Double power, ModuleBase input)
             : this(new Perlin(), new Perlin(), new Perlin(), power, input)
         {
         }
@@ -74,7 +75,7 @@ namespace LibNoise.Operator
         /// <param name="z">The perlin noise to apply on the z-axis.</param>
         /// <param name="power">The power of the turbulence.</param>
         /// <param name="input">The input module.</param>
-        public Turbulence(Perlin x, Perlin y, Perlin z, double power, ModuleBase input)
+        public Turbulence(Perlin x, Perlin y, Perlin z, Double power, ModuleBase input)
             : base(1)
         {
             _xDistort = x;
@@ -91,7 +92,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets or sets the frequency of the turbulence.
         /// </summary>
-        public double Frequency
+        public Double Frequency
         {
             get { return _xDistort.Frequency; }
             set
@@ -105,7 +106,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets or sets the power of the turbulence.
         /// </summary>
-        public double Power
+        public Double Power
         {
             get { return _power; }
             set { _power = value; }
@@ -114,7 +115,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets or sets the roughness of the turbulence.
         /// </summary>
-        public int Roughness
+        public Int32 Roughness
         {
             get { return _xDistort.OctaveCount; }
             set
@@ -128,7 +129,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets or sets the seed of the turbulence.
         /// </summary>
-        public int Seed
+        public Int32 Seed
         {
             get { return _xDistort.Seed; }
             set
@@ -150,7 +151,7 @@ namespace LibNoise.Operator
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public override double GetValue(double x, double y, double z)
+        public override Double GetValue(Double x, Double y, Double z)
         {
             Debug.Assert(Modules[0] != null);
             var xd = x + (_xDistort.GetValue(x + X0, y + Y0, z + Z0) * _power);

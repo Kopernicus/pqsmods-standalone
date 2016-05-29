@@ -12,18 +12,18 @@ namespace LibNoise.Operator
     {
         #region Fields
 
-        private double _x;
-        private double _x1Matrix;
-        private double _x2Matrix;
-        private double _x3Matrix;
-        private double _y;
-        private double _y1Matrix;
-        private double _y2Matrix;
-        private double _y3Matrix;
-        private double _z;
-        private double _z1Matrix;
-        private double _z2Matrix;
-        private double _z3Matrix;
+        private Double _x;
+        private Double _x1Matrix;
+        private Double _x2Matrix;
+        private Double _x3Matrix;
+        private Double _y;
+        private Double _y1Matrix;
+        private Double _y2Matrix;
+        private Double _y3Matrix;
+        private Double _z;
+        private Double _z1Matrix;
+        private Double _z2Matrix;
+        private Double _z3Matrix;
 
         #endregion
 
@@ -55,7 +55,7 @@ namespace LibNoise.Operator
         /// <param name="y">The rotation around the y-axis.</param>
         /// <param name="z">The rotation around the z-axis.</param>
         /// <param name="input">The input module.</param>
-        public Rotate(double x, double y, double z, ModuleBase input)
+        public Rotate(Double x, Double y, Double z, ModuleBase input)
             : base(1)
         {
             Modules[0] = input;
@@ -69,7 +69,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets or sets the rotation around the x-axis in degree.
         /// </summary>
-        public double X
+        public Double X
         {
             get { return _x; }
             set { SetAngles(value, _y, _z); }
@@ -78,7 +78,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets or sets the rotation around the y-axis in degree.
         /// </summary>
-        public double Y
+        public Double Y
         {
             get { return _y; }
             set { SetAngles(_x, value, _z); }
@@ -87,7 +87,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets or sets the rotation around the z-axis in degree.
         /// </summary>
-        public double Z
+        public Double Z
         {
             get { return _x; }
             set { SetAngles(_x, _y, value); }
@@ -103,7 +103,7 @@ namespace LibNoise.Operator
         /// <param name="x">The rotation around the x-axis.</param>
         /// <param name="y">The rotation around the y-axis.</param>
         /// <param name="z">The rotation around the z-axis.</param>
-        private void SetAngles(double x, double y, double z)
+        private void SetAngles(Double x, Double y, Double z)
         {
             var xc = Math.Cos(x * Mathf.Deg2Rad);
             var yc = Math.Cos(y * Mathf.Deg2Rad);
@@ -136,7 +136,7 @@ namespace LibNoise.Operator
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public override double GetValue(double x, double y, double z)
+        public override Double GetValue(Double x, Double y, Double z)
         {
             Debug.Assert(Modules[0] != null);
             var nx = (_x1Matrix * x) + (_y1Matrix * y) + (_z1Matrix * z);

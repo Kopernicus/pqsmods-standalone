@@ -4,6 +4,7 @@
  * Licensed under the terms of the MIT license
  */
 
+using System;
 using System.Linq;
 using PQS.Unity;
 
@@ -23,17 +24,17 @@ namespace PQS
             /// <summary>
             /// The name of the landclass
             /// </summary>
-            public string name;
+            public String name;
 
             /// <summary>
             /// Where the landclass starts
             /// </summary>
-            public double altStart;
+            public Double altStart;
 
             /// <summary>
             /// Where the landclass ends
             /// </summary>
-            public double altEnd;
+            public Double altEnd;
 
             /// <summary>
             /// The color of the surface in this area
@@ -43,12 +44,12 @@ namespace PQS
             /// <summary>
             /// Whether the color should get lerped into the next landclass
             /// </summary>
-            public bool lerpToNext;
+            public Boolean lerpToNext;
 
             /// <summary>
             /// The difference between <see cref="altStart"/> and <see cref="altEnd"/>
             /// </summary>
-            public double fractalDelta
+            public Double fractalDelta
             {
                 get { return altEnd - altStart; }
             }
@@ -56,7 +57,7 @@ namespace PQS
             /// <summary>
             /// Initializes a new instance of the <see cref="LandClass"/> class.
             /// </summary>
-            public LandClass(string name, double fractalStart, double fractalEnd, Color baseColor)
+            public LandClass(String name, Double fractalStart, Double fractalEnd, Color baseColor)
             {
                 this.name = name;
                 this.altStart = fractalStart;
@@ -73,12 +74,12 @@ namespace PQS
         /// <summary>
         /// How much the colors should get lerped into each other
         /// </summary>
-        public float blend;
+        public Single blend;
 
         /// <summary>
         /// How many landclasses exist
         /// </summary>
-        public int lcCount
+        public Int32 lcCount
         {
             get { return landClasses.Length; }
         }
@@ -86,17 +87,17 @@ namespace PQS
         /// <summary>
         /// The minimum height
         /// </summary>
-        public double minHeight;
+        public Double minHeight;
 
         /// <summary>
         /// The maximum height
         /// </summary>
-        public double maxHeight;
+        public Double maxHeight;
 
         /// <summary>
         /// The difference between <see cref="minHeight"/> and <see cref="maxHeight"/>
         /// </summary>
-        private double heightDelta
+        private Double heightDelta
         {
             get { return maxHeight - minHeight; }
         }
@@ -104,7 +105,7 @@ namespace PQS
         /// <summary>
         /// The absolute minimum height
         /// </summary>
-        private double heightMin
+        private Double heightMin
         {
             get { return sphere.radius + minHeight; }
         }
@@ -114,14 +115,14 @@ namespace PQS
         /// </summary>
         public override void OnVertexBuild(VertexBuildData data)
         {
-            double vHeight = (data.vertHeight - heightMin) / heightDelta;
-            int index;
+            Double vHeight = (data.vertHeight - heightMin) / heightDelta;
+            Int32 index;
             LandClass lcSelected = SelectLandClassByHeight(vHeight, out index);
             if (lcSelected.lerpToNext)
             {
                 data.vertColor = Color.Lerp(data.vertColor,
                     Color.Lerp(lcSelected.color, landClasses[index + 1].color,
-                        (float)((vHeight - lcSelected.altStart) / (lcSelected.altEnd - lcSelected.altStart))), blend);
+                        (Single)((vHeight - lcSelected.altStart) / (lcSelected.altEnd - lcSelected.altStart))), blend);
             }
             else
             {
@@ -133,9 +134,9 @@ namespace PQS
         /// Selects a landclass based on it's height
         /// </summary>
         /// <param name="height">The height of the landclass area.</param>
-        public LandClass SelectLandClassByHeight(double height, out int index)
+        public LandClass SelectLandClassByHeight(Double height, out Int32 index)
         {
-            for (int itr = 0; itr < lcCount; itr++)
+            for (Int32 itr = 0; itr < lcCount; itr++)
             {
                 index = itr;
                 if (height >= landClasses[itr].altStart && height <= landClasses[itr].altEnd)

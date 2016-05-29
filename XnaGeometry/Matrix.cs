@@ -33,8 +33,8 @@ namespace XnaGeometry
     {
         #region Public Constructors
         
-        public Matrix(double m11, double m12, double m13, double m14, double m21, double m22, double m23, double m24, double m31,
-                      double m32, double m33, double m34, double m41, double m42, double m43, double m44)
+        public Matrix(Double m11, Double m12, Double m13, Double m14, Double m21, Double m22, Double m23, Double m24, Double m31,
+                      Double m32, Double m33, Double m34, Double m41, Double m42, Double m43, Double m44)
         {
             this.M11 = m11;
             this.M12 = m12;
@@ -59,22 +59,22 @@ namespace XnaGeometry
 
         #region Public Fields
 
-        public double M11;
-        public double M12;
-        public double M13;
-        public double M14;
-        public double M21;
-        public double M22;
-        public double M23;
-        public double M24;
-        public double M31;
-        public double M32;
-        public double M33;
-        public double M34;
-        public double M41;
-        public double M42;
-        public double M43;
-        public double M44;
+        public Double M11;
+        public Double M12;
+        public Double M13;
+        public Double M14;
+        public Double M21;
+        public Double M22;
+        public Double M23;
+        public Double M24;
+        public Double M31;
+        public Double M32;
+        public Double M33;
+        public Double M34;
+        public Double M41;
+        public Double M42;
+        public Double M43;
+        public Double M44;
 
         #endregion Public Fields
 
@@ -141,9 +141,9 @@ namespace XnaGeometry
 
 		
 		// required for OpenGL 2.0 projection matrix stuff
-		public static double[] ToFloatArray(Matrix mat)
+		public static Double[] ToFloatArray(Matrix mat)
         {
-			double [] matarray = {
+			Double[] matarray = {
 									mat.M11, mat.M12, mat.M13, mat.M14,
 									mat.M21, mat.M22, mat.M23, mat.M24,
 									mat.M31, mat.M32, mat.M33, mat.M34,
@@ -322,14 +322,14 @@ namespace XnaGeometry
 		    vector.X = objectPosition.X - cameraPosition.X;
 		    vector.Y = objectPosition.Y - cameraPosition.Y;
 		    vector.Z = objectPosition.Z - cameraPosition.Z;
-		    double num = vector.LengthSquared();
+		    Double num = vector.LengthSquared();
 		    if (num < 0.0001f)
 		    {
 		        vector = cameraForwardVector.HasValue ? -cameraForwardVector.Value : Vector3.Forward;
 		    }
 		    else
 		    {
-		        Vector3.Multiply(ref vector, (double) (1f / ((double) Math.Sqrt((double) num))), out vector);
+		        Vector3.Multiply(ref vector, (Double) (1f / ((Double) Math.Sqrt((Double) num))), out vector);
 		    }
 		    Vector3.Cross(ref cameraUpVector, ref vector, out vector3);
 		    vector3.Normalize();
@@ -356,7 +356,7 @@ namespace XnaGeometry
         public static Matrix CreateConstrainedBillboard(Vector3 objectPosition, Vector3 cameraPosition,
             Vector3 rotateAxis, Nullable<Vector3> cameraForwardVector, Nullable<Vector3> objectForwardVector)
         {
-            double num;
+            Double num;
 		    Vector3 vector;
 		    Matrix matrix;
 		    Vector3 vector2;
@@ -364,14 +364,14 @@ namespace XnaGeometry
 		    vector2.X = objectPosition.X - cameraPosition.X;
 		    vector2.Y = objectPosition.Y - cameraPosition.Y;
 		    vector2.Z = objectPosition.Z - cameraPosition.Z;
-		    double num2 = vector2.LengthSquared();
+		    Double num2 = vector2.LengthSquared();
 		    if (num2 < 0.0001f)
 		    {
 		        vector2 = cameraForwardVector.HasValue ? -cameraForwardVector.Value : Vector3.Forward;
 		    }
 		    else
 		    {
-		        Vector3.Multiply(ref vector2, (double) (1f / ((double) Math.Sqrt((double) num2))), out vector2);
+		        Vector3.Multiply(ref vector2, (Double) (1f / ((Double) Math.Sqrt((Double) num2))), out vector2);
 		    }
 		    Vector3 vector4 = rotateAxis;
 		    Vector3.Dot(ref rotateAxis, ref vector2, out num);
@@ -428,21 +428,21 @@ namespace XnaGeometry
         public static void CreateConstrainedBillboard(ref Vector3 objectPosition, ref Vector3 cameraPosition,
             ref Vector3 rotateAxis, Vector3? cameraForwardVector, Vector3? objectForwardVector, out Matrix result)
         {
-            double num;
+            Double num;
 		    Vector3 vector;
 		    Vector3 vector2;
 		    Vector3 vector3;
 		    vector2.X = objectPosition.X - cameraPosition.X;
 		    vector2.Y = objectPosition.Y - cameraPosition.Y;
 		    vector2.Z = objectPosition.Z - cameraPosition.Z;
-		    double num2 = vector2.LengthSquared();
+		    Double num2 = vector2.LengthSquared();
 		    if (num2 < 0.0001f)
 		    {
 		        vector2 = cameraForwardVector.HasValue ? -cameraForwardVector.Value : Vector3.Forward;
 		    }
 		    else
 		    {
-		        Vector3.Multiply(ref vector2, (double) (1f / ((double) Math.Sqrt((double) num2))), out vector2);
+		        Vector3.Multiply(ref vector2, (Double) (1f / ((Double) Math.Sqrt((Double) num2))), out vector2);
 		    }
 		    Vector3 vector4 = rotateAxis;
 		    Vector3.Dot(ref rotateAxis, ref vector2, out num);
@@ -495,20 +495,20 @@ namespace XnaGeometry
         }
 
 
-        public static Matrix CreateFromAxisAngle(Vector3 axis, double angle)
+        public static Matrix CreateFromAxisAngle(Vector3 axis, Double angle)
         {
             Matrix matrix;
-		    double x = axis.X;
-		    double y = axis.Y;
-		    double z = axis.Z;
-		    double num2 = (double) Math.Sin((double) angle);
-		    double num = (double) Math.Cos((double) angle);
-		    double num11 = x * x;
-		    double num10 = y * y;
-		    double num9 = z * z;
-		    double num8 = x * y;
-		    double num7 = x * z;
-		    double num6 = y * z;
+		    Double x = axis.X;
+		    Double y = axis.Y;
+		    Double z = axis.Z;
+		    Double num2 = (Double) Math.Sin((Double) angle);
+		    Double num = (Double) Math.Cos((Double) angle);
+		    Double num11 = x * x;
+		    Double num10 = y * y;
+		    Double num9 = z * z;
+		    Double num8 = x * y;
+		    Double num7 = x * z;
+		    Double num6 = y * z;
 		    matrix.M11 = num11 + (num * (1f - num11));
 		    matrix.M12 = (num8 - (num * num8)) + (num2 * z);
 		    matrix.M13 = (num7 - (num * num7)) - (num2 * y);
@@ -530,19 +530,19 @@ namespace XnaGeometry
         }
 
 
-        public static void CreateFromAxisAngle(ref Vector3 axis, double angle, out Matrix result)
+        public static void CreateFromAxisAngle(ref Vector3 axis, Double angle, out Matrix result)
         {
-            double x = axis.X;
-		    double y = axis.Y;
-		    double z = axis.Z;
-		    double num2 = (double) Math.Sin((double) angle);
-		    double num = (double) Math.Cos((double) angle);
-		    double num11 = x * x;
-		    double num10 = y * y;
-		    double num9 = z * z;
-		    double num8 = x * y;
-		    double num7 = x * z;
-		    double num6 = y * z;
+            Double x = axis.X;
+		    Double y = axis.Y;
+		    Double z = axis.Z;
+		    Double num2 = (Double) Math.Sin((Double) angle);
+		    Double num = (Double) Math.Cos((Double) angle);
+		    Double num11 = x * x;
+		    Double num10 = y * y;
+		    Double num9 = z * z;
+		    Double num8 = x * y;
+		    Double num7 = x * z;
+		    Double num6 = y * z;
 		    result.M11 = num11 + (num * (1f - num11));
 		    result.M12 = (num8 - (num * num8)) + (num2 * z);
 		    result.M13 = (num7 - (num * num7)) - (num2 * y);
@@ -565,15 +565,15 @@ namespace XnaGeometry
         public static Matrix CreateFromQuaternion(Quaternion quaternion)
         {
             Matrix matrix;
-		    double num9 = quaternion.X * quaternion.X;
-		    double num8 = quaternion.Y * quaternion.Y;
-		    double num7 = quaternion.Z * quaternion.Z;
-		    double num6 = quaternion.X * quaternion.Y;
-		    double num5 = quaternion.Z * quaternion.W;
-		    double num4 = quaternion.Z * quaternion.X;
-		    double num3 = quaternion.Y * quaternion.W;
-		    double num2 = quaternion.Y * quaternion.Z;
-		    double num = quaternion.X * quaternion.W;
+		    Double num9 = quaternion.X * quaternion.X;
+		    Double num8 = quaternion.Y * quaternion.Y;
+		    Double num7 = quaternion.Z * quaternion.Z;
+		    Double num6 = quaternion.X * quaternion.Y;
+		    Double num5 = quaternion.Z * quaternion.W;
+		    Double num4 = quaternion.Z * quaternion.X;
+		    Double num3 = quaternion.Y * quaternion.W;
+		    Double num2 = quaternion.Y * quaternion.Z;
+		    Double num = quaternion.X * quaternion.W;
 		    matrix.M11 = 1f - (2f * (num8 + num7));
 		    matrix.M12 = 2f * (num6 + num5);
 		    matrix.M13 = 2f * (num4 - num3);
@@ -596,15 +596,15 @@ namespace XnaGeometry
 
         public static void CreateFromQuaternion(ref Quaternion quaternion, out Matrix result)
         {
-            double num9 = quaternion.X * quaternion.X;
-		    double num8 = quaternion.Y * quaternion.Y;
-		    double num7 = quaternion.Z * quaternion.Z;
-		    double num6 = quaternion.X * quaternion.Y;
-		    double num5 = quaternion.Z * quaternion.W;
-		    double num4 = quaternion.Z * quaternion.X;
-		    double num3 = quaternion.Y * quaternion.W;
-		    double num2 = quaternion.Y * quaternion.Z;
-		    double num = quaternion.X * quaternion.W;
+            Double num9 = quaternion.X * quaternion.X;
+		    Double num8 = quaternion.Y * quaternion.Y;
+		    Double num7 = quaternion.Z * quaternion.Z;
+		    Double num6 = quaternion.X * quaternion.Y;
+		    Double num5 = quaternion.Z * quaternion.W;
+		    Double num4 = quaternion.Z * quaternion.X;
+		    Double num3 = quaternion.Y * quaternion.W;
+		    Double num2 = quaternion.Y * quaternion.Z;
+		    Double num = quaternion.X * quaternion.W;
 		    result.M11 = 1f - (2f * (num8 + num7));
 		    result.M12 = 2f * (num6 + num5);
 		    result.M13 = 2f * (num4 - num3);
@@ -623,7 +623,7 @@ namespace XnaGeometry
 		    result.M44 = 1f;
         }
 		
-		public static Matrix CreateFromYawPitchRoll(double yaw, double pitch, double roll)
+		public static Matrix CreateFromYawPitchRoll(Double yaw, Double pitch, Double roll)
 		{
 			Matrix matrix;
 		    Quaternion quaternion;
@@ -633,9 +633,9 @@ namespace XnaGeometry
 		}
 		
 		public static void CreateFromYawPitchRoll(
-         double yaw,
-         double pitch,
-         double roll,
+         Double yaw,
+         Double pitch,
+         Double roll,
          out Matrix result)
 		{
 			Quaternion quaternion;
@@ -720,7 +720,7 @@ namespace XnaGeometry
         }
 
 
-        public static Matrix CreateOrthographic(double width, double height, double zNearPlane, double zFarPlane)
+        public static Matrix CreateOrthographic(Double width, Double height, Double zNearPlane, Double zFarPlane)
         {
             Matrix matrix;
 		    matrix.M11 = 2f / width;
@@ -736,7 +736,7 @@ namespace XnaGeometry
         }
 
 
-        public static void CreateOrthographic(double width, double height, double zNearPlane, double zFarPlane, out Matrix result)
+        public static void CreateOrthographic(Double width, Double height, Double zNearPlane, Double zFarPlane, out Matrix result)
         {
             result.M11 = 2f / width;
 		    result.M12 = result.M13 = result.M14 = 0f;
@@ -750,50 +750,50 @@ namespace XnaGeometry
         }
 
 
-        public static Matrix CreateOrthographicOffCenter(double left, double right, double bottom, double top, double zNearPlane, double zFarPlane)
+        public static Matrix CreateOrthographicOffCenter(Double left, Double right, Double bottom, Double top, Double zNearPlane, Double zFarPlane)
         {
 			Matrix matrix;
-			matrix.M11 = (double)(2.0 / ((double)right - (double)left));
+			matrix.M11 = (Double)(2.0 / ((Double)right - (Double)left));
 			matrix.M12 = 0.0f;
 			matrix.M13 = 0.0f;
 			matrix.M14 = 0.0f;
 			matrix.M21 = 0.0f;
-			matrix.M22 = (double)(2.0 / ((double)top - (double)bottom));
+			matrix.M22 = (Double)(2.0 / ((Double)top - (Double)bottom));
 			matrix.M23 = 0.0f;
 			matrix.M24 = 0.0f;
 			matrix.M31 = 0.0f;
 			matrix.M32 = 0.0f;
-			matrix.M33 = (double)(1.0 / ((double)zNearPlane - (double)zFarPlane));
+			matrix.M33 = (Double)(1.0 / ((Double)zNearPlane - (Double)zFarPlane));
 			matrix.M34 = 0.0f;
-			matrix.M41 = (double)(((double)left + (double)right) / ((double)left - (double)right));
-			matrix.M42 = (double)(((double)top + (double)bottom) / ((double)bottom - (double)top));
-			matrix.M43 = (double)((double)zNearPlane / ((double)zNearPlane - (double)zFarPlane));
+			matrix.M41 = (Double)(((Double)left + (Double)right) / ((Double)left - (Double)right));
+			matrix.M42 = (Double)(((Double)top + (Double)bottom) / ((Double)bottom - (Double)top));
+			matrix.M43 = (Double)((Double)zNearPlane / ((Double)zNearPlane - (Double)zFarPlane));
 			matrix.M44 = 1.0f;
 			return matrix;
         }
 
         
-        public static void CreateOrthographicOffCenter(double left, double right, double bottom, double top, double zNearPlane, double zFarPlane, out Matrix result)
+        public static void CreateOrthographicOffCenter(Double left, Double right, Double bottom, Double top, Double zNearPlane, Double zFarPlane, out Matrix result)
         {
-			result.M11 = (double)(2.0 / ((double)right - (double)left));
+			result.M11 = (Double)(2.0 / ((Double)right - (Double)left));
 			result.M12 = 0.0f;
 			result.M13 = 0.0f;
 			result.M14 = 0.0f;
 			result.M21 = 0.0f;
-			result.M22 = (double)(2.0 / ((double)top - (double)bottom));
+			result.M22 = (Double)(2.0 / ((Double)top - (Double)bottom));
 			result.M23 = 0.0f;
 			result.M24 = 0.0f;
 			result.M31 = 0.0f;
 			result.M32 = 0.0f;
-			result.M33 = (double)(1.0 / ((double)zNearPlane - (double)zFarPlane));
+			result.M33 = (Double)(1.0 / ((Double)zNearPlane - (Double)zFarPlane));
 			result.M34 = 0.0f;
-			result.M41 = (double)(((double)left + (double)right) / ((double)left - (double)right));
-			result.M42 = (double)(((double)top + (double)bottom) / ((double)bottom - (double)top));
-			result.M43 = (double)((double)zNearPlane / ((double)zNearPlane - (double)zFarPlane));
+			result.M41 = (Double)(((Double)left + (Double)right) / ((Double)left - (Double)right));
+			result.M42 = (Double)(((Double)top + (Double)bottom) / ((Double)bottom - (Double)top));
+			result.M43 = (Double)((Double)zNearPlane / ((Double)zNearPlane - (Double)zFarPlane));
 			result.M44 = 1.0f;
 		}
 
-        public static Matrix CreatePerspective(double width, double height, double nearPlaneDistance, double farPlaneDistance)
+        public static Matrix CreatePerspective(Double width, Double height, Double nearPlaneDistance, Double farPlaneDistance)
         {
             Matrix matrix;
 		    if (nearPlaneDistance <= 0f)
@@ -821,7 +821,7 @@ namespace XnaGeometry
         }
 
 
-        public static void CreatePerspective(double width, double height, double nearPlaneDistance, double farPlaneDistance, out Matrix result)
+        public static void CreatePerspective(Double width, Double height, Double nearPlaneDistance, Double farPlaneDistance, out Matrix result)
         {
             if (nearPlaneDistance <= 0f)
 		    {
@@ -847,7 +847,7 @@ namespace XnaGeometry
         }
 
 
-        public static Matrix CreatePerspectiveFieldOfView(double fieldOfView, double aspectRatio, double nearPlaneDistance, double farPlaneDistance)
+        public static Matrix CreatePerspectiveFieldOfView(Double fieldOfView, Double aspectRatio, Double nearPlaneDistance, Double farPlaneDistance)
         {
             Matrix matrix;
 		    if ((fieldOfView <= 0f) || (fieldOfView >= 3.141593f))
@@ -866,8 +866,8 @@ namespace XnaGeometry
 		    {
 		        throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
 		    }
-		    double num = 1f / ((double) Math.Tan((double) (fieldOfView * 0.5f)));
-		    double num9 = num / aspectRatio;
+		    Double num = 1f / ((Double) Math.Tan((Double) (fieldOfView * 0.5f)));
+		    Double num9 = num / aspectRatio;
 		    matrix.M11 = num9;
 		    matrix.M12 = matrix.M13 = matrix.M14 = 0f;
 		    matrix.M22 = num;
@@ -881,7 +881,7 @@ namespace XnaGeometry
         }
 
 
-        public static void CreatePerspectiveFieldOfView(double fieldOfView, double aspectRatio, double nearPlaneDistance, double farPlaneDistance, out Matrix result)
+        public static void CreatePerspectiveFieldOfView(Double fieldOfView, Double aspectRatio, Double nearPlaneDistance, Double farPlaneDistance, out Matrix result)
         {
             if ((fieldOfView <= 0f) || (fieldOfView >= 3.141593f))
 		    {
@@ -899,8 +899,8 @@ namespace XnaGeometry
 		    {
 		        throw new ArgumentException("nearPlaneDistance >= farPlaneDistance");
 		    }
-		    double num = 1f / ((double) Math.Tan((double) (fieldOfView * 0.5f)));
-		    double num9 = num / aspectRatio;
+		    Double num = 1f / ((Double) Math.Tan((Double) (fieldOfView * 0.5f)));
+		    Double num9 = num / aspectRatio;
 		    result.M11 = num9;
 		    result.M12 = result.M13 = result.M14 = 0f;
 		    result.M22 = num;
@@ -913,7 +913,7 @@ namespace XnaGeometry
         }
 
 
-        public static Matrix CreatePerspectiveOffCenter(double left, double right, double bottom, double top, double nearPlaneDistance, double farPlaneDistance)
+        public static Matrix CreatePerspectiveOffCenter(Double left, Double right, Double bottom, Double top, Double nearPlaneDistance, Double farPlaneDistance)
         {
             Matrix matrix;
 		    if (nearPlaneDistance <= 0f)
@@ -942,7 +942,7 @@ namespace XnaGeometry
         }
 
 
-        public static void CreatePerspectiveOffCenter(double left, double right, double bottom, double top, double nearPlaneDistance, double farPlaneDistance, out Matrix result)
+        public static void CreatePerspectiveOffCenter(Double left, Double right, Double bottom, Double top, Double nearPlaneDistance, Double farPlaneDistance, out Matrix result)
         {
             if (nearPlaneDistance <= 0f)
 		    {
@@ -969,12 +969,12 @@ namespace XnaGeometry
         }
 
 
-        public static Matrix CreateRotationX(double radians)
+        public static Matrix CreateRotationX(Double radians)
         {
             Matrix returnMatrix = Matrix.Identity;
 
-			var val1 = (double)Math.Cos(radians);
-			var val2 = (double)Math.Sin(radians);
+			var val1 = (Double)Math.Cos(radians);
+			var val2 = (Double)Math.Sin(radians);
 			
             returnMatrix.M22 = val1;
             returnMatrix.M23 = val2;
@@ -986,12 +986,12 @@ namespace XnaGeometry
         }
 
 
-        public static void CreateRotationX(double radians, out Matrix result)
+        public static void CreateRotationX(Double radians, out Matrix result)
         {
             result = Matrix.Identity;
 
-			var val1 = (double)Math.Cos(radians);
-			var val2 = (double)Math.Sin(radians);
+			var val1 = (Double)Math.Cos(radians);
+			var val2 = (Double)Math.Sin(radians);
 			
             result.M22 = val1;
             result.M23 = val2;
@@ -999,12 +999,12 @@ namespace XnaGeometry
             result.M33 = val1;
         }
 
-        public static Matrix CreateRotationY(double radians)
+        public static Matrix CreateRotationY(Double radians)
         {
             Matrix returnMatrix = Matrix.Identity;
 			
-			var val1 = (double)Math.Cos(radians);
-			var val2 = (double)Math.Sin(radians);
+			var val1 = (Double)Math.Cos(radians);
+			var val2 = (Double)Math.Sin(radians);
 			
             returnMatrix.M11 = val1;
             returnMatrix.M13 = -val2;
@@ -1015,12 +1015,12 @@ namespace XnaGeometry
         }
 
 
-        public static void CreateRotationY(double radians, out Matrix result)
+        public static void CreateRotationY(Double radians, out Matrix result)
         {
             result = Matrix.Identity;
 
-            var val1 = (double)Math.Cos(radians);
-			var val2 = (double)Math.Sin(radians);
+            var val1 = (Double)Math.Cos(radians);
+			var val2 = (Double)Math.Sin(radians);
 			
             result.M11 = val1;
             result.M13 = -val2;
@@ -1029,12 +1029,12 @@ namespace XnaGeometry
         }
 
 
-        public static Matrix CreateRotationZ(double radians)
+        public static Matrix CreateRotationZ(Double radians)
         {
             Matrix returnMatrix = Matrix.Identity;
 
-			var val1 = (double)Math.Cos(radians);
-			var val2 = (double)Math.Sin(radians);
+			var val1 = (Double)Math.Cos(radians);
+			var val2 = (Double)Math.Sin(radians);
 			
             returnMatrix.M11 = val1;
             returnMatrix.M12 = val2;
@@ -1045,12 +1045,12 @@ namespace XnaGeometry
         }
 
 
-        public static void CreateRotationZ(double radians, out Matrix result)
+        public static void CreateRotationZ(Double radians, out Matrix result)
         {
             result = Matrix.Identity;
 
-			var val1 = (double)Math.Cos(radians);
-			var val2 = (double)Math.Sin(radians);
+			var val1 = (Double)Math.Cos(radians);
+			var val2 = (Double)Math.Sin(radians);
 			
             result.M11 = val1;
             result.M12 = val2;
@@ -1059,7 +1059,7 @@ namespace XnaGeometry
         }
 
 
-        public static Matrix CreateScale(double scale)
+        public static Matrix CreateScale(Double scale)
         {
 			Matrix result;
             result.M11 = scale;
@@ -1082,7 +1082,7 @@ namespace XnaGeometry
         }
 
 
-        public static void CreateScale(double scale, out Matrix result)
+        public static void CreateScale(Double scale, out Matrix result)
         {
 			result.M11 = scale;
 			result.M12 = 0;
@@ -1103,7 +1103,7 @@ namespace XnaGeometry
         }
 
 
-        public static Matrix CreateScale(double xScale, double yScale, double zScale)
+        public static Matrix CreateScale(Double xScale, Double yScale, Double zScale)
         {
             Matrix result;
 			result.M11 = xScale;
@@ -1126,7 +1126,7 @@ namespace XnaGeometry
         }
 
 
-        public static void CreateScale(double xScale, double yScale, double zScale, out Matrix result)
+        public static void CreateScale(Double xScale, Double yScale, Double zScale, out Matrix result)
         {
 			result.M11 = xScale;
 			result.M12 = 0;
@@ -1190,7 +1190,7 @@ namespace XnaGeometry
 			result.M44 = 1;
         }
 
-        public static Matrix CreateTranslation(double xPosition, double yPosition, double zPosition)
+        public static Matrix CreateTranslation(Double xPosition, Double yPosition, Double zPosition)
         {
             Matrix result;
 			result.M11 = 1;
@@ -1257,7 +1257,7 @@ namespace XnaGeometry
         }
 
 
-        public static void CreateTranslation(double xPosition, double yPosition, double zPosition, out Matrix result)
+        public static void CreateTranslation(Double xPosition, Double yPosition, Double zPosition, out Matrix result)
         {
             result.M11 = 1;
 			result.M12 = 0;
@@ -1302,30 +1302,30 @@ namespace XnaGeometry
                         result.M44 = 1f;
         }
 		
-        public double Determinant()
+        public Double Determinant()
         {
-            double num22 = this.M11;
-		    double num21 = this.M12;
-		    double num20 = this.M13;
-		    double num19 = this.M14;
-		    double num12 = this.M21;
-		    double num11 = this.M22;
-		    double num10 = this.M23;
-		    double num9 = this.M24;
-		    double num8 = this.M31;
-		    double num7 = this.M32;
-		    double num6 = this.M33;
-		    double num5 = this.M34;
-		    double num4 = this.M41;
-		    double num3 = this.M42;
-		    double num2 = this.M43;
-		    double num = this.M44;
-		    double num18 = (num6 * num) - (num5 * num2);
-		    double num17 = (num7 * num) - (num5 * num3);
-		    double num16 = (num7 * num2) - (num6 * num3);
-		    double num15 = (num8 * num) - (num5 * num4);
-		    double num14 = (num8 * num2) - (num6 * num4);
-		    double num13 = (num8 * num3) - (num7 * num4);
+            Double num22 = this.M11;
+		    Double num21 = this.M12;
+		    Double num20 = this.M13;
+		    Double num19 = this.M14;
+		    Double num12 = this.M21;
+		    Double num11 = this.M22;
+		    Double num10 = this.M23;
+		    Double num9 = this.M24;
+		    Double num8 = this.M31;
+		    Double num7 = this.M32;
+		    Double num6 = this.M33;
+		    Double num5 = this.M34;
+		    Double num4 = this.M41;
+		    Double num3 = this.M42;
+		    Double num2 = this.M43;
+		    Double num = this.M44;
+		    Double num18 = (num6 * num) - (num5 * num2);
+		    Double num17 = (num7 * num) - (num5 * num3);
+		    Double num16 = (num7 * num2) - (num6 * num3);
+		    Double num15 = (num8 * num) - (num5 * num4);
+		    Double num14 = (num8 * num2) - (num6 * num4);
+		    Double num13 = (num8 * num3) - (num7 * num4);
 		    return ((((num22 * (((num11 * num18) - (num10 * num17)) + (num9 * num16))) - (num21 * (((num12 * num18) - (num10 * num15)) + (num9 * num14)))) + (num20 * (((num12 * num17) - (num11 * num15)) + (num9 * num13)))) - (num19 * (((num12 * num16) - (num11 * num14)) + (num10 * num13))));
         }
 
@@ -1373,9 +1373,9 @@ namespace XnaGeometry
         }
 
 
-        public static Matrix Divide(Matrix matrix1, double divider)
+        public static Matrix Divide(Matrix matrix1, Double divider)
         {
-		    double num = 1f / divider;
+		    Double num = 1f / divider;
 		    matrix1.M11 = matrix1.M11 * num;
 		    matrix1.M12 = matrix1.M12 * num;
 		    matrix1.M13 = matrix1.M13 * num;
@@ -1396,9 +1396,9 @@ namespace XnaGeometry
         }
 
 
-        public static void Divide(ref Matrix matrix1, double divider, out Matrix result)
+        public static void Divide(ref Matrix matrix1, Double divider, out Matrix result)
         {
-            double num = 1f / divider;
+            Double num = 1f / divider;
 		    result.M11 = matrix1.M11 * num;
 		    result.M12 = matrix1.M12 * num;
 		    result.M13 = matrix1.M13 * num;
@@ -1418,15 +1418,15 @@ namespace XnaGeometry
         }
 
 
-        public bool Equals(Matrix other)
+        public Boolean Equals(Matrix other)
         {
             return ((((((this.M11 == other.M11) && (this.M22 == other.M22)) && ((this.M33 == other.M33) && (this.M44 == other.M44))) && (((this.M12 == other.M12) && (this.M13 == other.M13)) && ((this.M14 == other.M14) && (this.M21 == other.M21)))) && ((((this.M23 == other.M23) && (this.M24 == other.M24)) && ((this.M31 == other.M31) && (this.M32 == other.M32))) && (((this.M34 == other.M34) && (this.M41 == other.M41)) && (this.M42 == other.M42)))) && (this.M43 == other.M43));
         }
 
 
-        public override bool Equals(object obj)
+        public override Boolean Equals(Object obj)
         {
-            bool flag = false;
+            Boolean flag = false;
 		    if (obj is Matrix)
 		    {
 		        flag = this.Equals((Matrix) obj);
@@ -1435,7 +1435,7 @@ namespace XnaGeometry
         }
 
 
-        public override int GetHashCode()
+        public override Int32 GetHashCode()
         {
             return (((((((((((((((this.M11.GetHashCode() + this.M12.GetHashCode()) + this.M13.GetHashCode()) + this.M14.GetHashCode()) + this.M21.GetHashCode()) + this.M22.GetHashCode()) + this.M23.GetHashCode()) + this.M24.GetHashCode()) + this.M31.GetHashCode()) + this.M32.GetHashCode()) + this.M33.GetHashCode()) + this.M34.GetHashCode()) + this.M41.GetHashCode()) + this.M42.GetHashCode()) + this.M43.GetHashCode()) + this.M44.GetHashCode());
         }
@@ -1450,62 +1450,62 @@ namespace XnaGeometry
 
         public static void Invert(ref Matrix matrix, out Matrix result)
         {
-			double num1 = matrix.M11;
-			double num2 = matrix.M12;
-			double num3 = matrix.M13;
-			double num4 = matrix.M14;
-			double num5 = matrix.M21;
-			double num6 = matrix.M22;
-			double num7 = matrix.M23;
-			double num8 = matrix.M24;
-			double num9 = matrix.M31;
-			double num10 = matrix.M32;
-			double num11 = matrix.M33;
-			double num12 = matrix.M34;
-			double num13 = matrix.M41;
-			double num14 = matrix.M42;
-			double num15 = matrix.M43;
-			double num16 = matrix.M44;
-			double num17 = (double) ((double) num11 * (double) num16 - (double) num12 * (double) num15);
-			double num18 = (double) ((double) num10 * (double) num16 - (double) num12 * (double) num14);
-			double num19 = (double) ((double) num10 * (double) num15 - (double) num11 * (double) num14);
-			double num20 = (double) ((double) num9 * (double) num16 - (double) num12 * (double) num13);
-			double num21 = (double) ((double) num9 * (double) num15 - (double) num11 * (double) num13);
-			double num22 = (double) ((double) num9 * (double) num14 - (double) num10 * (double) num13);
-			double num23 = (double) ((double) num6 * (double) num17 - (double) num7 * (double) num18 + (double) num8 * (double) num19);
-			double num24 = (double) -((double) num5 * (double) num17 - (double) num7 * (double) num20 + (double) num8 * (double) num21);
-			double num25 = (double) ((double) num5 * (double) num18 - (double) num6 * (double) num20 + (double) num8 * (double) num22);
-			double num26 = (double) -((double) num5 * (double) num19 - (double) num6 * (double) num21 + (double) num7 * (double) num22);
-			double num27 = (double) (1.0 / ((double) num1 * (double) num23 + (double) num2 * (double) num24 + (double) num3 * (double) num25 + (double) num4 * (double) num26));
+			Double num1 = matrix.M11;
+			Double num2 = matrix.M12;
+			Double num3 = matrix.M13;
+			Double num4 = matrix.M14;
+			Double num5 = matrix.M21;
+			Double num6 = matrix.M22;
+			Double num7 = matrix.M23;
+			Double num8 = matrix.M24;
+			Double num9 = matrix.M31;
+			Double num10 = matrix.M32;
+			Double num11 = matrix.M33;
+			Double num12 = matrix.M34;
+			Double num13 = matrix.M41;
+			Double num14 = matrix.M42;
+			Double num15 = matrix.M43;
+			Double num16 = matrix.M44;
+			Double num17 = (Double) ((Double) num11 * (Double) num16 - (Double) num12 * (Double) num15);
+			Double num18 = (Double) ((Double) num10 * (Double) num16 - (Double) num12 * (Double) num14);
+			Double num19 = (Double) ((Double) num10 * (Double) num15 - (Double) num11 * (Double) num14);
+			Double num20 = (Double) ((Double) num9 * (Double) num16 - (Double) num12 * (Double) num13);
+			Double num21 = (Double) ((Double) num9 * (Double) num15 - (Double) num11 * (Double) num13);
+			Double num22 = (Double) ((Double) num9 * (Double) num14 - (Double) num10 * (Double) num13);
+			Double num23 = (Double) ((Double) num6 * (Double) num17 - (Double) num7 * (Double) num18 + (Double) num8 * (Double) num19);
+			Double num24 = (Double) -((Double) num5 * (Double) num17 - (Double) num7 * (Double) num20 + (Double) num8 * (Double) num21);
+			Double num25 = (Double) ((Double) num5 * (Double) num18 - (Double) num6 * (Double) num20 + (Double) num8 * (Double) num22);
+			Double num26 = (Double) -((Double) num5 * (Double) num19 - (Double) num6 * (Double) num21 + (Double) num7 * (Double) num22);
+			Double num27 = (Double) (1.0 / ((Double) num1 * (Double) num23 + (Double) num2 * (Double) num24 + (Double) num3 * (Double) num25 + (Double) num4 * (Double) num26));
 			
 			result.M11 = num23 * num27;
 			result.M21 = num24 * num27;
 			result.M31 = num25 * num27;
 			result.M41 = num26 * num27;
-			result.M12 = (double) -((double) num2 * (double) num17 - (double) num3 * (double) num18 + (double) num4 * (double) num19) * num27;
-			result.M22 = (double) ((double) num1 * (double) num17 - (double) num3 * (double) num20 + (double) num4 * (double) num21) * num27;
-			result.M32 = (double) -((double) num1 * (double) num18 - (double) num2 * (double) num20 + (double) num4 * (double) num22) * num27;
-			result.M42 = (double) ((double) num1 * (double) num19 - (double) num2 * (double) num21 + (double) num3 * (double) num22) * num27;
-			double num28 = (double) ((double) num7 * (double) num16 - (double) num8 * (double) num15);
-			double num29 = (double) ((double) num6 * (double) num16 - (double) num8 * (double) num14);
-			double num30 = (double) ((double) num6 * (double) num15 - (double) num7 * (double) num14);
-			double num31 = (double) ((double) num5 * (double) num16 - (double) num8 * (double) num13);
-			double num32 = (double) ((double) num5 * (double) num15 - (double) num7 * (double) num13);
-			double num33 = (double) ((double) num5 * (double) num14 - (double) num6 * (double) num13);
-			result.M13 = (double) ((double) num2 * (double) num28 - (double) num3 * (double) num29 + (double) num4 * (double) num30) * num27;
-			result.M23 = (double) -((double) num1 * (double) num28 - (double) num3 * (double) num31 + (double) num4 * (double) num32) * num27;
-			result.M33 = (double) ((double) num1 * (double) num29 - (double) num2 * (double) num31 + (double) num4 * (double) num33) * num27;
-			result.M43 = (double) -((double) num1 * (double) num30 - (double) num2 * (double) num32 + (double) num3 * (double) num33) * num27;
-			double num34 = (double) ((double) num7 * (double) num12 - (double) num8 * (double) num11);
-			double num35 = (double) ((double) num6 * (double) num12 - (double) num8 * (double) num10);
-			double num36 = (double) ((double) num6 * (double) num11 - (double) num7 * (double) num10);
-			double num37 = (double) ((double) num5 * (double) num12 - (double) num8 * (double) num9);
-			double num38 = (double) ((double) num5 * (double) num11 - (double) num7 * (double) num9);
-			double num39 = (double) ((double) num5 * (double) num10 - (double) num6 * (double) num9);
-			result.M14 = (double) -((double) num2 * (double) num34 - (double) num3 * (double) num35 + (double) num4 * (double) num36) * num27;
-			result.M24 = (double) ((double) num1 * (double) num34 - (double) num3 * (double) num37 + (double) num4 * (double) num38) * num27;
-			result.M34 = (double) -((double) num1 * (double) num35 - (double) num2 * (double) num37 + (double) num4 * (double) num39) * num27;
-			result.M44 = (double) ((double) num1 * (double) num36 - (double) num2 * (double) num38 + (double) num3 * (double) num39) * num27;
+			result.M12 = (Double) -((Double) num2 * (Double) num17 - (Double) num3 * (Double) num18 + (Double) num4 * (Double) num19) * num27;
+			result.M22 = (Double) ((Double) num1 * (Double) num17 - (Double) num3 * (Double) num20 + (Double) num4 * (Double) num21) * num27;
+			result.M32 = (Double) -((Double) num1 * (Double) num18 - (Double) num2 * (Double) num20 + (Double) num4 * (Double) num22) * num27;
+			result.M42 = (Double) ((Double) num1 * (Double) num19 - (Double) num2 * (Double) num21 + (Double) num3 * (Double) num22) * num27;
+			Double num28 = (Double) ((Double) num7 * (Double) num16 - (Double) num8 * (Double) num15);
+			Double num29 = (Double) ((Double) num6 * (Double) num16 - (Double) num8 * (Double) num14);
+			Double num30 = (Double) ((Double) num6 * (Double) num15 - (Double) num7 * (Double) num14);
+			Double num31 = (Double) ((Double) num5 * (Double) num16 - (Double) num8 * (Double) num13);
+			Double num32 = (Double) ((Double) num5 * (Double) num15 - (Double) num7 * (Double) num13);
+			Double num33 = (Double) ((Double) num5 * (Double) num14 - (Double) num6 * (Double) num13);
+			result.M13 = (Double) ((Double) num2 * (Double) num28 - (Double) num3 * (Double) num29 + (Double) num4 * (Double) num30) * num27;
+			result.M23 = (Double) -((Double) num1 * (Double) num28 - (Double) num3 * (Double) num31 + (Double) num4 * (Double) num32) * num27;
+			result.M33 = (Double) ((Double) num1 * (Double) num29 - (Double) num2 * (Double) num31 + (Double) num4 * (Double) num33) * num27;
+			result.M43 = (Double) -((Double) num1 * (Double) num30 - (Double) num2 * (Double) num32 + (Double) num3 * (Double) num33) * num27;
+			Double num34 = (Double) ((Double) num7 * (Double) num12 - (Double) num8 * (Double) num11);
+			Double num35 = (Double) ((Double) num6 * (Double) num12 - (Double) num8 * (Double) num10);
+			Double num36 = (Double) ((Double) num6 * (Double) num11 - (Double) num7 * (Double) num10);
+			Double num37 = (Double) ((Double) num5 * (Double) num12 - (Double) num8 * (Double) num9);
+			Double num38 = (Double) ((Double) num5 * (Double) num11 - (Double) num7 * (Double) num9);
+			Double num39 = (Double) ((Double) num5 * (Double) num10 - (Double) num6 * (Double) num9);
+			result.M14 = (Double) -((Double) num2 * (Double) num34 - (Double) num3 * (Double) num35 + (Double) num4 * (Double) num36) * num27;
+			result.M24 = (Double) ((Double) num1 * (Double) num34 - (Double) num3 * (Double) num37 + (Double) num4 * (Double) num38) * num27;
+			result.M34 = (Double) -((Double) num1 * (Double) num35 - (Double) num2 * (Double) num37 + (Double) num4 * (Double) num39) * num27;
+			result.M44 = (Double) ((Double) num1 * (Double) num36 - (Double) num2 * (Double) num38 + (Double) num3 * (Double) num39) * num27;
 			
 			
 			/*
@@ -1549,7 +1549,7 @@ namespace XnaGeometry
         }
 
 
-        public static Matrix Lerp(Matrix matrix1, Matrix matrix2, double amount)
+        public static Matrix Lerp(Matrix matrix1, Matrix matrix2, Double amount)
         {
 		    matrix1.M11 = matrix1.M11 + ((matrix2.M11 - matrix1.M11) * amount);
 		    matrix1.M12 = matrix1.M12 + ((matrix2.M12 - matrix1.M12) * amount);
@@ -1571,7 +1571,7 @@ namespace XnaGeometry
         }
 
 
-        public static void Lerp(ref Matrix matrix1, ref Matrix matrix2, double amount, out Matrix result)
+        public static void Lerp(ref Matrix matrix1, ref Matrix matrix2, Double amount, out Matrix result)
         {
             result.M11 = matrix1.M11 + ((matrix2.M11 - matrix1.M11) * amount);
 		    result.M12 = matrix1.M12 + ((matrix2.M12 - matrix1.M12) * amount);
@@ -1665,7 +1665,7 @@ namespace XnaGeometry
 			result.M44 = m44;
         }
 
-        public static Matrix Multiply(Matrix matrix1, double factor)
+        public static Matrix Multiply(Matrix matrix1, Double factor)
         {
             matrix1.M11 *= factor;
             matrix1.M12 *= factor;
@@ -1687,7 +1687,7 @@ namespace XnaGeometry
         }
 
 
-        public static void Multiply(ref Matrix matrix1, double factor, out Matrix result)
+        public static void Multiply(ref Matrix matrix1, Double factor, out Matrix result)
         {
             result.M11 = matrix1.M11 * factor;
             result.M12 = matrix1.M12 * factor;
@@ -1781,9 +1781,9 @@ namespace XnaGeometry
         }
 
 
-        public static Matrix operator /(Matrix matrix, double divider)
+        public static Matrix operator /(Matrix matrix, Double divider)
         {
-		    double num = 1f / divider;
+		    Double num = 1f / divider;
 		    matrix.M11 = matrix.M11 * num;
 		    matrix.M12 = matrix.M12 * num;
 		    matrix.M13 = matrix.M13 * num;
@@ -1804,7 +1804,7 @@ namespace XnaGeometry
         }
 
 
-        public static bool operator ==(Matrix matrix1, Matrix matrix2)
+        public static Boolean operator ==(Matrix matrix1, Matrix matrix2)
         {
             return (
                 matrix1.M11 == matrix2.M11 &&
@@ -1827,7 +1827,7 @@ namespace XnaGeometry
         }
 
 
-        public static bool operator !=(Matrix matrix1, Matrix matrix2)
+        public static Boolean operator !=(Matrix matrix1, Matrix matrix2)
         {
             return (
                 matrix1.M11 != matrix2.M11 ||
@@ -1888,7 +1888,7 @@ namespace XnaGeometry
         }
 
 
-        public static Matrix operator *(Matrix matrix, double scaleFactor)
+        public static Matrix operator *(Matrix matrix, Double scaleFactor)
         {
 		    matrix.M11 = matrix.M11 * scaleFactor;
 		    matrix.M12 = matrix.M12 * scaleFactor;
@@ -1997,7 +1997,7 @@ namespace XnaGeometry
         }
 
 
-        public override string ToString()
+        public override String ToString()
         {
             return "{" + String.Format("M11:{0} M12:{1} M13:{2} M14:{3}", M11, M12, M13, M14) + "}"
 				+ " {" + String.Format("M21:{0} M22:{1} M23:{2} M24:{3}", M21, M22, M23, M24) + "}"
@@ -2044,53 +2044,53 @@ namespace XnaGeometry
         /// Helper method for using the Laplace expansion theorem using two rows expansions to calculate major and 
         /// minor determinants of a 4x4 matrix. This method is used for inverting a matrix.
         /// </summary>
-        private static void findDeterminants(ref Matrix matrix, out double major, 
-                                             out double minor1, out double minor2, out double minor3, out double minor4, out double minor5, out double minor6,
-                                             out double minor7, out double minor8, out double minor9, out double minor10, out double minor11, out double minor12)
+        private static void findDeterminants(ref Matrix matrix, out Double major, 
+                                             out Double minor1, out Double minor2, out Double minor3, out Double minor4, out Double minor5, out Double minor6,
+                                             out Double minor7, out Double minor8, out Double minor9, out Double minor10, out Double minor11, out Double minor12)
         {
-                double det1 = (double)matrix.M11 * (double)matrix.M22 - (double)matrix.M12 * (double)matrix.M21;
-                double det2 = (double)matrix.M11 * (double)matrix.M23 - (double)matrix.M13 * (double)matrix.M21;
-                double det3 = (double)matrix.M11 * (double)matrix.M24 - (double)matrix.M14 * (double)matrix.M21;
-                double det4 = (double)matrix.M12 * (double)matrix.M23 - (double)matrix.M13 * (double)matrix.M22;
-                double det5 = (double)matrix.M12 * (double)matrix.M24 - (double)matrix.M14 * (double)matrix.M22;
-                double det6 = (double)matrix.M13 * (double)matrix.M24 - (double)matrix.M14 * (double)matrix.M23;
-                double det7 = (double)matrix.M31 * (double)matrix.M42 - (double)matrix.M32 * (double)matrix.M41;
-                double det8 = (double)matrix.M31 * (double)matrix.M43 - (double)matrix.M33 * (double)matrix.M41;
-                double det9 = (double)matrix.M31 * (double)matrix.M44 - (double)matrix.M34 * (double)matrix.M41;
-                double det10 = (double)matrix.M32 * (double)matrix.M43 - (double)matrix.M33 * (double)matrix.M42;
-                double det11 = (double)matrix.M32 * (double)matrix.M44 - (double)matrix.M34 * (double)matrix.M42;
-                double det12 = (double)matrix.M33 * (double)matrix.M44 - (double)matrix.M34 * (double)matrix.M43;
+                Double det1 = (Double)matrix.M11 * (Double)matrix.M22 - (Double)matrix.M12 * (Double)matrix.M21;
+                Double det2 = (Double)matrix.M11 * (Double)matrix.M23 - (Double)matrix.M13 * (Double)matrix.M21;
+                Double det3 = (Double)matrix.M11 * (Double)matrix.M24 - (Double)matrix.M14 * (Double)matrix.M21;
+                Double det4 = (Double)matrix.M12 * (Double)matrix.M23 - (Double)matrix.M13 * (Double)matrix.M22;
+                Double det5 = (Double)matrix.M12 * (Double)matrix.M24 - (Double)matrix.M14 * (Double)matrix.M22;
+                Double det6 = (Double)matrix.M13 * (Double)matrix.M24 - (Double)matrix.M14 * (Double)matrix.M23;
+                Double det7 = (Double)matrix.M31 * (Double)matrix.M42 - (Double)matrix.M32 * (Double)matrix.M41;
+                Double det8 = (Double)matrix.M31 * (Double)matrix.M43 - (Double)matrix.M33 * (Double)matrix.M41;
+                Double det9 = (Double)matrix.M31 * (Double)matrix.M44 - (Double)matrix.M34 * (Double)matrix.M41;
+                Double det10 = (Double)matrix.M32 * (Double)matrix.M43 - (Double)matrix.M33 * (Double)matrix.M42;
+                Double det11 = (Double)matrix.M32 * (Double)matrix.M44 - (Double)matrix.M34 * (Double)matrix.M42;
+                Double det12 = (Double)matrix.M33 * (Double)matrix.M44 - (Double)matrix.M34 * (Double)matrix.M43;
                 
-                major = (double)(det1*det12 - det2*det11 + det3*det10 + det4*det9 - det5*det8 + det6*det7);
-                minor1 = (double)det1;
-                minor2 = (double)det2;
-                minor3 = (double)det3;
-                minor4 = (double)det4;
-                minor5 = (double)det5;
-                minor6 = (double)det6;
-                minor7 = (double)det7;
-                minor8 = (double)det8;
-                minor9 = (double)det9;
-                minor10 = (double)det10;
-                minor11 = (double)det11;
-                minor12 = (double)det12;
+                major = (Double)(det1*det12 - det2*det11 + det3*det10 + det4*det9 - det5*det8 + det6*det7);
+                minor1 = (Double)det1;
+                minor2 = (Double)det2;
+                minor3 = (Double)det3;
+                minor4 = (Double)det4;
+                minor5 = (Double)det5;
+                minor6 = (Double)det6;
+                minor7 = (Double)det7;
+                minor8 = (Double)det8;
+                minor9 = (Double)det9;
+                minor10 = (Double)det10;
+                minor11 = (Double)det11;
+                minor12 = (Double)det12;
         }
 		
         #endregion Private Static Methods
 		
-		public bool Decompose(out Vector3 scale, out Quaternion rotation, out Vector3 translation)
+		public Boolean Decompose(out Vector3 scale, out Quaternion rotation, out Vector3 translation)
         {
                 translation.X = this.M41;
                 translation.Y = this.M42;
                 translation.Z = this.M43;
                 
-                double xs = (Math.Sign(M11 * M12 * M13 * M14) < 0) ? -1f : 1f;
-                double ys = (Math.Sign(M21 * M22 * M23 * M24) < 0) ? -1f : 1f;
-				double zs = (Math.Sign(M31 * M32 * M33 * M34) < 0) ? -1f : 1f;                               
+                Double xs = (Math.Sign(M11 * M12 * M13 * M14) < 0) ? -1f : 1f;
+                Double ys = (Math.Sign(M21 * M22 * M23 * M24) < 0) ? -1f : 1f;
+				Double zs = (Math.Sign(M31 * M32 * M33 * M34) < 0) ? -1f : 1f;                               
                 
-                scale.X = xs * (double)Math.Sqrt(this.M11 * this.M11 + this.M12 * this.M12 + this.M13 * this.M13);
-                scale.Y = ys * (double)Math.Sqrt(this.M21 * this.M21 + this.M22 * this.M22 + this.M23 * this.M23);
-                scale.Z = zs * (double)Math.Sqrt(this.M31 * this.M31 + this.M32 * this.M32 + this.M33 * this.M33);
+                scale.X = xs * (Double)Math.Sqrt(this.M11 * this.M11 + this.M12 * this.M12 + this.M13 * this.M13);
+                scale.Y = ys * (Double)Math.Sqrt(this.M21 * this.M21 + this.M22 * this.M22 + this.M23 * this.M23);
+                scale.Z = zs * (Double)Math.Sqrt(this.M31 * this.M31 + this.M32 * this.M32 + this.M33 * this.M33);
                 
                 if (scale.X == 0.0 || scale.Y == 0.0 || scale.Z == 0.0)
                 {

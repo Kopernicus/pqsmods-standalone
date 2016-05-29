@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace LibNoise.Operator
 {
@@ -10,10 +11,10 @@ namespace LibNoise.Operator
     {
         #region Fields
 
-        private double _fallOff;
-        private double _raw;
-        private double _min = -1.0;
-        private double _max = 1.0;
+        private Double _fallOff;
+        private Double _raw;
+        private Double _min = -1.0;
+        private Double _max = 1.0;
 
         #endregion
 
@@ -49,7 +50,7 @@ namespace LibNoise.Operator
         /// <param name="fallOff">The falloff value at the edge transition.</param>
         /// <param name="inputA">The first input module.</param>
         /// <param name="inputB">The second input module.</param>
-        public Select(double min, double max, double fallOff, ModuleBase inputA, ModuleBase inputB)
+        public Select(Double min, Double max, Double fallOff, ModuleBase inputA, ModuleBase inputB)
             : this(inputA, inputB, null)
         {
             _min = min;
@@ -80,7 +81,7 @@ namespace LibNoise.Operator
 		/// <remarks>
 		/// Called SetEdgeFallOff() on the original LibNoise.
 		/// </remarks>
-        public double FallOff
+        public Double FallOff
         {
             get { return _fallOff; }
             set
@@ -94,7 +95,7 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets or sets the maximum, and re-calculated the fall-off accordingly.
         /// </summary>
-        public double Maximum
+        public Double Maximum
         {
             get { return _max; }
             set
@@ -107,7 +108,7 @@ namespace LibNoise.Operator
         /// <summary>
 		/// Gets or sets the minimum, and re-calculated the fall-off accordingly.
         /// </summary>
-        public double Minimum
+        public Double Minimum
         {
             get { return _min; }
             set
@@ -126,7 +127,7 @@ namespace LibNoise.Operator
         /// </summary>
         /// <param name="min">The minimum value.</param>
         /// <param name="max">The maximum value.</param>
-        public void SetBounds(double min, double max)
+        public void SetBounds(Double min, Double max)
         {
             Debug.Assert(min < max);
             _min = min;
@@ -145,7 +146,7 @@ namespace LibNoise.Operator
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public override double GetValue(double x, double y, double z)
+        public override Double GetValue(Double x, Double y, Double z)
         {
             Debug.Assert(Modules[0] != null);
             Debug.Assert(Modules[1] != null);
@@ -153,7 +154,7 @@ namespace LibNoise.Operator
             var cv = Modules[2].GetValue(x, y, z);
             if (_fallOff > 0.0)
             {
-                double a;
+                Double a;
                 if (cv < (_min - _fallOff))
                 {
                     return Modules[0].GetValue(x, y, z);

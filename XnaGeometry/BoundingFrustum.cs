@@ -53,7 +53,7 @@ namespace XnaGeometry
         #endregion Private Fields
 
         #region Public Fields
-        public const int CornerCount = 8;
+        public const Int32 CornerCount = 8;
         #endregion
 
         #region Public Constructors
@@ -116,18 +116,18 @@ namespace XnaGeometry
 
         #region Public Methods
 
-        public static bool operator ==(BoundingFrustum a, BoundingFrustum b)
+        public static Boolean operator ==(BoundingFrustum a, BoundingFrustum b)
         {
-            if (object.Equals(a, null))
-                return (object.Equals(b, null));
+            if (Object.Equals(a, null))
+                return (Object.Equals(b, null));
 
-            if (object.Equals(b, null))
-                return (object.Equals(a, null));
+            if (Object.Equals(b, null))
+                return (Object.Equals(a, null));
 
             return a.matrix == (b.matrix);
         }
 
-        public static bool operator !=(BoundingFrustum a, BoundingFrustum b)
+        public static Boolean operator !=(BoundingFrustum a, BoundingFrustum b)
         {
             return !(a == b);
         }
@@ -219,7 +219,7 @@ namespace XnaGeometry
 
         public void Contains(ref BoundingSphere sphere, out ContainmentType result)
         {
-            double dist;
+            Double dist;
 			result = ContainmentType.Contains;
 			
             Vector3.Dot(ref bottom.Normal, ref sphere.Center, out dist);
@@ -292,7 +292,7 @@ namespace XnaGeometry
 
         public void Contains(ref Vector3 point, out ContainmentType result)
         {
-            double val;
+            Double val;
             // If a point is on the POSITIVE side of the plane, then the point is not contained within the frustum
 
             // Check the top
@@ -348,15 +348,15 @@ namespace XnaGeometry
             result = ContainmentType.Contains;
         }
 
-        public bool Equals(BoundingFrustum other)
+        public Boolean Equals(BoundingFrustum other)
         {
             return (this == other);
         }
 
-        public override bool Equals(object obj)
+        public override Boolean Equals(Object obj)
         {
             BoundingFrustum f = obj as BoundingFrustum;
-            return (object.Equals(f, null)) ? false : (this == f);
+            return (Object.Equals(f, null)) ? false : (this == f);
         }
 
         public Vector3[] GetCorners()
@@ -372,36 +372,36 @@ namespace XnaGeometry
             this.corners.CopyTo(corners, 0);
         }
 
-        public override int GetHashCode()
+        public override Int32 GetHashCode()
         {
             return this.matrix.GetHashCode();
         }
 
-        public bool Intersects(BoundingBox box)
+        public Boolean Intersects(BoundingBox box)
         {
 			var result = false;
 			this.Intersects(ref box, out result);
 			return result;
         }
 
-        public void Intersects(ref BoundingBox box, out bool result)
+        public void Intersects(ref BoundingBox box, out Boolean result)
         {
 			var containment = ContainmentType.Disjoint;
 			this.Contains(ref box, out containment);
 			result = containment != ContainmentType.Disjoint;
 		}
 
-        public bool Intersects(BoundingFrustum frustum)
+        public Boolean Intersects(BoundingFrustum frustum)
         {
             throw new NotImplementedException();
         }
 
-        public bool Intersects(BoundingSphere sphere)
+        public Boolean Intersects(BoundingSphere sphere)
         {
             throw new NotImplementedException();
         }
 
-        public void Intersects(ref BoundingSphere sphere, out bool result)
+        public void Intersects(ref BoundingSphere sphere, out Boolean result)
         {
             throw new NotImplementedException();
         }
@@ -416,17 +416,17 @@ namespace XnaGeometry
             throw new NotImplementedException();
         }
 
-        public Nullable<double> Intersects(Ray ray)
+        public Nullable<Double> Intersects(Ray ray)
         {
             throw new NotImplementedException();
         }
 
-        public void Intersects(ref Ray ray, out Nullable<double> result)
+        public void Intersects(ref Ray ray, out Nullable<Double> result)
         {
             throw new NotImplementedException();
         }
 
-        public override string ToString()
+        public override String ToString()
         {
             StringBuilder sb = new StringBuilder(256);
             sb.Append("{Near:");
@@ -502,7 +502,7 @@ namespace XnaGeometry
             // Note: N refers to the normal, d refers to the displacement. '.' means dot product. '*' means cross product
 
             Vector3 v1, v2, v3;
-            double f = -Vector3.Dot(a.Normal, Vector3.Cross(b.Normal, c.Normal));
+            Double f = -Vector3.Dot(a.Normal, Vector3.Cross(b.Normal, c.Normal));
 
             v1 = (a.D * (Vector3.Cross(b.Normal, c.Normal)));
             v2 = (b.D * (Vector3.Cross(c.Normal, a.Normal)));
@@ -514,7 +514,7 @@ namespace XnaGeometry
         
         private void NormalizePlane(ref Plane p)
         {
-            double factor = 1f / p.Normal.Length();
+            Double factor = 1f / p.Normal.Length();
             p.Normal.X *= factor;
             p.Normal.Y *= factor;
             p.Normal.Z *= factor;

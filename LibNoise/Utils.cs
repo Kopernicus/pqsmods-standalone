@@ -6,8 +6,8 @@ namespace LibNoise
     {
         #region Constants
 
-        internal const double Sqrt3 = 1.7320508075688772935;
-        internal const int OctavesMaximum = 30;
+        internal const Double Sqrt3 = 1.7320508075688772935;
+        internal const Int32 OctavesMaximum = 30;
 
 #if NOISE_VERSION_1
             private const int GeneratorNoiseX = 1;
@@ -16,18 +16,18 @@ namespace LibNoise
             private const int GeneratorSeed = 1013;
             private const int GeneratorShift = 13;
         #else
-        private const int GeneratorNoiseX = 1619;
-        private const int GeneratorNoiseY = 31337;
-        private const int GeneratorNoiseZ = 6971;
-        private const int GeneratorSeed = 1013;
-        private const int GeneratorShift = 8;
+        private const Int32 GeneratorNoiseX = 1619;
+        private const Int32 GeneratorNoiseY = 31337;
+        private const Int32 GeneratorNoiseZ = 6971;
+        private const Int32 GeneratorSeed = 1013;
+        private const Int32 GeneratorShift = 8;
 #endif
 
         #endregion
 
         #region Fields
 
-        internal static readonly double[] Randoms =
+        internal static readonly Double[] Randoms =
         {
             -0.763874, -0.596439, -0.246489, 0.0, 0.396055, 0.904518, -0.158073, 0.0,
             -0.499004, -0.8665, -0.0131631, 0.0, 0.468724, -0.824756, 0.316346, 0.0,
@@ -163,15 +163,15 @@ namespace LibNoise
 
         #region Methods
 
-        internal static double GradientCoherentNoise3D(double x, double y, double z, long seed, QualityMode quality)
+        internal static Double GradientCoherentNoise3D(Double x, Double y, Double z, Int64 seed, QualityMode quality)
         {
-            var x0 = x > 0.0 ? (int) x : (int) x - 1;
+            var x0 = x > 0.0 ? (Int32) x : (Int32) x - 1;
             var x1 = x0 + 1;
-            var y0 = y > 0.0 ? (int) y : (int) y - 1;
+            var y0 = y > 0.0 ? (Int32) y : (Int32) y - 1;
             var y1 = y0 + 1;
-            var z0 = z > 0.0 ? (int) z : (int) z - 1;
+            var z0 = z > 0.0 ? (Int32) z : (Int32) z - 1;
             var z1 = z0 + 1;
-            double xs = 0, ys = 0, zs = 0;
+            Double xs = 0, ys = 0, zs = 0;
             switch (quality)
             {
                 case QualityMode.Low:
@@ -213,7 +213,7 @@ namespace LibNoise
             return InterpolateLinear(iy0, iy1, zs);
         }
 
-        internal static double GradientNoise3D(double fx, double fy, double fz, int ix, int iy, int iz, long seed)
+        internal static Double GradientNoise3D(Double fx, Double fy, Double fz, Int32 ix, Int32 iy, Int32 iz, Int64 seed)
         {
             var i = (GeneratorNoiseX * ix + GeneratorNoiseY * iy + GeneratorNoiseZ * iz +
                      GeneratorSeed * seed) & 0xffffffff;
@@ -228,7 +228,7 @@ namespace LibNoise
             return ((xvg * xvp) + (yvg * yvp) + (zvg * zvp)) * 2.12;
         }
 
-        internal static double InterpolateCubic(double a, double b, double c, double d, double position)
+        internal static Double InterpolateCubic(Double a, Double b, Double c, Double d, Double position)
         {
             var p = (d - c) - (a - b);
             var q = (a - b) - p;
@@ -237,12 +237,12 @@ namespace LibNoise
             return p * position * position * position + q * position * position + r * position + s;
         }
 
-        internal static double InterpolateLinear(double a, double b, double position)
+        internal static Double InterpolateLinear(Double a, Double b, Double position)
         {
             return ((1.0 - position) * a) + (position * b);
         }
 
-        internal static double MakeInt32Range(double value)
+        internal static Double MakeInt32Range(Double value)
         {
             if (value >= 1073741824.0)
             {
@@ -255,12 +255,12 @@ namespace LibNoise
             return value;
         }
 
-        internal static double MapCubicSCurve(double value)
+        internal static Double MapCubicSCurve(Double value)
         {
             return (value * value * (3.0 - 2.0 * value));
         }
 
-        internal static double MapQuinticSCurve(double value)
+        internal static Double MapQuinticSCurve(Double value)
         {
             var a3 = value * value * value;
             var a4 = a3 * value;
@@ -268,14 +268,14 @@ namespace LibNoise
             return (6.0 * a5) - (15.0 * a4) + (10.0 * a3);
         }
 
-        internal static double ValueNoise3D(int x, int y, int z, int seed)
+        internal static Double ValueNoise3D(Int32 x, Int32 y, Int32 z, Int32 seed)
         {
             return 1.0 - (ValueNoise3DInt(x, y, z, seed) / 1073741824.0);
         }
 
-        internal static long ValueNoise3DInt(int x, int y, int z, int seed)
+        internal static Int64 ValueNoise3DInt(Int32 x, Int32 y, Int32 z, Int32 seed)
         {
-            long n = (GeneratorNoiseX * x + GeneratorNoiseY * y + GeneratorNoiseZ * z +
+            Int64 n = (GeneratorNoiseX * x + GeneratorNoiseY * y + GeneratorNoiseZ * z +
                       GeneratorSeed * seed) & 0x7fffffff;
             n = (n >> 13) ^ n;
             return (n * (n * n * 60493 + 19990303) + 1376312589) & 0x7fffffff;

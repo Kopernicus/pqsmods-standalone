@@ -10,12 +10,12 @@ namespace LibNoise.Generator
     {
         #region Fields
 
-        private double _frequency = 1.0;
-        private double _lacunarity = 2.0;
+        private Double _frequency = 1.0;
+        private Double _lacunarity = 2.0;
         private QualityMode _quality = QualityMode.Medium;
-        private int _octaveCount = 6;
-        private double _persistence = 0.5;
-        private int _seed;
+        private Int32 _octaveCount = 6;
+        private Double _persistence = 0.5;
+        private Int32 _seed;
 
         #endregion
 
@@ -38,7 +38,7 @@ namespace LibNoise.Generator
         /// <param name="octaves">The number of octaves of the billowy noise.</param>
         /// <param name="seed">The seed of the billowy noise.</param>
         /// <param name="quality">The quality of the billowy noise.</param>
-        public Billow(double frequency, double lacunarity, double persistence, int octaves, int seed,
+        public Billow(Double frequency, Double lacunarity, Double persistence, Int32 octaves, Int32 seed,
             QualityMode quality)
             : base(0)
         {
@@ -57,7 +57,7 @@ namespace LibNoise.Generator
         /// <summary>
         /// Gets or sets the frequency of the first octave.
         /// </summary>
-        public double Frequency
+        public Double Frequency
         {
             get { return _frequency; }
             set { _frequency = value; }
@@ -66,7 +66,7 @@ namespace LibNoise.Generator
         /// <summary>
         /// Gets or sets the lacunarity of the billowy noise.
         /// </summary>
-        public double Lacunarity
+        public Double Lacunarity
         {
             get { return _lacunarity; }
             set { _lacunarity = value; }
@@ -84,7 +84,7 @@ namespace LibNoise.Generator
         /// <summary>
         /// Gets or sets the number of octaves of the billowy noise.
         /// </summary>
-        public int OctaveCount
+        public Int32 OctaveCount
         {
             get { return _octaveCount; }
             set { _octaveCount = Mathf.Clamp(value, 1, Utils.OctavesMaximum); }
@@ -93,7 +93,7 @@ namespace LibNoise.Generator
         /// <summary>
         /// Gets or sets the persistence of the billowy noise.
         /// </summary>
-        public double Persistence
+        public Double Persistence
         {
             get { return _persistence; }
             set { _persistence = value; }
@@ -102,7 +102,7 @@ namespace LibNoise.Generator
         /// <summary>
         /// Gets or sets the seed of the billowy noise.
         /// </summary>
-        public int Seed
+        public Int32 Seed
         {
             get { return _seed; }
             set { _seed = value; }
@@ -119,7 +119,7 @@ namespace LibNoise.Generator
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public override double GetValue(double x, double y, double z)
+        public override Double GetValue(Double x, Double y, Double z)
         {
             var value = 0.0;
             var curp = 1.0;

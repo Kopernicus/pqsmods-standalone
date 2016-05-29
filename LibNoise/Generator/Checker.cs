@@ -28,11 +28,11 @@ namespace LibNoise.Generator
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public override double GetValue(double x, double y, double z)
+        public override Double GetValue(Double x, Double y, Double z)
         {
-            var ix = (int) (Math.Floor(Utils.MakeInt32Range(x)));
-            var iy = (int) (Math.Floor(Utils.MakeInt32Range(y)));
-            var iz = (int) (Math.Floor(Utils.MakeInt32Range(z)));
+            var ix = (Int32) (Math.Floor(Utils.MakeInt32Range(x)));
+            var iy = (Int32) (Math.Floor(Utils.MakeInt32Range(y)));
+            var iz = (Int32) (Math.Floor(Utils.MakeInt32Range(z)));
             return (ix & 1 ^ iy & 1 ^ iz & 1) != 0 ? -1.0 : 1.0;
         }
 

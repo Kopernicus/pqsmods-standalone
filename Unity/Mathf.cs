@@ -20,47 +20,47 @@ namespace PQS
             /// <summary>
             /// The infamous 3.14159265358979... value (Read Only).
             /// </summary>
-            public const float PI = 3.14159274f;
+            public const Single PI = 3.14159274f;
 
             /// <summary>
             /// A representation of positive infinity (Read Only).
             /// </summary>
-            public const float Infinity = float.PositiveInfinity;
+            public const Single Infinity = Single.PositiveInfinity;
 
             /// <summary>
             /// A representation of negative infinity (Read Only).
             /// </summary>
-            public const float NegativeInfinity = float.NegativeInfinity;
+            public const Single NegativeInfinity = Single.NegativeInfinity;
 
             /// <summary>
             /// Degrees-to-radians conversion constant (Read Only).
             /// </summary>
-            public const float Deg2Rad = 0.0174532924f;
+            public const Single Deg2Rad = 0.0174532924f;
 
             /// <summary>
             /// Radians-to-degrees conversion constant (Read Only).
             /// </summary>
-            public const float Rad2Deg = 57.29578f;
+            public const Single Rad2Deg = 57.29578f;
 
             /// <summary>
             /// A tiny floating point value (Read Only).
             /// </summary>
-            public const float Epsilon = 1.401298E-45f;
+            public const Single Epsilon = 1.401298E-45f;
 
             /// <summary>
             /// Returns the absolute value of f.
             /// </summary>
             /// <param name="f"></param>
-            public static float Abs(float f)
+            public static Single Abs(Single f)
             {
-                return (float)Math.Abs(f);
+                return (Single)Math.Abs(f);
             }
 
             /// <summary>
             /// Returns the absolute value of value.
             /// </summary>
             /// <param name="value"></param>
-            public static int Abs(int value)
+            public static Int32 Abs(Int32 value)
             {
                 return Math.Abs(value);
             }
@@ -69,9 +69,9 @@ namespace PQS
             /// Returns the arc-cosine of f - the angle in radians whose cosine is f.
             /// </summary>
             /// <param name="f"></param>
-            public static float Acos(float f)
+            public static Single Acos(Single f)
             {
-                return (float)Math.Acos((double)f);
+                return (Single)Math.Acos((Double)f);
             }
 
             /// <summary>
@@ -79,7 +79,7 @@ namespace PQS
             /// </summary>
             /// <param name="a"></param>
             /// <param name="b"></param>
-            public static bool Approximately(float a, float b)
+            public static Boolean Approximately(Single a, Single b)
             {
                 return Mathf.Abs(b - a) < Mathf.Max(1E-06f * Mathf.Max(Mathf.Abs(a), Mathf.Abs(b)), Mathf.Epsilon * 8f);
             }
@@ -88,18 +88,18 @@ namespace PQS
             /// Returns the arc-sine of f - the angle in radians whose sine is f.
             /// </summary>
             /// <param name="f"></param>
-            public static float Asin(float f)
+            public static Single Asin(Single f)
             {
-                return (float)Math.Asin((double)f);
+                return (Single)Math.Asin((Double)f);
             }
 
             /// <summary>
             /// Returns the arc-tangent of f - the angle in radians whose tangent is f.
             /// </summary>
             /// <param name="f"></param>
-            public static float Atan(float f)
+            public static Single Atan(Single f)
             {
-                return (float)Math.Atan((double)f);
+                return (Single)Math.Atan((Double)f);
             }
 
             /// <summary>
@@ -107,27 +107,27 @@ namespace PQS
             /// </summary>
             /// <param name="y"></param>
             /// <param name="x"></param>
-            public static float Atan2(float y, float x)
+            public static Single Atan2(Single y, Single x)
             {
-                return (float)Math.Atan2((double)y, (double)x);
+                return (Single)Math.Atan2((Double)y, (Double)x);
             }
 
             /// <summary>
             /// Returns the smallest integer greater to or equal to f.
             /// </summary>
             /// <param name="f"></param>
-            public static float Ceil(float f)
+            public static Single Ceil(Single f)
             {
-                return (float)Math.Ceiling((double)f);
+                return (Single)Math.Ceiling((Double)f);
             }
 
             /// <summary>
             /// Returns the smallest integer greater to or equal to f.
             /// </summary>
             /// <param name="f"></param>
-            public static int CeilToInt(float f)
+            public static Int32 CeilToInt(Single f)
             {
-                return (int)Math.Ceiling((double)f);
+                return (Int32)Math.Ceiling((Double)f);
             }
 
             /// <summary>
@@ -136,7 +136,7 @@ namespace PQS
             /// <param name="value"></param>
             /// <param name="min"></param>
             /// <param name="max"></param>
-            public static float Clamp(float value, float min, float max)
+            public static Single Clamp(Single value, Single min, Single max)
             {
                 if (value < min)
                 {
@@ -155,7 +155,7 @@ namespace PQS
             /// <param name="value"></param>
             /// <param name="min"></param>
             /// <param name="max"></param>
-            public static int Clamp(int value, int min, int max)
+            public static Int32 Clamp(Int32 value, Int32 min, Int32 max)
             {
                 if (value < min)
                 {
@@ -172,7 +172,7 @@ namespace PQS
             /// Clamps value between 0 and 1 and returns value.
             /// </summary>
             /// <param name="value"></param>
-            public static float Clamp01(float value)
+            public static Single Clamp01(Single value)
             {
                 if (value < 0f)
                 {
@@ -189,9 +189,9 @@ namespace PQS
             /// Returns the cosine of angle f in radians.
             /// </summary>
             /// <param name="f"></param>
-            public static float Cos(float f)
+            public static Single Cos(Single f)
             {
-                return (float)Math.Cos((double)f);
+                return (Single)Math.Cos((Double)f);
             }
 
             /// <summary>
@@ -199,9 +199,9 @@ namespace PQS
             /// </summary>
             /// <param name="current"></param>
             /// <param name="target"></param>
-            public static float DeltaAngle(float current, float target)
+            public static Single DeltaAngle(Single current, Single target)
             {
-                float single = Mathf.Repeat(target - current, 360f);
+                Single single = Mathf.Repeat(target - current, 360f);
                 if (single > 180f)
                 {
                     single = single - 360f;
@@ -213,42 +213,42 @@ namespace PQS
             /// Returns e raised to the specified power.
             /// </summary>
             /// <param name="power"></param>
-            public static float Exp(float power)
+            public static Single Exp(Single power)
             {
-                return (float)Math.Exp((double)power);
+                return (Single)Math.Exp((Double)power);
             }
 
             /// <summary>
             /// Returns the largest integer smaller to or equal to f.
             /// </summary>
             /// <param name="f"></param>
-            public static float Floor(float f)
+            public static Single Floor(Single f)
             {
-                return (float)Math.Floor((double)f);
+                return (Single)Math.Floor((Double)f);
             }
 
             /// <summary>
             /// Returns the largest integer smaller to or equal to f.
             /// </summary>
             /// <param name="f"></param>
-            public static int FloorToInt(float f)
+            public static Int32 FloorToInt(Single f)
             {
-                return (int)Math.Floor((double)f);
+                return (Int32)Math.Floor((Double)f);
             }
 
-            public static float Gamma(float value, float absmax, float gamma)
+            public static Single Gamma(Single value, Single absmax, Single gamma)
             {
-                bool flag = false;
+                Boolean flag = false;
                 if (value < 0f)
                 {
                     flag = true;
                 }
-                float single = Mathf.Abs(value);
+                Single single = Mathf.Abs(value);
                 if (single > absmax)
                 {
                     return (!flag ? single : -single);
                 }
-                float single1 = Mathf.Pow(single / absmax, gamma) * absmax;
+                Single single1 = Mathf.Pow(single / absmax, gamma) * absmax;
                 return (!flag ? single1 : -single1);
             }
 
@@ -258,7 +258,7 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="value"></param>
-            public static float InverseLerp(float a, float b, float value)
+            public static Single InverseLerp(Single a, Single b, Single value)
             {
                 if (a == b)
                 {
@@ -273,7 +273,7 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="t"></param>
-            public static float Lerp(float a, float b, float t)
+            public static Single Lerp(Single a, Single b, Single t)
             {
                 return a + (b - a) * Mathf.Clamp01(t);
             }
@@ -284,9 +284,9 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="t"></param>
-            public static float LerpAngle(float a, float b, float t)
+            public static Single LerpAngle(Single a, Single b, Single t)
             {
-                float single = Mathf.Repeat(b - a, 360f);
+                Single single = Mathf.Repeat(b - a, 360f);
                 if (single > 180f)
                 {
                     single = single - 360f;
@@ -300,48 +300,48 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="t"></param>
-            public static float LerpUnclamped(float a, float b, float t)
+            public static Single LerpUnclamped(Single a, Single b, Single t)
             {
                 return a + (b - a) * t;
             }
 
-            internal static bool LineIntersection(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, ref Vector2 result)
+            internal static Boolean LineIntersection(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, ref Vector2 result)
             {
-                float single = (float)(p2.X - p1.X);
-                float single1 = (float)(p2.Y - p1.Y);
-                float single2 = (float)(p4.X - p3.X);
-                float single3 = (float)(p4.Y - p3.Y);
-                float single4 = single * single3 - single1 * single2;
+                Single single = (Single)(p2.X - p1.X);
+                Single single1 = (Single)(p2.Y - p1.Y);
+                Single single2 = (Single)(p4.X - p3.X);
+                Single single3 = (Single)(p4.Y - p3.Y);
+                Single single4 = single * single3 - single1 * single2;
                 if (single4 == 0f)
                 {
                     return false;
                 }
-                float single5 = (float)(p3.X - p1.X);
-                float single6 = (float)(p3.Y - p1.Y);
-                float single7 = (single5 * single3 - single6 * single2) / single4;
+                Single single5 = (Single)(p3.X - p1.X);
+                Single single6 = (Single)(p3.Y - p1.Y);
+                Single single7 = (single5 * single3 - single6 * single2) / single4;
                 result = new Vector2(p1.X + single7 * single, p1.Y + single7 * single1);
                 return true;
             }
 
-            internal static bool LineSegmentIntersection(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, ref Vector2 result)
+            internal static Boolean LineSegmentIntersection(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, ref Vector2 result)
             {
-                float single = (float)(p2.X - p1.X);
-                float single1 = (float)(p2.Y - p1.Y);
-                float single2 = (float)(p4.X - p3.X);
-                float single3 = (float)(p4.Y - p3.Y);
-                float single4 = single * single3 - single1 * single2;
+                Single single = (Single)(p2.X - p1.X);
+                Single single1 = (Single)(p2.Y - p1.Y);
+                Single single2 = (Single)(p4.X - p3.X);
+                Single single3 = (Single)(p4.Y - p3.Y);
+                Single single4 = single * single3 - single1 * single2;
                 if (single4 == 0f)
                 {
                     return false;
                 }
-                float single5 = (float)(p3.X - p1.X);
-                float single6 = (float)(p3.Y - p1.Y);
-                float single7 = (single5 * single3 - single6 * single2) / single4;
+                Single single5 = (Single)(p3.X - p1.X);
+                Single single6 = (Single)(p3.Y - p1.Y);
+                Single single7 = (single5 * single3 - single6 * single2) / single4;
                 if (single7 < 0f || single7 > 1f)
                 {
                     return false;
                 }
-                float single8 = (single5 * single1 - single6 * single) / single4;
+                Single single8 = (single5 * single1 - single6 * single) / single4;
                 if (single8 < 0f || single8 > 1f)
                 {
                     return false;
@@ -355,27 +355,27 @@ namespace PQS
             /// </summary>
             /// <param name="f"></param>
             /// <param name="p"></param>
-            public static float Log(float f, float p)
+            public static Single Log(Single f, Single p)
             {
-                return (float)Math.Log((double)f, (double)p);
+                return (Single)Math.Log((Double)f, (Double)p);
             }
 
             /// <summary>
             /// Returns the natural (base e) logarithm of a specified number.
             /// </summary>
             /// <param name="f"></param>
-            public static float Log(float f)
+            public static Single Log(Single f)
             {
-                return (float)Math.Log((double)f);
+                return (Single)Math.Log((Double)f);
             }
 
             /// <summary>
             /// Returns the base 10 logarithm of a specified number.
             /// </summary>
             /// <param name="f"></param>
-            public static float Log10(float f)
+            public static Single Log10(Single f)
             {
-                return (float)Math.Log10((double)f);
+                return (Single)Math.Log10((Double)f);
             }
 
             /// <summary>
@@ -384,7 +384,7 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="values"></param>
-            public static float Max(float a, float b)
+            public static Single Max(Single a, Single b)
             {
                 return (a <= b ? b : a);
             }
@@ -395,15 +395,15 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="values"></param>
-            public static float Max(params float[] values)
+            public static Single Max(params Single[] values)
             {
-                int length = (int)values.Length;
+                Int32 length = (Int32)values.Length;
                 if (length == 0)
                 {
                     return 0f;
                 }
-                float single = values[0];
-                for (int i = 1; i < length; i++)
+                Single single = values[0];
+                for (Int32 i = 1; i < length; i++)
                 {
                     if (values[i] > single)
                     {
@@ -419,7 +419,7 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="values"></param>
-            public static int Max(int a, int b)
+            public static Int32 Max(Int32 a, Int32 b)
             {
                 return (a <= b ? b : a);
             }
@@ -430,15 +430,15 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="values"></param>
-            public static int Max(params int[] values)
+            public static Int32 Max(params Int32[] values)
             {
-                int length = (int)values.Length;
+                Int32 length = (Int32)values.Length;
                 if (length == 0)
                 {
                     return 0;
                 }
-                int num = values[0];
-                for (int i = 1; i < length; i++)
+                Int32 num = values[0];
+                for (Int32 i = 1; i < length; i++)
                 {
                     if (values[i] > num)
                     {
@@ -454,7 +454,7 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="values"></param>
-            public static float Min(float a, float b)
+            public static Single Min(Single a, Single b)
             {
                 return (a >= b ? b : a);
             }
@@ -465,15 +465,15 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="values"></param>
-            public static float Min(params float[] values)
+            public static Single Min(params Single[] values)
             {
-                int length = (int)values.Length;
+                Int32 length = (Int32)values.Length;
                 if (length == 0)
                 {
                     return 0f;
                 }
-                float single = values[0];
-                for (int i = 1; i < length; i++)
+                Single single = values[0];
+                for (Int32 i = 1; i < length; i++)
                 {
                     if (values[i] < single)
                     {
@@ -489,7 +489,7 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="values"></param>
-            public static int Min(int a, int b)
+            public static Int32 Min(Int32 a, Int32 b)
             {
                 return (a >= b ? b : a);
             }
@@ -500,15 +500,15 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="values"></param>
-            public static int Min(params int[] values)
+            public static Int32 Min(params Int32[] values)
             {
-                int length = (int)values.Length;
+                Int32 length = (Int32)values.Length;
                 if (length == 0)
                 {
                     return 0;
                 }
-                int num = values[0];
-                for (int i = 1; i < length; i++)
+                Int32 num = values[0];
+                for (Int32 i = 1; i < length; i++)
                 {
                     if (values[i] < num)
                     {
@@ -524,7 +524,7 @@ namespace PQS
             /// <param name="current">The current value.</param>
             /// <param name="target">The value to move towards.</param>
             /// <param name="maxDelta">The maximum change that should be applied to the value.</param>
-            public static float MoveTowards(float current, float target, float maxDelta)
+            public static Single MoveTowards(Single current, Single target, Single maxDelta)
             {
                 if (Mathf.Abs(target - current) <= maxDelta)
                 {
@@ -539,7 +539,7 @@ namespace PQS
             /// <param name="current"></param>
             /// <param name="target"></param>
             /// <param name="maxDelta"></param>
-            public static float MoveTowardsAngle(float current, float target, float maxDelta)
+            public static Single MoveTowardsAngle(Single current, Single target, Single maxDelta)
             {
                 target = current + Mathf.DeltaAngle(current, target);
                 return Mathf.MoveTowards(current, target, maxDelta);
@@ -550,7 +550,7 @@ namespace PQS
             /// </summary>
             /// <param name="t"></param>
             /// <param name="length"></param>
-            public static float PingPong(float t, float length)
+            public static Single PingPong(Single t, Single length)
             {
                 t = Mathf.Repeat(t, length * 2f);
                 return length - Mathf.Abs(t - length);
@@ -561,16 +561,16 @@ namespace PQS
             /// </summary>
             /// <param name="f"></param>
             /// <param name="p"></param>
-            public static float Pow(float f, float p)
+            public static Single Pow(Single f, Single p)
             {
-                return (float)Math.Pow((double)f, (double)p);
+                return (Single)Math.Pow((Double)f, (Double)p);
             }
 
-            internal static long RandomToLong(Random r)
+            internal static Int64 RandomToLong(Random r)
             {
-                byte[] numArray = new byte[8];
+                Byte[] numArray = new Byte[8];
                 r.NextBytes(numArray);
-                return (long)(BitConverter.ToUInt64(numArray, 0) & 9223372036854775807L);
+                return (Int64)(BitConverter.ToUInt64(numArray, 0) & 9223372036854775807L);
             }
 
             /// <summary>
@@ -578,7 +578,7 @@ namespace PQS
             /// </summary>
             /// <param name="t"></param>
             /// <param name="length"></param>
-            public static float Repeat(float t, float length)
+            public static Single Repeat(Single t, Single length)
             {
                 return t - Mathf.Floor(t / length) * length;
             }
@@ -587,25 +587,25 @@ namespace PQS
             /// Returns f rounded to the nearest integer.
             /// </summary>
             /// <param name="f"></param>
-            public static float Round(float f)
+            public static Single Round(Single f)
             {
-                return (float)Math.Round((double)f);
+                return (Single)Math.Round((Double)f);
             }
 
             /// <summary>
             /// Returns f rounded to the nearest integer.
             /// </summary>
             /// <param name="f"></param>
-            public static int RoundToInt(float f)
+            public static Int32 RoundToInt(Single f)
             {
-                return (int)Math.Round((double)f);
+                return (Int32)Math.Round((Double)f);
             }
 
             /// <summary>
             /// Returns the sign of f.
             /// </summary>
             /// <param name="f"></param>
-            public static float Sign(float f)
+            public static Single Sign(Single f)
             {
                 return (f < 0f ? -1f : 1f);
             }
@@ -614,25 +614,25 @@ namespace PQS
             /// Returns the sine of angle f in radians.
             /// </summary>
             /// <param name="f"></param>
-            public static float Sin(float f)
+            public static Single Sin(Single f)
             {
-                return (float)Math.Sin((double)f);
+                return (Single)Math.Sin((Double)f);
             }
 
-            public static float SmoothDamp(float current, float target, ref float currentVelocity, float smoothTime, [DefaultValue("Mathf.Infinity")] float maxSpeed, [DefaultValue("Time.deltaTime")] float deltaTime)
+            public static Single SmoothDamp(Single current, Single target, ref Single currentVelocity, Single smoothTime, [DefaultValue("Mathf.Infinity")] Single maxSpeed, [DefaultValue("Time.deltaTime")] Single deltaTime)
             {
                 smoothTime = Mathf.Max(0.0001f, smoothTime);
-                float single = 2f / smoothTime;
-                float single1 = single * deltaTime;
-                float single2 = 1f / (1f + single1 + 0.48f * single1 * single1 + 0.235f * single1 * single1 * single1);
-                float single3 = current - target;
-                float single4 = target;
-                float single5 = maxSpeed * smoothTime;
+                Single single = 2f / smoothTime;
+                Single single1 = single * deltaTime;
+                Single single2 = 1f / (1f + single1 + 0.48f * single1 * single1 + 0.235f * single1 * single1 * single1);
+                Single single3 = current - target;
+                Single single4 = target;
+                Single single5 = maxSpeed * smoothTime;
                 single3 = Mathf.Clamp(single3, -single5, single5);
                 target = current - single3;
-                float single6 = (currentVelocity + single * single3) * deltaTime;
+                Single single6 = (currentVelocity + single * single3) * deltaTime;
                 currentVelocity = (currentVelocity - single * single6) * single2;
-                float single7 = target + (single3 + single6) * single2;
+                Single single7 = target + (single3 + single6) * single2;
                 if (single4 - current > 0f == single7 > single4)
                 {
                     single7 = single4;
@@ -641,7 +641,7 @@ namespace PQS
                 return single7;
             }
 
-            public static float SmoothDampAngle(float current, float target, ref float currentVelocity, float smoothTime, [DefaultValue("Mathf.Infinity")] float maxSpeed, [DefaultValue("Time.deltaTime")] float deltaTime)
+            public static Single SmoothDampAngle(Single current, Single target, ref Single currentVelocity, Single smoothTime, [DefaultValue("Mathf.Infinity")] Single maxSpeed, [DefaultValue("Time.deltaTime")] Single deltaTime)
             {
                 target = current + Mathf.DeltaAngle(current, target);
                 return Mathf.SmoothDamp(current, target, ref currentVelocity, smoothTime, maxSpeed, deltaTime);
@@ -653,7 +653,7 @@ namespace PQS
             /// <param name="from"></param>
             /// <param name="to"></param>
             /// <param name="t"></param>
-            public static float SmoothStep(float from, float to, float t)
+            public static Single SmoothStep(Single from, Single to, Single t)
             {
                 t = Mathf.Clamp01(t);
                 t = -2f * t * t * t + 3f * t * t;
@@ -664,18 +664,18 @@ namespace PQS
             /// Returns square root of f.
             /// </summary>
             /// <param name="f"></param>
-            public static float Sqrt(float f)
+            public static Single Sqrt(Single f)
             {
-                return (float)Math.Sqrt((double)f);
+                return (Single)Math.Sqrt((Double)f);
             }
 
             /// <summary>
             /// Returns the tangent of angle f in radians.
             /// </summary>
             /// <param name="f"></param>
-            public static float Tan(float f)
+            public static Single Tan(Single f)
             {
-                return (float)Math.Tan((double)f);
+                return (Single)Math.Tan((Double)f);
             }
         }
     }

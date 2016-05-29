@@ -19,22 +19,22 @@ namespace PQS
         /// <summary>
         /// The radius of the sphere.
         /// </summary>
-        public double radius { get; set; }
+        public Double radius { get; set; }
 
         /// <summary>
         /// The lowest point of the sphere. TODO: Assign values
         /// </summary>
-        public double radiusMin { get; set; }
+        public Double radiusMin { get; set; }
         
         /// <summary>
         /// The highest point of the sphere. TODO: Assign values
         /// </summary>
-        public double radiusMax { get; set; }
+        public Double radiusMax { get; set; }
 
         /// <summary>
         /// The delta of <see cref="radiusMin"/> and <see cref="radiusMax"/>
         /// </summary>
-        public double radiusDelta
+        public Double radiusDelta
         {
             get { return radiusMax - radiusMin; }
         }
@@ -48,7 +48,7 @@ namespace PQS
         /// Initializes a new PQS.
         /// </summary>
         /// <param name="radius">The radius of the sphere.</param>
-        public PQS(double radius)
+        public PQS(Double radius)
         {
             this.radius = radius;
             mods = new ReadOnlyCollection<PQSMod>(new List<PQSMod>());
@@ -69,7 +69,7 @@ namespace PQS
         /// <summary>
         /// Adds a new PQSMod of type T to the sphere
         /// </summary>
-        public T AddPQSMod<T>(string name) where T : PQSMod, new()
+        public T AddPQSMod<T>(String name) where T : PQSMod, new()
         {
             T mod = AddPQSMod<T>();
             mod.name = name;
@@ -79,7 +79,7 @@ namespace PQS
         /// <summary>
         /// Returns the first PQSMod with the given name, or null if nothing was found.
         /// </summary>
-        public T GetPQSMod<T>(string name) where T : PQSMod, new()
+        public T GetPQSMod<T>(String name) where T : PQSMod, new()
         {
             if (mods.Any(m => m.name == name && m is T))
                 return (T)mods.FirstOrDefault(m => m.name == name && m is T);
@@ -101,7 +101,7 @@ namespace PQS
         /// <summary>
         /// Returns the PQSMods with the given name and type, or null if nothing was found.
         /// </summary>
-        public T[] GetPQSMods<T>(string name) where T : PQSMod, new()
+        public T[] GetPQSMods<T>(String name) where T : PQSMod, new()
         {
             if (mods.Any(m => m.name == name && m is T))
                 return (T[])mods.Where(m => m.name == name && m is T).ToArray();

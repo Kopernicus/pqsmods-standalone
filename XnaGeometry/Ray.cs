@@ -80,28 +80,28 @@ namespace XnaGeometry
         #region Public Methods
 
 
-        public override bool Equals(object obj)
+        public override Boolean Equals(Object obj)
         {
             return (obj is Ray) ? this.Equals((Ray)obj) : false;
         }
 
 
 
-        public bool Equals(Ray other)
+        public Boolean Equals(Ray other)
         {
             return this.Position.Equals(other.Position) && this.Direction.Equals(other.Direction);
         }
 
 
 
-        public override int GetHashCode()
+        public override Int32 GetHashCode()
         {
             return Position.GetHashCode() ^ Direction.GetHashCode();
         }
 
 
 
-        public double? Intersects(BoundingBox box)
+        public Double? Intersects(BoundingBox box)
         {
             //first test if start in box
             if (Position.X >= box.Min.X
@@ -137,7 +137,7 @@ namespace XnaGeometry
                 if (maxT.X < 0.0f)
                     return null;// ray go on opposite of face
                 //coordonate of hit point of face of cube
-                double coord = Position.Z + maxT.X * Direction.Z;
+                Double coord = Position.Z + maxT.X * Direction.Z;
                 // if hit point coord ( intersect face with ray) is out of other plane coord it miss 
                 if (coord < box.Min.Z || coord > box.Max.Z)
                     return null;
@@ -151,7 +151,7 @@ namespace XnaGeometry
                 if (maxT.Y < 0.0f)
                     return null;// ray go on opposite of face
                 //coordonate of hit point of face of cube
-                double coord = Position.Z + maxT.Y * Direction.Z;
+                Double coord = Position.Z + maxT.Y * Direction.Z;
                 // if hit point coord ( intersect face with ray) is out of other plane coord it miss 
                 if (coord < box.Min.Z || coord > box.Max.Z)
                     return null;
@@ -165,7 +165,7 @@ namespace XnaGeometry
                 if (maxT.Z < 0.0f)
                     return null;// ray go on opposite of face
                 //coordonate of hit point of face of cube
-                double coord = Position.X + maxT.Z * Direction.X;
+                Double coord = Position.X + maxT.Z * Direction.X;
                 // if hit point coord ( intersect face with ray) is out of other plane coord it miss 
                 if (coord < box.Min.X || coord > box.Max.X)
                     return null;
@@ -179,7 +179,7 @@ namespace XnaGeometry
 
 
 
-        public void Intersects(ref BoundingBox box, out double? result)
+        public void Intersects(ref BoundingBox box, out Double? result)
         {
             result = Intersects(box);
         }
@@ -187,7 +187,7 @@ namespace XnaGeometry
 
 
 
-        public double? Intersects(BoundingFrustum frustum)
+        public Double? Intersects(BoundingFrustum frustum)
         {
             if (frustum == null)
             {
@@ -203,23 +203,23 @@ namespace XnaGeometry
 
 
 
-        public double? Intersects(BoundingSphere sphere)
+        public Double? Intersects(BoundingSphere sphere)
         {
-            double? result;
+            Double? result;
             Intersects(ref sphere, out result);
             return result;
         }
 
 
-        public double? Intersects(Plane plane)
+        public Double? Intersects(Plane plane)
         {
-            double? result;
+            Double? result;
             Intersects(ref plane, out result);
             return result;
         }
 
 
-        public void Intersects(ref Plane plane, out double? result)
+        public void Intersects(ref Plane plane, out Double? result)
         {
             var den = Vector3.Dot(Direction, plane.Normal);
             if (Math.Abs(den) < 0.00001f)
@@ -246,17 +246,17 @@ namespace XnaGeometry
         }
 
 
-        public void Intersects(ref BoundingSphere sphere, out double? result)
+        public void Intersects(ref BoundingSphere sphere, out Double? result)
         {
             // Find the vector between where the ray starts the the sphere's centre
             Vector3 difference = sphere.Center - this.Position;
 
 
-            double differenceLengthSquared = difference.LengthSquared();
-            double sphereRadiusSquared = sphere.Radius * sphere.Radius;
+            Double differenceLengthSquared = difference.LengthSquared();
+            Double sphereRadiusSquared = sphere.Radius * sphere.Radius;
 
 
-            double distanceAlongRay;
+            Double distanceAlongRay;
 
 
             // If the distance between the ray start and the sphere's centre is less than
@@ -282,16 +282,16 @@ namespace XnaGeometry
             // if y = distance between ray position and sphere centre
             // if z = the distance we've travelled along the ray
             // if x^2 + z^2 - y^2 < 0, we do not intersect
-            double dist = sphereRadiusSquared + distanceAlongRay * distanceAlongRay - differenceLengthSquared;
+            Double dist = sphereRadiusSquared + distanceAlongRay * distanceAlongRay - differenceLengthSquared;
 
 
-            result = (dist < 0) ? null : distanceAlongRay - (double?)Math.Sqrt(dist);
+            result = (dist < 0) ? null : distanceAlongRay - (Double?)Math.Sqrt(dist);
         }
 
 
 
 
-        public static bool operator !=(Ray a, Ray b)
+        public static Boolean operator !=(Ray a, Ray b)
         {
             return !a.Equals(b);
         }
@@ -299,7 +299,7 @@ namespace XnaGeometry
 
 
 
-        public static bool operator ==(Ray a, Ray b)
+        public static Boolean operator ==(Ray a, Ray b)
         {
             return a.Equals(b);
         }
@@ -307,9 +307,9 @@ namespace XnaGeometry
 
 
 
-        public override string ToString()
+        public override String ToString()
         {
-            return string.Format("{{Position:{0} Direction:{1}}}", Position.ToString(), Direction.ToString());
+            return String.Format("{{Position:{0} Direction:{1}}}", Position.ToString(), Direction.ToString());
         }
 
 

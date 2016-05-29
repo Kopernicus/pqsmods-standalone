@@ -19,32 +19,32 @@ namespace PQS
             /// <summary>
             /// Converts a byte into a floating point number
             /// </summary>
-            public const float Byte2Float = 0.003921569f;
+            public const Single Byte2Float = 0.003921569f;
 
             /// <summary>
             /// Converts a floating point number into a byte
             /// </summary>
-            public const float Float2Byte = 255f;
+            public const Single Float2Byte = 255f;
 
             /// <summary>
             /// Red component of the color.
             /// </summary>
-            public float r;
+            public Single r;
 
             /// <summary>
             /// Green component of the color.
             /// </summary>
-            public float g;
+            public Single g;
 
             /// <summary>
             /// Blue component of the color.
             /// </summary>
-            public float b;
+            public Single b;
 
             /// <summary>
             /// Alpha component of the color.
             /// </summary>
-            public float a;
+            public Single a;
 
             /// <summary>
             /// Solid black. RGBA is (0, 0, 0, 1).
@@ -89,7 +89,7 @@ namespace PQS
             /// <summary>
             /// The grayscale value of the color. (Read Only)
             /// </summary>
-            public float grayscale
+            public Single grayscale
             {
                 get { return 0.299f * r + 0.587f * g + 0.114f * b; }
             }
@@ -110,7 +110,7 @@ namespace PQS
                 get { return new Color(0.5f, 0.5f, 0.5f, 1f); }
             }
 
-            public float this[int index]
+            public Single this[Int32 index]
             {
                 get
                 {
@@ -160,7 +160,7 @@ namespace PQS
             /// <summary>
             /// Returns the maximum color component value: Max(r,g,b).
             /// </summary>
-            public float maxColorComponent
+            public Single maxColorComponent
             {
                 get { return Mathf.Max(Mathf.Max(r, g), b); }
             }
@@ -196,7 +196,7 @@ namespace PQS
             /// <param name="g">Green component.</param>
             /// <param name="b">Blue component.</param>
             /// <param name="a">Alpha component.</param>
-            public Color(float r, float g, float b, float a)
+            public Color(Single r, Single g, Single b, Single a)
             {
                 this.r = r;
                 this.g = g;
@@ -210,7 +210,7 @@ namespace PQS
             /// <param name="r">Red component.</param>
             /// <param name="g">Green component.</param>
             /// <param name="b">Blue component.</param>
-            public Color(float r, float g, float b)
+            public Color(Single r, Single g, Single b)
             {
                 this.r = r;
                 this.g = g;
@@ -218,22 +218,22 @@ namespace PQS
                 this.a = 1f;
             }
 
-            internal Color AlphaMultiplied(float multiplier)
+            internal Color AlphaMultiplied(Single multiplier)
             {
                 return new Color(r, g, b, a * multiplier);
             }
 
-            public override bool Equals(object other)
+            public override Boolean Equals(Object other)
             {
                 if (!(other is Color))
                 {
                     return false;
                 }
                 Color color = (Color)other;
-                return (!r.Equals(color.r) || !g.Equals(color.g) || !b.Equals(color.b) ? false : a.Equals(color.a));
+                return (r.Equals(color.r) && g.Equals(color.g) && b.Equals(color.b) && a.Equals(color.a));
             }
 
-            public override int GetHashCode()
+            public override Int32 GetHashCode()
             {
                 return r.GetHashCode() ^ g.GetHashCode() ^ b.GetHashCode() ^ a.GetHashCode();
             }
@@ -244,7 +244,7 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="t"></param>
-            public static Color Lerp(Color a, Color b, float t)
+            public static Color Lerp(Color a, Color b, Single t)
             {
                 t = Mathf.Clamp01(t);
                 return new Color(a.r + (b.r - a.r) * t, a.g + (b.g - a.g) * t, a.b + (b.b - a.b) * t, a.a + (b.a - a.a) * t);
@@ -256,7 +256,7 @@ namespace PQS
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="t"></param>
-            public static Color LerpUnclamped(Color a, Color b, float t)
+            public static Color LerpUnclamped(Color a, Color b, Single t)
             {
                 return new Color(a.r + (b.r - a.r) * t, a.g + (b.g - a.g) * t, a.b + (b.b - a.b) * t, a.a + (b.a - a.a) * t);
             }
@@ -266,12 +266,12 @@ namespace PQS
                 return new Color(a.r + b.r, a.g + b.g, a.b + b.b, a.a + b.a);
             }
 
-            public static Color operator /(Color a, float b)
+            public static Color operator /(Color a, Single b)
             {
                 return new Color(a.r / b, a.g / b, a.b / b, a.a / b);
             }
 
-            public static bool operator ==(Color lhs, Color rhs)
+            public static Boolean operator ==(Color lhs, Color rhs)
             {
                 return lhs == rhs;
             }
@@ -283,12 +283,12 @@ namespace PQS
 
             public static implicit operator Color(Vector4 v)
             {
-                return new Color((float)v.X, (float)v.Y, (float)v.Z, (float)v.W);
+                return new Color((Single)v.X, (Single)v.Y, (Single)v.Z, (Single)v.W);
             }
 
             public static implicit operator System.Drawing.Color(Color c)
             {
-                return System.Drawing.Color.FromArgb((int)(Float2Byte * c.a), (int)(Float2Byte * c.r), (int)(Float2Byte * c.g), (int)(Float2Byte * c.b));
+                return System.Drawing.Color.FromArgb((Int32)(Float2Byte * c.a), (Int32)(Float2Byte * c.r), (Int32)(Float2Byte * c.g), (Int32)(Float2Byte * c.b));
             }
 
             public static implicit operator Color(System.Drawing.Color c)
@@ -296,7 +296,7 @@ namespace PQS
                 return new Color(Byte2Float * c.R, Byte2Float * c.G, Byte2Float * c.B, Byte2Float * c.A);
             }
 
-            public static bool operator !=(Color lhs, Color rhs)
+            public static Boolean operator !=(Color lhs, Color rhs)
             {
                 return !(lhs == rhs);
             }
@@ -306,12 +306,12 @@ namespace PQS
                 return new Color(a.r * b.r, a.g * b.g, a.b * b.b, a.a * b.a);
             }
 
-            public static Color operator *(Color a, float b)
+            public static Color operator *(Color a, Single b)
             {
                 return new Color(a.r * b, a.g * b, a.b * b, a.a * b);
             }
 
-            public static Color operator *(float b, Color a)
+            public static Color operator *(Single b, Color a)
             {
                 return new Color(a.r * b, a.g * b, a.b * b, a.a * b);
             }
@@ -321,7 +321,7 @@ namespace PQS
                 return new Color(a.r - b.r, a.g - b.g, a.b - b.b, a.a - b.a);
             }
 
-            internal Color RGBMultiplied(float multiplier)
+            internal Color RGBMultiplied(Single multiplier)
             {
                 return new Color(r * multiplier, g * multiplier, b * multiplier, a);
             }
@@ -335,7 +335,7 @@ namespace PQS
             /// Returns a nicely formatted string of this color.
             /// </summary>
             /// <param name="format"></param>
-            public override string ToString()
+            public override String ToString()
             {
                 return String.Format("RGBA({0:F3}, {1:F3}, {2:F3}, {3:F3})", r, g, b, a);
             }
@@ -344,7 +344,7 @@ namespace PQS
             /// Returns a nicely formatted string of this color.
             /// </summary>
             /// <param name="format"></param>
-            public string ToString(string format)
+            public String ToString(String format)
             {
                 return String.Format("RGBA({0}, {1}, {2}, {3})", r.ToString(format), g.ToString(format), b.ToString(format), a.ToString(format));
             }

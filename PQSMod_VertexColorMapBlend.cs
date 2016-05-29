@@ -24,14 +24,14 @@ namespace PQS
         /// <summary>
         /// How much of the current value should get blended into the new one
         /// </summary>
-        public float blend;
+        public Single blend;
 
         /// <summary>
         /// Initializes the base mod
         /// </summary>
         public override void OnSetup()
         {
-            /// Check whether the HeightMap exists
+            // Check whether the ColorMap exists
             if (vertexColorMap == null)
                 throw new ArgumentNullException(nameof(vertexColorMap));
         }

@@ -16,12 +16,12 @@ namespace PQS
         /// <summary>
         /// Whether the mod should be taken into account for building something
         /// </summary>
-        public bool modEnabled = true;
+        public Boolean modEnabled = true;
 
         /// <summary>
         /// The position of the mod in the build queue
         /// </summary>
-        public int order = 100;
+        public Int32 order = 100;
 
         /// <summary>
         /// The sphere the PQSMod is attached to
@@ -31,7 +31,7 @@ namespace PQS
         /// <summary>
         /// The name of the PQSMod
         /// </summary>
-        public string name { get; set; }
+        public String name { get; set; }
 
         #region Virtuals
         public virtual void OnSetup() { }
@@ -39,15 +39,15 @@ namespace PQS
         public virtual void OnSphereReset() { }
         public virtual void OnSphereActive() { }
         public virtual void OnSphereInactive() { }
-        public virtual bool OnSphereStart() { return false; }
+        public virtual Boolean OnSphereStart() { return false; }
         public virtual void OnSphereStarted() { }
         public virtual void OnSphereTransformUpdate() { }
         public virtual void OnPreUpdate() { }
         public virtual void OnUpdateFinished() { }
         public virtual void OnVertexBuild(VertexBuildData data) { }
         public virtual void OnVertexBuildHeight(VertexBuildData data) { }
-        public virtual double GetVertexMaxHeight() { return 0d; }
-        public virtual double GetVertexMinHeight() { return 0d; }
+        public virtual Double GetVertexMaxHeight() { return 0d; }
+        public virtual Double GetVertexMinHeight() { return 0d; }
         public virtual void OnMeshBuild() { }
         #endregion
     }

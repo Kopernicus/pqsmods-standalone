@@ -30,12 +30,12 @@ namespace PQS
         public NoiseType noiseType;
 
         #region Noise Values
-        public float blend;
-        public int seed;
-        public float frequency;
-        public float lacunarity;
-        public float persistance;
-        public int octaves;
+        public Single blend;
+        public Int32 seed;
+        public Single frequency;
+        public Single lacunarity;
+        public Single persistance;
+        public Int32 octaves;
         public QualityMode mode;
         private ModuleBase noiseMap;
         #endregion
@@ -72,7 +72,7 @@ namespace PQS
         /// </summary>
         public override void OnVertexBuildHeight(VertexBuildData data)
         {
-           float h = (float)((noiseMap.GetValue(data.directionFromCenter) + 1.0) * 0.5);
+           Single h = (Single)((noiseMap.GetValue(data.directionFromCenter) + 1.0) * 0.5);
             c.r = h; c.g = h; c.b = h;
             data.vertColor = Color.Lerp(data.vertColor, c, blend);
         }

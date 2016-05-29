@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace LibNoise.Operator
 {
@@ -36,7 +37,7 @@ namespace LibNoise.Operator
         /// <param name="scale">The scaling factor to apply to the output value from the source module.</param>
         /// <param name="bias">The bias to apply to the scaled output value from the source module.</param>
         /// <param name="input">The input module.</param>
-        public ScaleBias(double scale, double bias, ModuleBase input)
+        public ScaleBias(Double scale, Double bias, ModuleBase input)
             : base(1)
         {
             Modules[0] = input;
@@ -51,12 +52,12 @@ namespace LibNoise.Operator
         /// <summary>
         /// Gets or sets the bias to apply to the scaled output value from the source module.
         /// </summary>
-		public double Bias { get; set; }
+		public Double Bias { get; set; }
 
         /// <summary>
         /// Gets or sets the scaling factor to apply to the output value from the source module.
         /// </summary>
-		public double Scale { get; set; }
+		public Double Scale { get; set; }
         #endregion
 
         #region ModuleBase Members
@@ -68,7 +69,7 @@ namespace LibNoise.Operator
         /// <param name="y">The input coordinate on the y-axis.</param>
         /// <param name="z">The input coordinate on the z-axis.</param>
         /// <returns>The resulting output value.</returns>
-        public override double GetValue(double x, double y, double z)
+        public override Double GetValue(Double x, Double y, Double z)
         {
             Debug.Assert(Modules[0] != null);
             return Modules[0].GetValue(x, y, z) * Scale + Bias;

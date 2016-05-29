@@ -39,7 +39,7 @@ namespace PQS
             /// Calculate color at a given time.
             /// </summary>
             /// <param name="time">Time of the key (0 - 1).</param>
-            public Color Evaluate(float time)
+            public Color Evaluate(Single time)
             {
                 Color color = Color.black;
                 if (colorKeys.Count(k => k.time == time) == 1)
@@ -52,7 +52,7 @@ namespace PQS
                     GradientColorKey key2 = colorKeys.OrderBy(k => k.time).FirstOrDefault(k => k.time > time);
                     color = Color.Lerp(key1.color, key2.color, (time - key1.time)/(key2.time - key1.time));
                 }
-                float alpha = 1;
+                Single alpha = 1;
                 if (alphaKeys.Count(k => k.time == time) == 1)
                 {
                     alpha = alphaKeys.FirstOrDefault(k => k.time == time).alpha;
@@ -75,9 +75,9 @@ namespace PQS
             public void SetKeys(GradientColorKey[] colorKeys, GradientAlphaKey[] alphaKeys)
             {
                 if (colorKeys.Length > 8)
-                    throw new ArgumentException(nameof(colorKeys), "There are more than 8 color keys.");
+                    throw new ArgumentException("There are more than 8 color keys.", nameof(colorKeys));
                 if (alphaKeys.Length > 8)
-                    throw new ArgumentException(nameof(alphaKeys), "There are more than 8 alpha keys.");
+                    throw new ArgumentException("There are more than 8 alpha keys.", nameof(alphaKeys));
 
                 this.colorKeys = colorKeys;
                 this.alphaKeys = alphaKeys;

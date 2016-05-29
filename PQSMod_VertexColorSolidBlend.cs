@@ -4,9 +4,9 @@
  * Licensed under the terms of the MIT license
  */
 
-using PQS.Unity;
+using ProceduralQuadSphere.Unity;
 
-namespace PQS
+namespace ProceduralQuadSphere
 {
     /// <summary>
     /// A PQSMod that applies a solid color to the pqs color.

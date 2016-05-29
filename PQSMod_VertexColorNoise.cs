@@ -7,9 +7,9 @@
 using LibNoise;
 using LibNoise.Generator;
 using System;
-using PQS.Unity;
+using ProceduralQuadSphere.Unity;
 
-namespace PQS
+namespace ProceduralQuadSphere
 {
     /// <summary>
     /// PQSMod that applies color based on a noise generator

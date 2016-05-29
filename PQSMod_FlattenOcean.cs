@@ -5,9 +5,9 @@
  */
 
 using System;
-using PQS.Unity;
+using ProceduralQuadSphere.Unity;
 
-namespace PQS
+namespace ProceduralQuadSphere
 {
     /// <summary>
     /// A mod that sets a minimum terrain altitude

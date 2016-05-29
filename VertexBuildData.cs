@@ -5,10 +5,10 @@
  */
 
 using System;
-using PQS.Unity;
+using ProceduralQuadSphere.Unity;
 using XnaGeometry;
 
-namespace PQS
+namespace ProceduralQuadSphere
 {
     /// <summary>
     /// A structure that defines the exact position that the <see cref="PQSMod"/>

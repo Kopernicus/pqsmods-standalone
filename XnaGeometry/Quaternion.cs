@@ -797,6 +797,28 @@ namespace XnaGeometry
         }
 
 
+        public static Vector3 operator *(Quaternion rotation, Vector3 point)
+        {
+            Vector3 vector3d = new Vector3();
+            double num = rotation.X * 2;
+            double num1 = rotation.Y * 2;
+            double num2 = rotation.Z * 2;
+            double num3 = rotation.X * num;
+            double num4 = rotation.Y * num1;
+            double num5 = rotation.Z * num2;
+            double num6 = rotation.X * num1;
+            double num7 = rotation.X * num2;
+            double num8 = rotation.Y * num2;
+            double num9 = rotation.W * num;
+            double num10 = rotation.W * num1;
+            double num11 = rotation.W * num2;
+            vector3d.X = (1 - (num4 + num5)) * point.X + (num6 - num11) * point.Y + (num7 + num10) * point.Z;
+            vector3d.Y = (num6 + num11) * point.X + (1 - (num3 + num5)) * point.Y + (num8 - num9) * point.Z;
+            vector3d.Z = (num7 - num10) * point.X + (num8 + num9) * point.Y + (1 - (num3 + num4)) * point.Z;
+            return vector3d;
+        }
+
+
         public static Quaternion operator -(Quaternion quaternion1, Quaternion quaternion2)
         {
             Quaternion quaternion;

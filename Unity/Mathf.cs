@@ -8,7 +8,7 @@ using System;
 using System.ComponentModel;
 using XnaGeometry;
 
-namespace PQS
+namespace ProceduralQuadSphere
 {
     namespace Unity
     {

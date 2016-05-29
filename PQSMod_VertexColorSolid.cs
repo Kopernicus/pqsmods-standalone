@@ -5,9 +5,9 @@
  */
 
 using System;
-using PQS.Unity;
+using ProceduralQuadSphere.Unity;
 
-namespace PQS
+namespace ProceduralQuadSphere
 {
     /// <summary>
     /// A PQSMod that lerps a solid color into the pqs color

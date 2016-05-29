@@ -5,10 +5,10 @@
  */
 
 using System;
-using PQS.KSP;
-using PQS.Unity;
+using ProceduralQuadSphere.Unity;
+using ProceduralQuadSphere.KSP;
 
-namespace PQS
+namespace ProceduralQuadSphere
 {
     /// <summary>
     /// The colomap PQSMod. Gets the pixel data from a binary texture wrapper and returns it.

@@ -8,11 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using PQS.KSP;
-using PQS.Unity;
+using ProceduralQuadSphere.KSP;
+using ProceduralQuadSphere.Unity;
 using XnaGeometry;
 
-namespace PQS
+namespace ProceduralQuadSphere
 {
     /// <summary>
     /// A fake implementation of the PQS, to support things like radius to be centralized 
@@ -201,6 +201,21 @@ namespace PQS
             List<PQSMod> m_ = new List<PQSMod>(mods);
             m_.Remove(mod);
             mods = m_.AsReadOnly();
+        }
+
+        /// <summary>
+        /// Builds the relative rectangular point of the sphere
+        /// </summary>
+        public VertexBuildData BuildData(Double x, Double y)
+        {
+            VertexBuildData data = new VertexBuildData
+            {
+                directionFromCenter = (Quaternion.CreateFromAxisAngle(Vector3.Up, Math.PI * 2 / x) * Quaternion.CreateFromAxisAngle(Vector3.Right, 90d - Math.PI / y)) * Vector3.Forward,
+                vertHeight = radius
+            };
+            OnVertexBuildHeight(data);
+            OnVertexBuild(data);
+            return data;
         }
     }
 }

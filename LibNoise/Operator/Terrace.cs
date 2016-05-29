@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using PQS.Unity;
+using ProceduralQuadSphere.Unity;
 using Debug = System.Diagnostics.Debug;
 
 namespace LibNoise.Operator

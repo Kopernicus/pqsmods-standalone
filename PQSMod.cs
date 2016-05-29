@@ -6,7 +6,7 @@
 
 using System;
 
-namespace PQS
+namespace ProceduralQuadSphere
 {
     /// <summary>
     /// Implementation of the base PQSMod type. Does nothing on it's own.

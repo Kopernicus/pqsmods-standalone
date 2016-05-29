@@ -5,10 +5,10 @@
  */
 
 using System;
-using PQS.Unity;
+using ProceduralQuadSphere.Unity;
 using XnaGeometry;
 
-namespace PQS
+namespace ProceduralQuadSphere
 {
     /// <summary>
     /// A mod that makes a specific area on the planet completely flat (tangent version)

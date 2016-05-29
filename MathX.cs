@@ -6,7 +6,7 @@
 
 using System;
 
-namespace PQS
+namespace ProceduralQuadSphere
 {
     /// <summary>
     /// Custom Math operations for PQSMods

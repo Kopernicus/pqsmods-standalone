@@ -1,6 +1,6 @@
 using System;
 using System.Xml.Serialization;
-using PQS.Unity;
+using ProceduralQuadSphere.Unity;
 using Bitmap = System.Drawing.Bitmap;
 using XnaGeometry;
 

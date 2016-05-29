@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using PQS.Unity;
+using ProceduralQuadSphere.Unity;
 
 namespace LibNoise
 {

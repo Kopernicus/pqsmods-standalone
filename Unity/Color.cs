@@ -7,7 +7,7 @@
 using System;
 using XnaGeometry;
 
-namespace PQS
+namespace ProceduralQuadSphere
 {
     namespace Unity
     {

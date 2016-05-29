@@ -6,9 +6,9 @@
 
 using System;
 using System.Linq;
-using PQS.Unity;
+using ProceduralQuadSphere.Unity;
 
-namespace PQS
+namespace ProceduralQuadSphere
 {
     /// <summary>
     /// A mod that colors the terrain based on it's altitude

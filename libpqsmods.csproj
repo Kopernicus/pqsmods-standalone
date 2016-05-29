@@ -7,7 +7,7 @@
     <ProjectGuid>{C159FA9E-6FD7-4FFB-BAD3-ED2EBF754B47}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PQS</RootNamespace>
+    <RootNamespace>ProceduralQuadSphere</RootNamespace>
     <AssemblyName>libpqsmods</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

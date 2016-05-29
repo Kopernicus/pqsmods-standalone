@@ -5,10 +5,10 @@
  */
 
 using System;
-using PQS.KSP;
-using PQS.Unity;
+using ProceduralQuadSphere.KSP;
+using ProceduralQuadSphere.Unity;
 
-namespace PQS
+namespace ProceduralQuadSphere
 {
     /// <summary>
     /// Colormap PQSMod that supports blending the generated color into the one the PQS already has.

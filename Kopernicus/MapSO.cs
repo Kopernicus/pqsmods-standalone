@@ -7,10 +7,10 @@
  */
 
 using System;
-using PQS.Unity;
+using ProceduralQuadSphere.Unity;
 using Bitmap = System.Drawing.Bitmap;
 
-namespace PQS
+namespace ProceduralQuadSphere
 {
     namespace KSP
     {

@@ -12,7 +12,6 @@ namespace Microsoft.Xna.Framework
     /// Contains a collection of <see cref="CurveKey"/> points in 2D space and provides methods for evaluating features of the curve they define.
     /// </summary>
     // TODO : [TypeConverter(typeof(ExpandableObjectConverter))]
-    [DataContract]
     public class Curve
     {
         #region Private Fields
@@ -28,7 +27,6 @@ namespace Microsoft.Xna.Framework
         /// <summary>
         /// Returns <c>true</c> if this curve is constant (has zero or one points); <c>false</c> otherwise.
         /// </summary>
-        [DataMember]
         public bool IsConstant
         {
             get { return this._keys.Count <= 1; }
@@ -37,7 +35,6 @@ namespace Microsoft.Xna.Framework
         /// <summary>
         /// The collection of curve keys.
         /// </summary>
-        [DataMember]
         public CurveKeyCollection Keys
         {
             get { return this._keys; }
@@ -46,7 +43,6 @@ namespace Microsoft.Xna.Framework
         /// <summary>
         /// Defines how to handle weighting values that are greater than the last control point in the curve.
         /// </summary>
-        [DataMember]
         public CurveLoopType PostLoop
         {
             get { return this._postLoop; }
@@ -56,7 +52,6 @@ namespace Microsoft.Xna.Framework
         /// <summary>
         /// Defines how to handle weighting values that are less than the first control point in the curve.
         /// </summary>
-        [DataMember]
         public CurveLoopType PreLoop
         {
             get { return this._preLoop; }

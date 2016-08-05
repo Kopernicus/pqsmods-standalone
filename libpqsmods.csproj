@@ -81,6 +81,10 @@
     <Compile Include="PQSMod_HeightColorMap2.cs" />
     <Compile Include="PQSMod_VertexColorMap.cs" />
     <Compile Include="PQSMod_VertexColorMapBlend.cs" />
+    <Compile Include="PQSMod_VertexHeightNoiseVertHeightCurve2.cs" />
+    <Compile Include="PQSMod_VertexHeightNoiseVertHeightCurve.cs" />
+    <Compile Include="PQSMod_VertexHeightNoiseVertHeight.cs" />
+    <Compile Include="PQSMod_VertexHeightNoiseHeightMap.cs" />
     <Compile Include="PQSMod_VertexHeightNoise.cs" />
     <Compile Include="PQSMod_VertexColorNoise.cs" />
     <Compile Include="PQSMod_VertexColorNoiseRGB.cs" />
@@ -89,7 +93,13 @@
     <Compile Include="PQSMod_VertexDefineCoastLine.cs" />
     <Compile Include="PQSMod_VertexHeightMapStep.cs" />
     <Compile Include="PQSMod_VertexHeightMap.cs" />
+    <Compile Include="PQSMod_VertexHeightOffset.cs" />
     <Compile Include="PQSMod_VertexHeightOblate.cs" />
+    <Compile Include="PQSMod_VertexPlanet.cs" />
+    <Compile Include="PQSMod_VertexNoise.cs" />
+    <Compile Include="PQSMod_VertexSimplexMultiChromatic.cs" />
+    <Compile Include="PQSMod_VertexSimplexHeightFlatten.cs" />
+    <Compile Include="PQSMod_VertexSimplexHeightAbsolute.cs" />
     <Compile Include="PQSMod_VertexSimplexHeight.cs" />
     <Compile Include="Unity\Color.cs" />
     <Compile Include="Unity\Color32.cs" />

@@ -18,27 +18,27 @@ namespace ProceduralQuadSphere
         /// <summary>
         /// The terrain deformation
         /// </summary>
-        public double deformation = 1000;
+        public Double deformation;
 
         /// <summary>
         /// The seed for the voronoi mesh
         /// </summary>
-        public int voronoiSeed;
+        public Int32 voronoiSeed;
 
         /// <summary>
         /// The displacement for the voronoi
         /// </summary>
-        public double voronoiDisplacement = 1;
+        public Double voronoiDisplacement;
 
         /// <summary>
         /// The frequency for the voronoi
         /// </summary>
-        public double voronoiFrequency = 1;
+        public Double voronoiFrequency;
 
         /// <summary>
         /// Whether the the distance from the nearest seed point is applied to the output of the voronoi
         /// </summary>
-        public bool voronoiEnableDistance;
+        public Boolean voronoiEnableDistance;
 
         /// <summary>
         /// The voronoi instance

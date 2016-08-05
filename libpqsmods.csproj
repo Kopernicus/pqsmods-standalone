@@ -81,6 +81,7 @@
     <Compile Include="PQSMod_HeightColorMap2.cs" />
     <Compile Include="PQSMod_VertexColorMap.cs" />
     <Compile Include="PQSMod_VertexColorMapBlend.cs" />
+    <Compile Include="PQSMod_VoronoiCraters.cs" />
     <Compile Include="PQSMod_VertexVoronoi.cs" />
     <Compile Include="PQSMod_VertexSimplexNoiseColor.cs" />
     <Compile Include="PQSMod_VertexHeightNoiseVertHeightCurve2.cs" />

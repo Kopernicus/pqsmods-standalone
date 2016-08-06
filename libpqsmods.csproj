@@ -46,6 +46,7 @@
     <Compile Include="LibNoise\Generator\Perlin.cs" />
     <Compile Include="LibNoise\Generator\RidgedMultifractal.cs" />
     <Compile Include="LibNoise\Generator\Spheres.cs" />
+    <Compile Include="LibNoise\Generator\VoronoiCached.cs" />
     <Compile Include="LibNoise\Generator\Voronoi.cs" />
     <Compile Include="LibNoise\GradientPresets.cs" />
     <Compile Include="LibNoise\ModuleBase.cs" />

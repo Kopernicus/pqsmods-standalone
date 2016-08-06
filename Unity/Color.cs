@@ -288,7 +288,7 @@ namespace ProceduralQuadSphere
 
             public static implicit operator System.Drawing.Color(Color c)
             {
-                return System.Drawing.Color.FromArgb((Int32)(Float2Byte * c.a), (Int32)(Float2Byte * c.r), (Int32)(Float2Byte * c.g), (Int32)(Float2Byte * c.b));
+                return System.Drawing.Color.FromArgb((Int32)(Float2Byte * Mathf.Clamp01(c.a)), (Int32)(Float2Byte * Mathf.Clamp01(c.r)), (Int32)(Float2Byte * Mathf.Clamp01(c.g)), (Int32)(Float2Byte * Mathf.Clamp01(c.b)));
             }
 
             public static implicit operator Color(System.Drawing.Color c)
@@ -337,7 +337,7 @@ namespace ProceduralQuadSphere
             /// <param name="format"></param>
             public override String ToString()
             {
-                return String.Format("RGBA({0:F3}, {1:F3}, {2:F3}, {3:F3})", r, g, b, a);
+                return String.Format("{0:F3}, {1:F3}, {2:F3}, {3:F3}", r, g, b, a);
             }
 
             /// <summary>
@@ -346,7 +346,7 @@ namespace ProceduralQuadSphere
             /// <param name="format"></param>
             public String ToString(String format)
             {
-                return String.Format("RGBA({0}, {1}, {2}, {3})", r.ToString(format), g.ToString(format), b.ToString(format), a.ToString(format));
+                return String.Format("{0}, {1}, {2}, {3}", r.ToString(format), g.ToString(format), b.ToString(format), a.ToString(format));
             }
         }
     }

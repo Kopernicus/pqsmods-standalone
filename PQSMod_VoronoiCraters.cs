@@ -19,7 +19,7 @@ namespace ProceduralQuadSphere
     public class PQSMod_VoronoiCraters : PQSMod
     {
         #region VoronoiFields
-        private Voronoi voronoi;
+        private VoronoiCached voronoi;
         public Double deformation;
         public Int32 voronoiSeed;
         public Double voronoiDisplacement;
@@ -104,7 +104,7 @@ namespace ProceduralQuadSphere
         /// </summary>
         public override void OnSetup()
         {
-            this.voronoi = new Voronoi(voronoiFrequency, voronoiDisplacement, voronoiSeed, true);
+            this.voronoi = new VoronoiCached(voronoiFrequency, voronoiDisplacement, voronoiSeed, true);
             this.simplex = new Simplex(simplexSeed, simplexOctaves, simplexPersistence, simplexFrequency);
         }
 
